@@ -3,15 +3,17 @@ import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/functions/get-catalog";
 import { authGuard } from "@/actions";
 import AitozContainer from "./AitozContainer";
-import { prisma } from "@/libs/prisma";
+import { PrismaClient } from "@prisma/client";
 
 export default async function AitozPage() {
-  // await authGuard("aitoz");
+  await authGuard("aitoz");
   const catalogss = await getCatalog("aswzcpzqy");
   const catalogaw = await getCatalog("whtxkwo3vb");
   const catalogLadiesSs = await getCatalog("m3gh2ir54");
   const catalogOfficeSs = await getCatalog("zizmqccya");
   const catalogOfficeAw = await getCatalog("zizmqccya");
+
+  const prisma = new PrismaClient();
 
   const getData = async () => {
     const data = await prisma.aitoz.findMany({
