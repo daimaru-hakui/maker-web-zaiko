@@ -14,6 +14,20 @@ export async function POST(req: NextRequest) {
   console.log("ジョア upload")
 
   await prisma.joie.deleteMany();
+
+  try {
+    await prisma.joie.createMany({
+      data: newBody,
+    });
+    console.log("ジョア 成功");
+    await prisma.$disconnect();
+    return NextResponse.json("ジョア 成功", { status: 201 });
+  } catch (e) {
+    console.error(e);
+    await prisma.$disconnect();
+    return NextResponse.json("ジョア 失敗", { status: 500 });
+  }
+
   return await Promise.all(
     newBody.map(async (data) => await prisma.joie.create({ data }))
   )
