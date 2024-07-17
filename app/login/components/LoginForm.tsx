@@ -35,11 +35,12 @@ const LoginForm: FC = () => {
         idToken,
         callbackUrl: "/daimaru",
       });
-      setLoading(false);
     } catch (error) {
       console.log("error");
       alert("ログインに失敗しまいした");
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
