@@ -28,18 +28,4 @@ export async function POST(req: NextRequest) {
     await prisma.$disconnect();
     return NextResponse.json("サーヴォ 失敗", { status: 500 });
   }
-
-  return await Promise.all(
-    newBody.map(async (data) => await prisma.servo.create({ data }))
-  )
-    .then(async () => {
-      console.log("サーヴォ 成功");
-      await prisma.$disconnect();
-      return NextResponse.json("サーヴォ 成功", { status: 201 });
-    })
-    .catch(async (err) => {
-      console.error(err);
-      await prisma.$disconnect();
-      return NextResponse.json("サーヴォ 失敗", { status: 500 });
-    });
 }

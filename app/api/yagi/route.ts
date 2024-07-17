@@ -31,17 +31,4 @@ export async function POST(req: NextRequest) {
     await prisma.$disconnect();
     return NextResponse.json("ヤギ 失敗", { status: 500 });
   }
-
-  return await Promise.all(
-    newBody.map(async (data) => await prisma.yagi.create({ data }))
-  )
-    .then(async () => {
-      await prisma.$disconnect();
-      return NextResponse.json("ヤギコーポレーション 成功", { status: 201 });
-    })
-    .catch(async (err) => {
-      console.error(err);
-      await prisma.$disconnect();
-      return NextResponse.json("ヤギコーポレーション 失敗", { status: 500 });
-    });
 }
