@@ -2,9 +2,10 @@ import { CocosData } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
 import { format } from "date-fns";
 import prisma from "@/libs/prisma";
+import { revalidatePath } from "next/cache";
 
 export async function POST(req: NextRequest) {
-  const { body }: { body: CocosData[] } = await req.json();
+  const { body }: { body: CocosData[]; } = await req.json();
   const patternColor = /(\s|\d)/g;
   const newBody = body.map((value, idx: number) => ({
     ...value,
@@ -28,6 +29,7 @@ export async function POST(req: NextRequest) {
     });
     console.log("コーコス 成功");
     await prisma.$disconnect();
+    revalidatePath('/cocos');
     return NextResponse.json("コーコス 成功", { status: 201 });
   } catch (e) {
     console.error(e);

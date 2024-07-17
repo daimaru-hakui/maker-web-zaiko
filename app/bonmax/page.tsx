@@ -5,7 +5,7 @@ import { authGuard, fetchBonmaxData } from "@/actions";
 import BonmaxContainer from "./BonmaxContainer";
 
 export default async function Bonmax() {
-  await authGuard("bonmax");
+  // await authGuard("bonmax");
   const catalogFaceMix = await getCatalog("lh4sypndh");
   const catalogOfficeSS = await getCatalog("vcxclo8y7");
   const catalogOfficeAW = await getCatalog("kt05evuki");
@@ -28,3 +28,4 @@ export default async function Bonmax() {
     </main>
   );
 }
+export const dynamic = "force-static";

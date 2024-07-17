@@ -1,10 +1,11 @@
-import  prisma  from "@/libs/prisma";
+import prisma from "@/libs/prisma";
 import { TombowData } from "@/types";
 import { format } from "date-fns";
+import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const { body }: { body: TombowData[] } = await req.json();
+  const { body }: { body: TombowData[]; } = await req.json();
 
   const newBody = body.map((value, idx: number) => ({
     ...value,
@@ -14,8 +15,8 @@ export async function POST(req: NextRequest) {
     createdAt: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
   }));
 
-  console.log("トンボ upload")
-  
+  console.log("トンボ upload");
+
   await prisma.tombow.deleteMany();
 
   try {
@@ -24,6 +25,7 @@ export async function POST(req: NextRequest) {
     });
     console.log("トンボ 成功");
     await prisma.$disconnect();
+    revalidatePath('/tombow');
     return NextResponse.json("トンボ 成功", { status: 201 });
   } catch (e) {
     console.error(e);

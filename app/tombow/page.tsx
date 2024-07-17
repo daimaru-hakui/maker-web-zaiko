@@ -5,7 +5,7 @@ import { authGuard, fetchTombowData } from "@/actions";
 import TombowContainer from "./TombowContainer";
 
 export default async function Tombow() {
-  await authGuard("tombow");
+  // await authGuard("tombow");
   const catalog = await getCatalog("pecptt28f");
 
   const data = await fetchTombowData();
@@ -20,3 +20,4 @@ export default async function Tombow() {
     </main>
   );
 }
+export const dynamic = "force-static";

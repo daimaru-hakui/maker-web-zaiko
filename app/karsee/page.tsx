@@ -5,7 +5,7 @@ import { authGuard, fetchKarseeData } from "@/actions";
 import KarseeContainer from "./KarseeContainer";
 
 export default async function Karsee() {
-  await authGuard("karsee");
+  // await authGuard("karsee");
   const catalogEnjoySS = await getCatalog("cgczlza8z");
   const catalogEnjoyAW = await getCatalog("53qaflfz1");
   const catalogNoir = await getCatalog("avp-i33uhr");
@@ -28,3 +28,4 @@ export default async function Karsee() {
     </main>
   );
 }
+export const dynamic = "force-static";

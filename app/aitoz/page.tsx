@@ -5,7 +5,7 @@ import { authGuard, fetchAitozData } from "@/actions";
 import AitozContainer from "./AitozContainer";
 
 export default async function AitozPage() {
-  await authGuard("aitoz");
+  // await authGuard("aitoz");
   const catalogss = await getCatalog("aswzcpzqy");
   const catalogaw = await getCatalog("whtxkwo3vb");
   const catalogLadiesSs = await getCatalog("m3gh2ir54");
@@ -28,3 +28,5 @@ export default async function AitozPage() {
     </main>
   );
 }
+
+export const dynamic = "force-static";

@@ -5,7 +5,7 @@ import { authGuard, fetchServoData } from "@/actions";
 import ServoContainer from "./SevenContainer";
 
 export default async function Servo() {
-  await authGuard("servo");
+  // await authGuard("servo");
   const catalogServo = await getCatalog("slnkyzgbe");
   const catalogFood = await getCatalog("ou46diqi9");
   const catalogMedical = await getCatalog("7k0eahxnu");
@@ -30,3 +30,4 @@ export default async function Servo() {
     </main>
   );
 }
+export const dynamic = "force-static";

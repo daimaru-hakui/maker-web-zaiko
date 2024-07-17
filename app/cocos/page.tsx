@@ -5,7 +5,7 @@ import { authGuard, fetchCocosData } from "@/actions";
 import CocosContainer from "./CocosContainer";
 
 export default async function Daimaru() {
-  await authGuard("cocos");
+  // await authGuard("cocos");
   const catalogSs = await getCatalog("p5mstnm-6");
   const catalogAw = await getCatalog("tfakmhtz9");
   const catalogDi = await getCatalog("16pjpoo8eoad");
@@ -28,3 +28,4 @@ export default async function Daimaru() {
     </main>
   );
 }
+export const dynamic = "force-static";

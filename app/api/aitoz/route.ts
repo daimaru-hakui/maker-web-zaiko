@@ -1,6 +1,7 @@
 import prisma from "@/libs/prisma";
 import { AitozData } from "@/types";
 import { format } from "date-fns";
+import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -23,6 +24,7 @@ export async function POST(req: NextRequest) {
     });
     console.log("アイトス 成功");
     await prisma.$disconnect();
+    revalidatePath('/aitoz');
     return NextResponse.json("アイトス 成功", { status: 201 });
   } catch (e) {
     console.error(e);

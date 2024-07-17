@@ -5,7 +5,7 @@ import { authGuard, fetchBurtleData } from "@/actions";
 import BurtleContainer from "./BurtleContainer";
 
 export default async function Burtle() {
-  await authGuard("burtle");
+  // await authGuard("burtle");
   const catalogSS = await getCatalog("jcmvlxis8");
   const catalogAW = await getCatalog("hy4k0eb2b5");
   const data = await fetchBurtleData();
@@ -22,3 +22,4 @@ export default async function Burtle() {
     </main>
   );
 }
+export const dynamic = "force-static";

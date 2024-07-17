@@ -1,10 +1,11 @@
-import  prisma  from "@/libs/prisma";
+import prisma from "@/libs/prisma";
 import { ChitoseData } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
 import { format } from "date-fns";
+import { revalidatePath } from "next/cache";
 
 export async function POST(req: NextRequest) {
-  const { body }: { body: ChitoseData[] } = await req.json();
+  const { body }: { body: ChitoseData[]; } = await req.json();
   const patternProductNumber = /[^\d]/g;
   const patternColor = /(C|-|\/|\d)/g;
   const newBody = body.map((value, idx: number) => ({
@@ -19,7 +20,7 @@ export async function POST(req: NextRequest) {
     createdAt: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
   }));
 
-  console.log("チトセ upload")
+  console.log("チトセ upload");
 
   await prisma.chitose.deleteMany();
 
@@ -29,6 +30,7 @@ export async function POST(req: NextRequest) {
     });
     console.log("チトセ 成功");
     await prisma.$disconnect();
+    revalidatePath('/chitose');
     return NextResponse.json("チトセ 成功", { status: 201 });
   } catch (e) {
     console.error(e);

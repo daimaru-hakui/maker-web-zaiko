@@ -1,10 +1,11 @@
 import prisma from "@/libs/prisma";
 import { KarseeData } from "@/types";
 import { format } from "date-fns";
+import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const { body }: { body: KarseeData[] } = await req.json();
+  const { body }: { body: KarseeData[]; } = await req.json();
   const pattern = /(【\d*】)/g;
   const newBody = body.map((value, idx: number) => ({
     ...value,
@@ -24,6 +25,7 @@ export async function POST(req: NextRequest) {
     });
     console.log("カーシーカシマ 成功");
     await prisma.$disconnect();
+    revalidatePath('/karsee');
     return NextResponse.json("カーシーカシマ 成功", { status: 201 });
   } catch (e) {
     console.error(e);

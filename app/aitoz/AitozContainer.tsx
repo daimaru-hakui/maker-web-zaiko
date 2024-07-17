@@ -13,6 +13,7 @@ type Props = {
 export default function AitozContainer({ data }: Props) {
   const { addArray, filterData, setFilterData } = useAddToArray<AitozData>();
 
+  console.log(data.length);
   const newData = data.map((d) => d.productNumber);
   const datalist = Array.from(new Set(newData));
   console.log(data[0]?.createdAt);
