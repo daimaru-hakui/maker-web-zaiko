@@ -25,3 +25,4 @@ export default async function Chikuma() {
     </main>
   );
 }
+export const dynamic = 'force-static';

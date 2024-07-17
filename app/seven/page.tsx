@@ -22,3 +22,4 @@ export default async function Seven() {
     </main>
   );
 }
+export const dynamic = 'force-static';

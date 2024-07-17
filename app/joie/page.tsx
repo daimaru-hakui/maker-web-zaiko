@@ -22,3 +22,4 @@ export default async function Joie() {
     </main>
   );
 }
+export const dynamic = 'force-static';

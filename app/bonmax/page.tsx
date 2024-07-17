@@ -28,3 +28,5 @@ export default async function Bonmax() {
     </main>
   );
 }
+
+export const dynamic = 'force-static';

@@ -22,3 +22,5 @@ export default async function Burtle() {
     </main>
   );
 }
+
+export const dynamic = 'force-static';

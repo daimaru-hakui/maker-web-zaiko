@@ -41,3 +41,5 @@ export default async function AitozPage() {
     </main>
   );
 }
+
+export const dynamic = 'force-static';

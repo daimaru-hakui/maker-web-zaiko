@@ -28,3 +28,4 @@ export default async function Daimaru() {
     </main>
   );
 }
+export const dynamic = 'force-static';

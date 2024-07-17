@@ -26,3 +26,4 @@ export default async function Selery() {
     </main>
   );
 }
+export const dynamic = 'force-static';

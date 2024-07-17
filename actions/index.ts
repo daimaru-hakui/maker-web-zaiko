@@ -4,6 +4,7 @@ import  prisma from "@/libs/prisma";
 import { options } from "@/providers/options";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { revalidateTag } from 'next/cache'
 
 export async function authGuard(maker: string) {
   const session = await getServerSession(options);

@@ -28,3 +28,4 @@ export default async function Karsee() {
     </main>
   );
 }
+export const dynamic = 'force-static';

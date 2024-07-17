@@ -20,3 +20,4 @@ export default async function Tombow() {
     </main>
   );
 }
+export const dynamic = 'force-static';
