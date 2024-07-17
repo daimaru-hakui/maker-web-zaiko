@@ -4,6 +4,7 @@ import React, { FC } from "react";
 import { DaimaruData } from "@/types";
 import TableArea from "@/components/table-area";
 
+
 type Props = {
   filterData: DaimaruData[];
 };

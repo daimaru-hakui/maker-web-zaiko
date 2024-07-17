@@ -3,18 +3,16 @@ import { KarseeData } from "@/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddToArray } from "@/hooks/useAddToArray";
 import { KarseeTable } from "./KarseeTable";
+import { useFilterInput } from "@/hooks/useFilterInput";
 
 type Props = {
   data: KarseeData[];
 };
 
 export default function KarseeContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData } = useAddToArray<KarseeData>();
-
-  const newData = data.map((d) => d.productNumber);
-  const datalist = Array.from(new Set(newData));
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<KarseeData>();
+  const datalist = getDataList(data);
   console.log(data[0]?.createdAt);
 
   return (

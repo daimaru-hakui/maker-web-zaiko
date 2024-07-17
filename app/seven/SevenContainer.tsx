@@ -3,18 +3,16 @@ import { SevenData } from "@/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddToArray } from "@/hooks/useAddToArray";
 import { SevenTable } from "./SevenTable";
+import { useFilterInput } from "@/hooks/useFilterInput";
 
 type Props = {
   data: SevenData[];
 };
 
 export default function SevenContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData } = useAddToArray<SevenData>();
-
-  const newData = data.map((d) => d.productNumber);
-  const datalist = Array.from(new Set(newData));
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<SevenData>();
+  const datalist = getDataList(data);
   console.log(data[0]?.createdAt);
 
   return (

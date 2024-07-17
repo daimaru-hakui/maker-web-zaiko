@@ -3,18 +3,16 @@ import { BurtleData } from "@/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddToArray } from "@/hooks/useAddToArray";
 import { BurtleTable } from "./BurtleTable";
+import { useFilterInput } from "@/hooks/useFilterInput";
 
 type Props = {
   data: BurtleData[];
 };
 
 export default function BurtleContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData } = useAddToArray<BurtleData>();
-
-  const newData = data.map((d) => d.productNumber);
-  const datalist = Array.from(new Set(newData));
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<BurtleData>();
+  const datalist = getDataList(data);
   console.log(data[0]?.createdAt);
 
   return (

@@ -3,7 +3,7 @@ import { CocosData } from "@/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddToArray } from "@/hooks/useAddToArray";
+import { useFilterInput } from "@/hooks/useFilterInput";
 import { CocosTable } from "./CocosTable";
 
 type Props = {
@@ -11,11 +11,8 @@ type Props = {
 };
 
 export default function CocosContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData } = useAddToArray<CocosData>();
-
-  console.log(data.length);
-  const newData = data.map((d) => d.productNumber);
-  const datalist = Array.from(new Set(newData));
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<CocosData>();
+  const datalist = getDataList(data);
   console.log(data[0]?.createdAt);
 
   return (
