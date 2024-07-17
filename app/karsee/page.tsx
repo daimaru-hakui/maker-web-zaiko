@@ -1,18 +1,18 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/functions/get-catalog";
-import { authGuard,  fetchKarseeData } from "@/actions";
+import { authGuard, fetchKarseeData } from "@/actions";
 import KarseeContainer from "./KarseeContainer";
 
 export default async function Karsee() {
-  await authGuard("karsee")
+  await authGuard("karsee");
   const catalogEnjoySS = await getCatalog("cgczlza8z");
   const catalogEnjoyAW = await getCatalog("53qaflfz1");
   const catalogNoir = await getCatalog("avp-i33uhr");
   const catalogCarean = await getCatalog("f653gvyki");
   const catalogHeartGreen = await getCatalog("ppud4o2fi");
 
-  const data = await fetchKarseeData()
+  const data = await fetchKarseeData();
   if (!data) return;
 
   return (
@@ -28,4 +28,3 @@ export default async function Karsee() {
     </main>
   );
 }
-export const dynamic = 'force-static';

@@ -5,11 +5,11 @@ import { authGuard, fetchJoieData } from "@/actions";
 import JoieContainer from "./JoieContainer";
 
 export default async function Joie() {
-  await authGuard("joie")
+  await authGuard("joie");
   const catalogEnJoieSS = await getCatalog("aqz0c2_5p");
   const catalogEnJoieAW = await getCatalog("drgjd_who");
 
-  const data = await fetchJoieData()
+  const data = await fetchJoieData();
   if (!data) return;
 
   return (
@@ -22,4 +22,3 @@ export default async function Joie() {
     </main>
   );
 }
-export const dynamic = 'force-static';
