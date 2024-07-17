@@ -1,0 +1,17 @@
+export const makerLinks = [
+  { label: "大丸白衣", title: "daimaru", link: "/daimaru", blank: false },
+  { label: "トンボ", title: "tombow", link: "/tombow", blank: false },
+  { label: "チクマ", title: "chikuma", link: "/chikuma", blank: false },
+  { label: "セロリー", title: "selery", link: "/selery", blank: false },
+  { label: "ボンマックス", title: "bonmax", link: "/bonmax", blank: false },
+  { label: "カーシーカシマ", title: "karsee", link: "/karsee", blank: false },
+  { label: "ジョア", title: "joie", link: "/joie", blank: false },
+  { label: "バートル", title: "burtle", link: "/burtle", blank: false },
+  { label: "チトセ", title: "chitose", link: "/chitose", blank: false },
+  { label: "サーヴォ", title: "servo", link: "/servo", blank: false },
+  { label: "セブンユニフォーム", title: "seven", link: "/seven", blank: false },
+  { label: "コーコス", title: "cocos", link: "/cocos", blank: false },
+  { label: "アイトス", title: "aitoz", link: "/aitoz", blank: false },
+  { label: "ヤギコーポレーション", title: "yagi", link: "/yagi", blank: false },
+  { label: "トムス", title: "toms", link: "/toms", blank: true },
+];
