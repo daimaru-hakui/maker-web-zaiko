@@ -5,7 +5,7 @@ import { authGuard, fetchChitoseData } from "@/actions";
 import ChitoseContainer from "./ChitoseContainer";
 
 export default async function Chitose() {
-  await authGuard("chitose");
+  // await authGuard("chitose");
   const catalogUnite = await getCatalog("oxqcchhqb");
   const catalogArbe = await getCatalog("ekpj9zvfm");
 
@@ -22,3 +22,4 @@ export default async function Chitose() {
     </main>
   );
 }
+export const dynamic = "force-static";

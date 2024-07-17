@@ -13,6 +13,7 @@ type Props = {
 export default function BonmaxContainer({ data }: Props) {
   const { addArray, filterData, setFilterData } = useAddToArray<BonmaxData>();
 
+  console.log(data.length);
   const newData = data.map((d) => d.productNumber);
   const datalist = Array.from(new Set(newData));
   console.log(data[0]?.createdAt);

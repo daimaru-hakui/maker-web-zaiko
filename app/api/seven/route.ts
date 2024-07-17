@@ -2,9 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { SevenData } from "@/types";
 import prisma from "@/libs/prisma";
 import { format } from "date-fns";
+import { revalidatePath } from "next/cache";
 
 export async function POST(req: NextRequest) {
-  const { body }: { body: SevenData[] } = await req.json();
+  const { body }: { body: SevenData[]; } = await req.json();
   const newBody = body.map((value, idx: number) => ({
     ...value,
     jan: String(value.jan),
@@ -22,6 +23,7 @@ export async function POST(req: NextRequest) {
     });
     console.log("コーコス 成功");
     await prisma.$disconnect();
+    revalidatePath('/seveb');
     return NextResponse.json("セブン 成功", { status: 201 });
   } catch (e) {
     console.error(e);

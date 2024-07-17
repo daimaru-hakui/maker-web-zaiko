@@ -6,7 +6,7 @@ import ChikumaContainer from "./ChikumaContainer";
 
 
 export default async function Chikuma() {
-  await authGuard("chikuma");
+  // await authGuard("chikuma");
   const catalogSS = await getCatalog("easbbej1r");
   const catalogAW = await getCatalog("8twgzvvvs");
   const catalogFL = await getCatalog("1hfh1ntic");
@@ -25,3 +25,4 @@ export default async function Chikuma() {
     </main>
   );
 }
+export const dynamic = "force-static";
