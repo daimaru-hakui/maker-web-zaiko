@@ -3,6 +3,20 @@ import { AitozData } from "@/types";
 import { format } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
 
+export async function GET(req: NextRequest) {
+  const data = await prisma.aitoz.findMany({
+    orderBy: {
+      row: "asc",
+    },
+    where: {
+      productNumber: {
+        notIn: [""],
+      },
+    },
+  });
+  return NextResponse.json({ data }, { status: 201 });
+}
+
 export async function POST(req: NextRequest) {
   const { body }: { body: AitozData[] } = await req.json();
 
@@ -12,8 +26,8 @@ export async function POST(req: NextRequest) {
     row: idx,
     createdAt: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
   }));
-  
-  console.log("Aitoz upload")
+
+  console.log("Aitoz upload");
 
   await prisma.aitoz.deleteMany();
   return await Promise.all(
@@ -30,3 +44,4 @@ export async function POST(req: NextRequest) {
       return NextResponse.json("Aitoz 失敗", { status: 500 });
     });
 }
+

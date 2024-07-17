@@ -1,8 +1,8 @@
+"use server"
 import { db } from "@/firebase/server";
 import { prisma } from "@/libs/prisma";
 import { options } from "@/providers/options";
 import { getServerSession } from "next-auth";
-import { getSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
 export async function authGuard(maker: string) {
