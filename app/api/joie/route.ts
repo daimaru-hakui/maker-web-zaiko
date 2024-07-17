@@ -1,4 +1,4 @@
-import { prisma } from "@/libs/prisma";
+import prisma from "@/libs/prisma";
 import { JoieData } from "@/types";
 import { format } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";

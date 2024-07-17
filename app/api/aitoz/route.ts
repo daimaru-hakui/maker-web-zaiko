@@ -1,4 +1,4 @@
-import { prisma } from "@/libs/prisma";
+import prisma from "@/libs/prisma";
 import { AitozData } from "@/types";
 import { format } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
@@ -30,6 +30,20 @@ export async function POST(req: NextRequest) {
   console.log("Aitoz upload");
 
   await prisma.aitoz.deleteMany();
+
+  try {
+    await prisma.aitoz.createMany({
+      data: newBody,
+    });
+    console.log("アイトス 成功");
+    await prisma.$disconnect();
+    return NextResponse.json("アイトス 成功", { status: 201 });
+  } catch (e) {
+    console.error(e);
+    await prisma.$disconnect();
+    return NextResponse.json("アイトス 失敗", { status: 500 });
+  }
+
   return await Promise.all(
     newBody.map(async (data) => await prisma.aitoz.create({ data }))
   )
@@ -44,4 +58,3 @@ export async function POST(req: NextRequest) {
       return NextResponse.json("Aitoz 失敗", { status: 500 });
     });
 }
-

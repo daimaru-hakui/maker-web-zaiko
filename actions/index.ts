@@ -1,6 +1,6 @@
 "use server"
 import { db } from "@/firebase/server";
-import { prisma } from "@/libs/prisma";
+import  prisma from "@/libs/prisma";
 import { options } from "@/providers/options";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";

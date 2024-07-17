@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { SevenData } from "@/types";
-import { prisma } from "@/libs/prisma";
+import prisma from "@/libs/prisma";
 import { format } from "date-fns";
 
 export async function POST(req: NextRequest) {
@@ -12,15 +12,29 @@ export async function POST(req: NextRequest) {
     createdAt: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
   }));
 
-  console.log("セブンユニフォーム upload")
+  console.log("セブンユニフォーム upload");
 
   await prisma.seven.deleteMany();
+
+  try {
+    await prisma.seven.createMany({
+      data: newBody,
+    });
+    console.log("コーコス 成功");
+    await prisma.$disconnect();
+    return NextResponse.json("セブン 成功", { status: 201 });
+  } catch (e) {
+    console.error(e);
+    await prisma.$disconnect();
+    return NextResponse.json("セブン 失敗", { status: 500 });
+  }
+
   return await Promise.all(
     newBody.map(async (data) => await prisma.seven.create({ data }))
   )
     .then(async () => {
       await prisma.$disconnect();
-      console.log("セブンユニフォーム 成功")
+      console.log("セブンユニフォーム 成功");
       return NextResponse.json("セヴンユニフォーム 成功", { status: 201 });
     })
     .catch(async (err) => {

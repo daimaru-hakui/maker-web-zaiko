@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ServoData } from "@/types";
-import { prisma } from "@/libs/prisma";
+import prisma from "@/libs/prisma";
 import { format } from "date-fns";
 
 export async function POST(req: NextRequest) {
@@ -12,9 +12,23 @@ export async function POST(req: NextRequest) {
     createdAt: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
   }));
 
-  console.log("サーヴォ upload")
+  console.log("サーヴォ upload");
 
   await prisma.servo.deleteMany();
+
+  try {
+    await prisma.servo.createMany({
+      data: newBody,
+    });
+    console.log("サーヴォ 成功");
+    await prisma.$disconnect();
+    return NextResponse.json("サーヴォ 成功", { status: 201 });
+  } catch (e) {
+    console.error(e);
+    await prisma.$disconnect();
+    return NextResponse.json("サーヴォ 失敗", { status: 500 });
+  }
+
   return await Promise.all(
     newBody.map(async (data) => await prisma.servo.create({ data }))
   )

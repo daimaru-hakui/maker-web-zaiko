@@ -1,4 +1,4 @@
-import { prisma } from "@/libs/prisma";
+import  prisma  from "@/libs/prisma";
 import { BurtleData } from "@/types";
 import { format } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
@@ -16,6 +16,20 @@ export async function POST(req: NextRequest) {
   console.log("バートル upload")
 
   await prisma.burtle.deleteMany();
+
+  try {
+    await prisma.burtle.createMany({
+      data: newBody,
+    });
+    console.log("バートル 成功");
+    await prisma.$disconnect();
+    return NextResponse.json("バートル 成功", { status: 201 });
+  } catch (e) {
+    console.error(e);
+    await prisma.$disconnect();
+    return NextResponse.json("バートル 失敗", { status: 500 });
+  }
+
   return await Promise.all(
     newBody.map(async (data) => await prisma.burtle.create({ data }))
   )

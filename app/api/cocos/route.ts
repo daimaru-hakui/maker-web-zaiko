@@ -1,7 +1,7 @@
-import { prisma } from "@/libs/prisma";
 import { CocosData } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
 import { format } from "date-fns";
+import prisma from "@/libs/prisma";
 
 export async function POST(req: NextRequest) {
   const { body }: { body: CocosData[] } = await req.json();

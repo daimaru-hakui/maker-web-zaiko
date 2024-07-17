@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/libs/prisma";
+import  prisma  from "@/libs/prisma";
 import { BonmaxData } from "@/types";
 import { format } from "date-fns";
 
@@ -16,6 +16,20 @@ export async function POST(req: NextRequest) {
   console.log("ボンマックス upload")
 
   await prisma.bonmax.deleteMany();
+
+  try {
+    await prisma.bonmax.createMany({
+      data: newBody,
+    });
+    console.log("ボンマックス 成功");
+    await prisma.$disconnect();
+    return NextResponse.json("ボンマックス 成功", { status: 201 });
+  } catch (e) {
+    console.error(e);
+    await prisma.$disconnect();
+    return NextResponse.json("ボンマックス 失敗", { status: 500 });
+  }
+
   return await Promise.all(
     newBody.map(
       async (data) => await prisma.bonmax.create({ data: { ...data } })
