@@ -3,18 +3,16 @@ import { ChitoseData } from "@/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddToArray } from "@/hooks/useAddToArray";
 import { ChitoseTable } from "./ChitoseTable";
+import { useFilterInput } from "@/hooks/useFilterInput";
 
 type Props = {
   data: ChitoseData[];
 };
 
 export default function ChitoseContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData } = useAddToArray<ChitoseData>();
-
-  const newData = data.map((d) => d.productNumber);
-  const datalist = Array.from(new Set(newData));
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<ChitoseData>();
+  const datalist = getDataList(data);
   console.log(data[0]?.createdAt);
 
   return (

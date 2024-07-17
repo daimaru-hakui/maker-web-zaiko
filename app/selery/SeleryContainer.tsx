@@ -3,18 +3,16 @@ import { SeleryData } from "@/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddToArray } from "@/hooks/useAddToArray";
 import { SeleryTable } from "./SeleryTable";
+import { useFilterInput } from "@/hooks/useFilterInput";
 
 type Props = {
   data: SeleryData[];
 };
 
 export default function SeleryContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData } = useAddToArray<SeleryData>();
-
-  const newData = data.map((d) => d.productNumber);
-  const datalist = Array.from(new Set(newData));
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<SeleryData>();
+  const datalist = getDataList(data);
   console.log(data[0]?.createdAt);
 
   return (

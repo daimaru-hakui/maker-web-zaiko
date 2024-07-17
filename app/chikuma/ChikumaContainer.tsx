@@ -3,20 +3,17 @@ import { ChikumaData } from "@/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddToArray } from "@/hooks/useAddToArray";
 import { ChikumaTable } from "./ChikumaTable";
+import { useFilterInput } from "@/hooks/useFilterInput";
 
 type Props = {
   data: ChikumaData[];
 };
 
 export default function ChikumaContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData } = useAddToArray<ChikumaData>();
-
-  const newData = data.map((d) => d.productNumber);
-  const datalist = Array.from(new Set(newData));
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<ChikumaData>();
+  const datalist = getDataList(data);
   console.log(data[0]?.createdAt);
-
   return (
     <Flex direction="column" alignItems="center" w="full">
       <FilterInput

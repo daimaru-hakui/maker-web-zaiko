@@ -3,18 +3,16 @@ import { JoieData } from "@/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddToArray } from "@/hooks/useAddToArray";
 import { JoieTable } from "./JoieTable";
+import { useFilterInput } from "@/hooks/useFilterInput";
 
 type Props = {
   data: JoieData[];
 };
 
 export default function JoieContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData } = useAddToArray<JoieData>();
-
-  const newData = data.map((d) => d.productNumber);
-  const datalist = Array.from(new Set(newData));
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<JoieData>();
+  const datalist = getDataList(data);
   console.log(data[0]?.createdAt);
 
   return (

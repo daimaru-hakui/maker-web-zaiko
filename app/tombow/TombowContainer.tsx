@@ -3,18 +3,16 @@ import { TombowData } from "@/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
-import { useAddToArray } from "@/hooks/useAddToArray";
 import { TombowTable } from "./TombowTable";
+import { useFilterInput } from "@/hooks/useFilterInput";
 
 type Props = {
   data: TombowData[];
 };
 
 export default function TombowContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData } = useAddToArray<TombowData>();
-
-  const newData = data.map((d) => d.productNumber);
-  const datalist = Array.from(new Set(newData));
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<TombowData>();
+  const datalist = getDataList(data);
   console.log(data[0]?.createdAt);
 
   return (

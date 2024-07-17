@@ -6,15 +6,14 @@ import { DaimaruData } from "@/types";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
 import LoadingSpinner from "@/components/spinner";
-import { useAddToArray } from "@/hooks/useAddToArray";
 import { useSession } from "next-auth/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebase";
+import { useFilterInput } from "@/hooks/useFilterInput";
 
 const DaimaruArea = () => {
-  const { addArray, filterData, setFilterData } = useAddToArray<DaimaruData>();
-
-  const { data }: { data: DaimaruData[] | undefined } = useFetch({
+  const { addArray, filterData, setFilterData } = useFilterInput<DaimaruData>();
+  const { data }: { data: DaimaruData[] | undefined; } = useFetch({
     url: "/api/daimaru",
     queryKey: "daimaru",
   });
