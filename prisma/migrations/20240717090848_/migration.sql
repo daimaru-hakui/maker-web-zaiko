@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "Selery" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "jan" TEXT,
     "stock" INTEGER,
@@ -10,14 +10,12 @@ CREATE TABLE "Selery" (
     "size" TEXT,
     "nextTimeStock" INTEGER,
     "nextTimeDate" TEXT,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Selery_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Bonmax" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "jan" TEXT,
     "productNumber" TEXT,
@@ -29,14 +27,12 @@ CREATE TABLE "Bonmax" (
     "nextTimeStock" INTEGER,
     "nextTimeDate" TEXT,
     "leadTime" TEXT,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Bonmax_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Servo" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "jan" TEXT,
     "productNumber" TEXT,
@@ -48,14 +44,12 @@ CREATE TABLE "Servo" (
     "nextTimeStock" INTEGER,
     "nextTimeDate2" TEXT,
     "nextTimeStock2" INTEGER,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Servo_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Karsee" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "jan" TEXT,
     "productNumber" TEXT,
@@ -70,14 +64,12 @@ CREATE TABLE "Karsee" (
     "nextTimeDate3" TEXT,
     "nextTimeStock3" INTEGER,
     "brand" TEXT,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Karsee_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Chikuma" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "jan" TEXT,
     "productNumber" TEXT,
@@ -88,14 +80,12 @@ CREATE TABLE "Chikuma" (
     "nextTimeStock" INTEGER,
     "nextTimeDate2" TEXT,
     "nextTimeStock2" INTEGER,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Chikuma_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Chitose" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "jan" TEXT,
     "productNumber" TEXT,
@@ -110,28 +100,24 @@ CREATE TABLE "Chitose" (
     "nextTimeStock2" INTEGER,
     "nextTimeDate3" TEXT,
     "nextTimeStock3" INTEGER,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Chitose_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Tombow" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "jan" TEXT,
     "productNumber" TEXT,
     "color" TEXT,
     "size" TEXT,
     "stock" INTEGER,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Tombow_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Burtle" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "jan" TEXT,
     "productNumber" TEXT,
@@ -144,14 +130,12 @@ CREATE TABLE "Burtle" (
     "nextTimeStock" INTEGER,
     "nextTimeDate2" TEXT,
     "nextTimeStock2" INTEGER,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Burtle_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Joie" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "productNumber" TEXT,
     "color" TEXT,
@@ -163,14 +147,12 @@ CREATE TABLE "Joie" (
     "nextTimeStock2" INTEGER,
     "nextTimeDate3" TEXT,
     "nextTimeStock3" INTEGER,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Joie_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Seven" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "productNumber" TEXT,
     "productName" TEXT,
@@ -178,14 +160,12 @@ CREATE TABLE "Seven" (
     "size" TEXT,
     "stock" INTEGER,
     "jan" TEXT,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Seven_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Cocos" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "productNumber" TEXT,
     "productName" TEXT,
@@ -195,14 +175,12 @@ CREATE TABLE "Cocos" (
     "nextTimeDate" TEXT,
     "nextTimeStock" INTEGER,
     "jan" TEXT,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Cocos_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Aitoz" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "productNumber" TEXT,
     "productName" TEXT,
@@ -210,14 +188,12 @@ CREATE TABLE "Aitoz" (
     "size" TEXT,
     "stock" INTEGER,
     "jan" TEXT,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Aitoz_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "Yagi" (
-    "id" TEXT NOT NULL,
+    "id" TEXT NOT NULL PRIMARY KEY,
     "row" INTEGER NOT NULL,
     "productNumber" TEXT,
     "productName" TEXT,
@@ -226,7 +202,5 @@ CREATE TABLE "Yagi" (
     "stock" INTEGER NOT NULL,
     "brand" TEXT,
     "jan" TEXT,
-    "createdAt" TEXT NOT NULL,
-
-    CONSTRAINT "Yagi_pkey" PRIMARY KEY ("id")
+    "createdAt" TEXT NOT NULL
 );
