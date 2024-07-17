@@ -3,22 +3,8 @@ import { AitozData } from "@/types";
 import { format } from "date-fns";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
-  const data = await prisma.aitoz.findMany({
-    orderBy: {
-      row: "asc",
-    },
-    where: {
-      productNumber: {
-        notIn: [""],
-      },
-    },
-  });
-  return NextResponse.json({ data }, { status: 201 });
-}
-
 export async function POST(req: NextRequest) {
-  const { body }: { body: AitozData[] } = await req.json();
+  const { body }: { body: AitozData[]; } = await req.json();
 
   const newBody = body.map((value, idx: number) => ({
     ...value,

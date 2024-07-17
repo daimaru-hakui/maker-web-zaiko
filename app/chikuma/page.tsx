@@ -11,7 +11,7 @@ export default async function Chikuma() {
   const catalogAW = await getCatalog("8twgzvvvs");
   const catalogFL = await getCatalog("1hfh1ntic");
 
-  const data = await fetchChikumaData()
+  const data = await fetchChikumaData();
   if (!data) return;
 
   return (
@@ -25,4 +25,3 @@ export default async function Chikuma() {
     </main>
   );
 }
-export const dynamic = 'force-static';

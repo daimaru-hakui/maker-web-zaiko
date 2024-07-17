@@ -1,9 +1,8 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/functions/get-catalog";
-import { authGuard } from "@/actions";
+import { authGuard, fetchAitozData } from "@/actions";
 import AitozContainer from "./AitozContainer";
-import { PrismaClient } from "@prisma/client";
 
 export default async function AitozPage() {
   await authGuard("aitoz");
@@ -13,21 +12,9 @@ export default async function AitozPage() {
   const catalogOfficeSs = await getCatalog("zizmqccya");
   const catalogOfficeAw = await getCatalog("zizmqccya");
 
-  const prisma = new PrismaClient();
 
-  const getData = async () => {
-    const data = await prisma.aitoz.findMany({
-      orderBy: {
-        row: "asc",
-      },
-    });
-    return data;
-  };
-
-  const data = await getData();
-
-  // const data = await fetchAitozData();
-  // if (!data) return;
+  const data = await fetchAitozData();
+  if (!data) return;
 
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden">
@@ -41,5 +28,3 @@ export default async function AitozPage() {
     </main>
   );
 }
-
-export const dynamic = 'force-static';

@@ -8,7 +8,7 @@ export default async function Burtle() {
   await authGuard("burtle");
   const catalogSS = await getCatalog("jcmvlxis8");
   const catalogAW = await getCatalog("hy4k0eb2b5");
-  const data = await fetchBurtleData()
+  const data = await fetchBurtleData();
 
   if (!data) return;
 
@@ -22,5 +22,3 @@ export default async function Burtle() {
     </main>
   );
 }
-
-export const dynamic = 'force-static';

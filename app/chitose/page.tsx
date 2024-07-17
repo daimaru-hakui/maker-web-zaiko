@@ -22,4 +22,3 @@ export default async function Chitose() {
     </main>
   );
 }
-export const dynamic = 'force-static';

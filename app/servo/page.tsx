@@ -30,4 +30,3 @@ export default async function Servo() {
     </main>
   );
 }
-export const dynamic = 'force-static';
