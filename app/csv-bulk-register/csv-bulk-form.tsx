@@ -22,6 +22,7 @@ export default function CsvBulkForm() {
   ) => {
     e.preventDefault();
     if (!fileUploads) return;
+    setIsLoading(true)
     for (const file of fileUploads) {
       await csvFileRegister(file);
     }
