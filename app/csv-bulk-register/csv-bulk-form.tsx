@@ -22,15 +22,8 @@ const CsvBulkForm = () => {
     burtleCsvRegister,
     joieCsvRegister,
     sevenCsvRegister,
-    // bonmaxCsvRegister,
-    // cocosCsvRegister,
-    // aitozCsvRegister,
     yagiCsvRegister,
   } = useCsvUpload();
-
-  useEffect(() => {
-    resetResultList();
-  }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -117,8 +110,6 @@ const CsvBulkForm = () => {
     }
   }, [fileUploads?.length, resultList.length, setIsLoading]);
 
-  console.log(resultList);
-
   return (
     <form>
       <div className="w-full flex flex-col justify-center">
@@ -141,12 +132,24 @@ const CsvBulkForm = () => {
           </div>
         </div>
 
-        <button
-          className="mt-6 bg-blue-800 px-3 py-1 rounded-md text-white"
-          onClick={(e) => handleClickRegister(e, fileUploads)}
-        >
-          登録
-        </button>
+        <div className="flex gap-3 mt-6">
+          <button
+            className="w-full bg-gray-400 px-3 py-1 rounded-md text-white"
+            onClick={(e) => {
+              e.preventDefault()
+              resetResultList()
+              setFileUploads(null)
+            }}
+          >
+            リセット
+          </button>
+          <button
+            className="w-full bg-blue-800 px-3 py-1 rounded-md text-white"
+            onClick={(e) => handleClickRegister(e, fileUploads)}
+          >
+            登録
+          </button>
+        </div>
 
         {resultList.length > 0 && (
           <>

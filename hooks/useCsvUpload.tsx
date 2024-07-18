@@ -274,8 +274,5 @@ export const useCsvUpload = () => {
     joieCsvRegister,
     sevenCsvRegister,
     yagiCsvRegister,
-    // bonmaxCsvRegister,
-    // cocosCsvRegister,
-    // aitozCsvRegister,
   };
 };
