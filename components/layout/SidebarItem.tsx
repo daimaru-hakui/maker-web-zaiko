@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { FC } from "react";
@@ -16,7 +16,7 @@ export const SidebarItem: FC<Props> = ({
   blank,
   onClose,
 }) => {
-  const pathname = usePathname()
+  const pathname = usePathname();
   return (
     <Link
       href={link}
@@ -25,9 +25,8 @@ export const SidebarItem: FC<Props> = ({
       target={blank ? "_blank" : "_self"}
     >
       <div
-        className={`py-1 px-3 text-sm hover:text-white rounded hover:bg-blue-700 ${
-          pathname === link ? "bg-blue-700 text-white" : ""
-        }`}
+        className={`py-1 px-3 my-1 text-xs hover:text-white rounded hover:bg-blue-700 ${pathname === link ? "bg-blue-700 text-white" : ""
+          }`}
       >
         {label}
       </div>

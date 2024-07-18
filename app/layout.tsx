@@ -5,11 +5,17 @@ import SessionProvider from "@/libs/providers/SessionProvider";
 import QueryProvider from "@/libs/providers/queryProvider";
 import SideNav from "@/components/layout/SideNav";
 import { ChakuraProvider } from "@/libs/providers/ChakuraProvider";
+import { Kosugi } from "next/font/google";
 
 export const metadata = {
   title: "大丸白衣　メーカー在庫",
   description: "大丸白衣　メーカー在庫",
 };
+
+const KosugiFont = Kosugi({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export default async function RootLayout({
   children,
@@ -21,7 +27,7 @@ export default async function RootLayout({
       <html lang="ja">
         {/* <metadata /> */}
         <title>大丸白衣　メーカー在庫</title>
-        <body className="relative w-full min-h-screen flex">
+        <body className={`relative w-full min-h-screen flex ${KosugiFont.className}`}>
           <ChakuraProvider>
             <SideNav />
             <div className="w-full flex flex-col justify-between">

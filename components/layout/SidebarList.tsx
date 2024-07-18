@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { db } from "@/libs/firebase";
 import { Maker } from "@/utils/types";
 import { doc, onSnapshot } from "firebase/firestore";
@@ -27,7 +27,7 @@ export const SidebarList: FC<Props> = ({ onClose }) => {
   }, [uid]);
 
   return (
-    <>
+    <div className="mt-3">
       {makerLinks.map((maker) => {
         const obj = authMakers.find((link: any) => link[0] === maker.title);
         if (!obj || !obj[1]) return null;
@@ -42,6 +42,6 @@ export const SidebarList: FC<Props> = ({ onClose }) => {
           />
         );
       })}
-    </>
+    </div>
   );
 };

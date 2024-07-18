@@ -52,32 +52,31 @@ export const Header: FC = () => {
 
   return (
     <div
-      className="px-3 sticky top-0 bg-blue-900 h-12 flex items-center z-50"
-      style={{ boxShadow: "0px 1px 5px 2px rgba(0,0,0,0.2)" }}
+      className="px-3 sticky top-0 h-12 flex items-center z-50 border-1 border-gray-200 bg-blue-900 lg:bg-transparent"
     >
-      <div className="w-full text-white lg:hidden">大丸白衣 WEB在庫</div>
+      <div className="w-full text-gray-100 lg:hidden">大丸白衣 WEB在庫</div>
       <div className="w-full hidden lg:flex gap-3 justify-end mx-3">
-        <div className="flex gap-3 text-sm">
+        <div className="flex gap-3 text-xs text-gray-800">
           {isAuthority && (
             <>
               <Link href="/csv-bulk-register">
-                <button className="text-white">在庫登録</button>
+                <button>在庫登録</button>
               </Link>
               <Link href="/admin">
-                <button className="text-white">権限管理</button>
+                <button>権限管理</button>
               </Link>
             </>
           )}
-        </div>
-        <div>
           {session.data?.user.uid && (
             <button
-              className="flex items-center text-white text-sm"
+              className="flex items-center text-gray-800 text-xs"
               onClick={signOutHandler}
             >
               ログアウト
             </button>
           )}
+        </div>
+        <div>
         </div>
       </div>
       <HeaderDrawer />
