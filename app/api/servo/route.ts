@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ServoData } from "@/utils/types";
 import prisma from "@/libs/prisma";
-import { format } from "date-fns";
 import { revalidatePath } from "next/cache";
 
 export async function POST(req: NextRequest) {
@@ -10,7 +9,6 @@ export async function POST(req: NextRequest) {
     ...value,
     jan: String(value.jan),
     row: idx,
-    createdAt: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
   }));
 
   console.log("サーヴォ upload");

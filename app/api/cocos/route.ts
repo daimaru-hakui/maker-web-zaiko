@@ -1,6 +1,5 @@
 import { CocosData } from "@/utils/types";
 import { NextRequest, NextResponse } from "next/server";
-import { format } from "date-fns";
 import prisma from "@/libs/prisma";
 import { revalidatePath } from "next/cache";
 
@@ -16,7 +15,6 @@ export async function POST(req: NextRequest) {
     color: value.color?.replace(patternColor, ""),
     size: value.size?.trim(),
     nextTimeDate: value.nextTimeDate?.trim(),
-    createdAt: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
   }));
 
   console.log("コーコス upload");

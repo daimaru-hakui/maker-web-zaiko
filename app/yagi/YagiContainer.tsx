@@ -13,7 +13,6 @@ type Props = {
 export default function YagiContainer({ data }: Props) {
   const { addArray, filterData, setFilterData, getDataList } = useFilterInput<YagiData>();
   const datalist = getDataList(data);
-  console.log(data[0]?.createdAt);
 
   return (
     <Flex direction="column" alignItems="center" w="full">

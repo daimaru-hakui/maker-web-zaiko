@@ -6,15 +6,15 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
   // provider = "sqlite"
   // url      = env("DATABASE_URL")
 }
 
 model Selery {
-  id            String  @id @default(uuid())
+  id            String   @id @default(uuid())
   row           Int
   jan           String?
   stock         Int?
@@ -24,11 +24,11 @@ model Selery {
   size          String?
   nextTimeStock Int?
   nextTimeDate  String?
-  createdAt     String
+  createdAt     DateTime @default(now()) @db.Timestamptz()
 }
 
 model Bonmax {
-  id            String  @id @default(uuid())
+  id            String   @id @default(uuid())
   row           Int
   jan           String?
   productNumber String?
@@ -40,11 +40,11 @@ model Bonmax {
   nextTimeStock Int?
   nextTimeDate  String?
   leadTime      String?
-  createdAt     String
+  createdAt     DateTime @default(now()) @db.Timestamptz()
 }
 
 model Servo {
-  id             String  @id @default(uuid())
+  id             String   @id @default(uuid())
   row            Int
   jan            String?
   productNumber  String?
@@ -56,11 +56,11 @@ model Servo {
   nextTimeStock  Int?
   nextTimeDate2  String?
   nextTimeStock2 Int?
-  createdAt      String
+  createdAt      DateTime @default(now()) @db.Timestamptz()
 }
 
 model Karsee {
-  id             String  @id @default(uuid())
+  id             String   @id @default(uuid())
   row            Int
   jan            String?
   productNumber  String?
@@ -75,11 +75,11 @@ model Karsee {
   nextTimeDate3  String?
   nextTimeStock3 Int?
   brand          String?
-  createdAt      String
+  createdAt      DateTime @default(now()) @db.Timestamptz()
 }
 
 model Chikuma {
-  id             String  @id @default(uuid())
+  id             String   @id @default(uuid())
   row            Int
   jan            String?
   productNumber  String?
@@ -90,11 +90,11 @@ model Chikuma {
   nextTimeStock  Int?
   nextTimeDate2  String?
   nextTimeStock2 Int?
-  createdAt      String
+  createdAt      DateTime @default(now()) @db.Timestamptz()
 }
 
 model Chitose {
-  id             String  @id @default(uuid())
+  id             String   @id @default(uuid())
   row            Int
   jan            String?
   productNumber  String?
@@ -109,22 +109,22 @@ model Chitose {
   nextTimeStock2 Int?
   nextTimeDate3  String?
   nextTimeStock3 Int?
-  createdAt      String
+  createdAt      DateTime @default(now()) @db.Timestamptz()
 }
 
 model Tombow {
-  id            String  @id @default(uuid())
+  id            String   @id @default(uuid())
   row           Int
   jan           String?
   productNumber String?
   color         String?
   size          String?
   stock         Int?
-  createdAt     String
+  createdAt     DateTime @default(now()) @db.Timestamptz()
 }
 
 model Burtle {
-  id             String  @id @default(uuid())
+  id             String   @id @default(uuid())
   row            Int
   jan            String?
   productNumber  String?
@@ -137,11 +137,11 @@ model Burtle {
   nextTimeStock  Int?
   nextTimeDate2  String?
   nextTimeStock2 Int?
-  createdAt      String
+  createdAt      DateTime @default(now()) @db.Timestamptz()
 }
 
 model Joie {
-  id             String  @id @default(uuid())
+  id             String   @id @default(uuid())
   row            Int
   productNumber  String?
   color          String?
@@ -153,11 +153,11 @@ model Joie {
   nextTimeStock2 Int?
   nextTimeDate3  String?
   nextTimeStock3 Int?
-  createdAt      String
+  createdAt      DateTime @default(now()) @db.Timestamptz()
 }
 
 model Seven {
-  id            String  @id @default(uuid())
+  id            String   @id @default(uuid())
   row           Int
   productNumber String?
   productName   String?
@@ -165,11 +165,11 @@ model Seven {
   size          String?
   stock         Int?
   jan           String?
-  createdAt     String
+  createdAt     DateTime @default(now()) @db.Timestamptz()
 }
 
 model Cocos {
-  id            String  @id @default(uuid())
+  id            String   @id @default(uuid())
   row           Int
   productNumber String?
   productName   String?
@@ -179,11 +179,11 @@ model Cocos {
   nextTimeDate  String?
   nextTimeStock Int?
   jan           String?
-  createdAt     String
+  createdAt     DateTime @default(now()) @db.Timestamptz()
 }
 
 model Aitoz {
-  id            String  @id @default(uuid())
+  id            String   @id @default(uuid())
   row           Int
   productNumber String?
   productName   String?
@@ -191,11 +191,11 @@ model Aitoz {
   size          String?
   stock         Int?
   jan           String?
-  createdAt     String
+  createdAt     DateTime @default(now()) @db.Timestamptz()
 }
 
 model Yagi {
-  id            String  @id @default(uuid())
+  id            String   @id @default(uuid())
   row           Int
   productNumber String?
   productName   String?
@@ -204,5 +204,5 @@ model Yagi {
   stock         Int
   brand         String?
   jan           String?
-  createdAt     String
+  createdAt     DateTime @default(now()) @db.Timestamptz()
 }

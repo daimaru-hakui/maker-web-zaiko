@@ -7,6 +7,7 @@ const CsvBulkForm = () => {
   const [fileUploads, setFileUploads] = useState<File[] | null>(null);
   const setIsLoading = useStore((state) => state.setIsLoading);
   const resultList = useStore((state) => state.resultList);
+  const resetResultList = useStore((state) => state.resetResultList);
   const {
     tombowCsvRegister,
     chikumaCsvRegister,
@@ -20,8 +21,12 @@ const CsvBulkForm = () => {
     sevenCsvRegister,
     cocosCsvRegister,
     aitozCsvRegister,
-    yagiCsvRegister
+    yagiCsvRegister,
   } = useCsvUpload();
+
+  useEffect(() => {
+    resetResultList();
+  }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;

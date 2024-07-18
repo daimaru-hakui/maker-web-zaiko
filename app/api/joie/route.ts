@@ -1,6 +1,5 @@
 import prisma from "@/libs/prisma";
 import { JoieData } from "@/utils/types";
-import { format } from "date-fns";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -9,7 +8,6 @@ export async function POST(req: NextRequest) {
   const newBody = body.map((value, idx: number) => ({
     ...value,
     row: idx,
-    createdAt: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
   }));
 
   console.log("ジョア upload");

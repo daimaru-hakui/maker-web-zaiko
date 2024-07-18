@@ -1,6 +1,5 @@
 import prisma from "@/libs/prisma";
 import { YagiData } from "@/utils/types";
-import { format } from "date-fns";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -13,7 +12,6 @@ export async function POST(req: NextRequest) {
     productNumber: value?.productNumber?.trim(),
     productName: value?.productName?.trim(),
     stock: value.stock || 0,
-    createdAt: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
   }));
 
   console.log("ヤギコーポレーション upload");

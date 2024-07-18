@@ -1,7 +1,6 @@
 import prisma from "@/libs/prisma";
 import { ChitoseData } from "@/utils/types";
 import { NextRequest, NextResponse } from "next/server";
-import { format } from "date-fns";
 import { revalidatePath } from "next/cache";
 
 export async function POST(req: NextRequest) {
@@ -17,7 +16,6 @@ export async function POST(req: NextRequest) {
       "-" +
       value.color?.replace(patternProductNumber, ""),
     color: value.color?.replace(patternColor, ""),
-    createdAt: format(new Date(), "yyyy/MM/dd HH:mm:ss"),
   }));
 
   console.log("チトセ upload");

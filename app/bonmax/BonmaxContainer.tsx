@@ -15,7 +15,6 @@ type Props = {
 export default function BonmaxContainer({ data }: Props) {
   const { addArray, filterData, setFilterData, getDataList } = useFilterInput<BonmaxData>();
   const datalist = getDataList(data);
-  console.log(data[0]?.createdAt);
 
   const router = useRouter();
   const { isAuth } = usePermission("bonmax");

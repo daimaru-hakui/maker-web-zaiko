@@ -19,7 +19,7 @@ export type TombowData = {
   size: string | null;
   color: string | null;
   stock: number | null;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export type ChikumaData = {
@@ -34,7 +34,7 @@ export type ChikumaData = {
   nextTimeDate: string | null;
   nextTimeStock2: number | null;
   nextTimeDate2: string | null;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export type ChitoseData = {
@@ -53,7 +53,7 @@ export type ChitoseData = {
   nextTimeStock2: number | null;
   nextTimeDate3: string | null;
   nextTimeStock3: number | null;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export type BonmaxData = {
@@ -69,7 +69,7 @@ export type BonmaxData = {
   nextTimeStock: number | null;
   nextTimeDate: string | null;
   leadTime: string | null;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export type SeleryData = {
@@ -83,7 +83,7 @@ export type SeleryData = {
   size: string | null;
   nextTimeStock: number | null;
   nextTimeDate: string | null;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export type KarseeData = {
@@ -102,7 +102,7 @@ export type KarseeData = {
   nextTimeDate3: string | null;
   nextTimeStock3: number | null;
   brand: string | null;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export type ServoData = {
@@ -118,7 +118,7 @@ export type ServoData = {
   nextTimeStock: number | null;
   nextTimeDate2: string | null;
   nextTimeStock2: number | null;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export type BurtleData = {
@@ -135,7 +135,7 @@ export type BurtleData = {
   nextTimeStock: number | null;
   nextTimeDate2: string | null;
   nextTimeStock2: number | null;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export type JoieData = {
@@ -151,7 +151,7 @@ export type JoieData = {
   nextTimeStock2: number | null;
   nextTimeDate3: string | null;
   nextTimeStock3: number | null;
-  createdAt: string;
+  createdAt: Date;
 };
 export type SevenData = {
   id: string;
@@ -162,7 +162,7 @@ export type SevenData = {
   size: string | null;
   stock: number | null;
   jan: string | null;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export type CocosData = {
@@ -176,7 +176,7 @@ export type CocosData = {
   nextTimeDate: string | null;
   nextTimeStock: number | null;
   jan: string | null;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export type AitozData = {
@@ -188,7 +188,7 @@ export type AitozData = {
   size: string | null;
   stock: number | null;
   jan: string | null;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export type YagiData = {
@@ -201,7 +201,7 @@ export type YagiData = {
   size: string | null;
   stock: number;
   brand: string | null;
-  createdAt: string;
+  createdAt: Date;
 };
 
 export type AllData =
@@ -220,7 +220,7 @@ export type AllData =
       nextTimeDate2?: string | null;
       nextTimeStock3?: number | null;
       nextTimeDate3?: string | null;
-      createdAt: string;
+      createdAt: Date;
     }
   | DaimaruData;
 

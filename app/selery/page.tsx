@@ -1,7 +1,7 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
-import { authGuard, fetchSeleryData } from "@/actions";
+import {  fetchSeleryData } from "@/actions";
 import SeleryContainer from "./SeleryContainer";
 
 export default async function Selery() {

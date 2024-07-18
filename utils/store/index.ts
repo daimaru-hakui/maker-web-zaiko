@@ -4,6 +4,7 @@ type Store = {
   setIsLoading: (isLoading: boolean) => void;
   resultList: string[];
   setResultList: (data: string) => void;
+  resetResultList: () => void;
 };
 
 export const useStore = create<Store>((set) => ({
@@ -12,4 +13,5 @@ export const useStore = create<Store>((set) => ({
   resultList: [],
   setResultList: (data) =>
     set((state) => ({ resultList: [...state.resultList, data] })),
+  resetResultList: () => set({ resultList: [] }),
 }));

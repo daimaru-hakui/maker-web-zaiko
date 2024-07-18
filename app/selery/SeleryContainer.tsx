@@ -13,7 +13,6 @@ type Props = {
 export default function SeleryContainer({ data }: Props) {
   const { addArray, filterData, setFilterData, getDataList } = useFilterInput<SeleryData>();
   const datalist = getDataList(data);
-  console.log(data[0]?.createdAt);
 
   return (
     <Flex direction="column" alignItems="center" w="full">

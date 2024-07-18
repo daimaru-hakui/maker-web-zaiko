@@ -13,7 +13,7 @@ type Props = {
 export default function ChikumaContainer({ data }: Props) {
   const { addArray, filterData, setFilterData, getDataList } = useFilterInput<ChikumaData>();
   const datalist = getDataList(data);
-  console.log(data[0]?.createdAt);
+  
   return (
     <Flex direction="column" alignItems="center" w="full">
       <FilterInput
