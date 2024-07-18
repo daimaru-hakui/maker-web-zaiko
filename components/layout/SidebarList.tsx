@@ -18,7 +18,7 @@ export const SidebarList: FC<Props> = ({ onClose }) => {
 
   useEffect(() => {
     const getAuthMakers = async () => {
-      const makersRef = doc(db, "users", `${uid}`, "permissions", "maker");
+      const makersRef = doc(db, "users", `${uid}`, "permissions", "makers");
       onSnapshot(makersRef, (snapshot) => {
         setAuthMakers(Object.entries({ ...snapshot.data() } as Maker));
       });
