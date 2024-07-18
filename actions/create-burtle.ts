@@ -2,7 +2,7 @@
 import prisma from "@/libs/prisma";
 import { revalidatePath } from "next/cache";
 
-export async function createAitoz(
+export async function createBurtle(
   csvFile: string[][] | null
 ): Promise<{ message: string }> {
   if (!csvFile)
@@ -11,35 +11,40 @@ export async function createAitoz(
     };
   csvFile.shift();
   const body = csvFile.map((csv) => ({
-    productNumber: csv[0]?.trim() + "-" + csv[2],
+    jan: Number(csv[6]),
+    productNumber: csv[0] + "-" + csv[2],
     productName: csv[1],
     color: csv[3],
     size: csv[4],
-    stock: Number(csv[6]),
-    jan: csv[5],
+    stock: Number(csv[7]),
+    externalStock: Number(csv[8]),
+    nextTimeDate: csv[9],
+    nextTimeStock: Number(csv[10]),
+    nextTimeDate2: csv[11],
+    nextTimeStock2: Number(csv[12]),
   }));
 
   const newBody = body.map((value, idx: number) => ({
     ...value,
-    jan: value.jan?.toString(),
+    jan: String(value.jan),
     row: idx,
   }));
 
-  console.log("アイトス upload");
+  console.log("バートル upload");
 
-  await prisma.aitoz.deleteMany();
+  await prisma.burtle.deleteMany();
 
   try {
-    await prisma.aitoz.createMany({
+    await prisma.burtle.createMany({
       data: newBody,
     });
-    console.log("アイトス 成功");
+    console.log("バートル 成功");
     await prisma.$disconnect();
-    revalidatePath("/aitoz");
-    return { message: "アイトス 成功" };
+    revalidatePath("/burtle");
+    return { message: "バートル 成功" };
   } catch (e) {
     console.error(e);
     await prisma.$disconnect();
-    return { message: "アイトス 失敗" };
+    return { message: "バートル 失敗" };
   }
 }

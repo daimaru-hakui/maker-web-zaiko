@@ -1,29 +1,14 @@
 "use client";
-import { createAitoz } from "@/actions/create-aitoz";
-import { createBonmax } from "@/actions/create-bonmax";
-import { createCocos } from "@/actions/create-cocos";
-import { useCsvUpload } from "@/hooks/useCsvUpload";
+import * as actions from "@/actions";
 import { useStore } from "@/utils/store";
 import React, { useEffect, useState } from "react";
 
-const CsvBulkForm = () => {
+export default function CsvBulkForm() {
   const [fileUploads, setFileUploads] = useState<File[] | null>(null);
   const setIsLoading = useStore((state) => state.setIsLoading);
   const resultList = useStore((state) => state.resultList);
   const setResultList = useStore((state) => state.setResultList);
   const resetResultList = useStore((state) => state.resetResultList);
-  const {
-    tombowCsvRegister,
-    chikumaCsvRegister,
-    seleryCsvRegister,
-    chitoseCsvRegister,
-    servoCsvRegister,
-    karseeCsvRegister,
-    burtleCsvRegister,
-    joieCsvRegister,
-    sevenCsvRegister,
-    yagiCsvRegister,
-  } = useCsvUpload();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -31,18 +16,21 @@ const CsvBulkForm = () => {
     setFileUploads((prev) => [...Array.from(prev || []), ...Array.from(files)]);
   };
 
-  const handleClickRegister = (
+  const handleRegister = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     fileUploads: File[] | null
   ) => {
     e.preventDefault();
     if (!fileUploads) return;
-    setIsLoading(true);
-    Promise.all([fileUploads.map((file) => csvFileRegister(file))]).catch(
-      (err) => {
-        console.error(err);
-      }
-    );
+    for (const file of fileUploads) {
+      await csvFileRegister(file);
+    }
+  };
+
+  const handleReset = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    resetResultList();
+    setFileUploads(null);
   };
 
   const regTest = (str: string, filename: string) => {
@@ -59,46 +47,57 @@ const CsvBulkForm = () => {
       let csvString = csvFile?.toString().split(/\r?\n/);
       let csvArray = csvString.map((a) => a.replace(/(\")/g, "").split(","));
       console.log(file.name);
+
       if (regTest("^zaikoDownload", file.name)) {
-        return tombowCsvRegister(csvArray);
+        const { message } = await actions.createTombow(csvArray);
+        return setResultList(message);
       }
       if (regTest("^前日在庫データ", file.name)) {
-        return chikumaCsvRegister(csvArray);
+        const { message } = await actions.createChikuma(csvArray);
+        return setResultList(message);
       }
       if (regTest("^SNDZAIKO9", file.name)) {
-        return seleryCsvRegister(csvArray);
+        const { message } = await actions.createSelery(csvArray);
+        return setResultList(message);
       }
       if (regTest("^hinban", file.name)) {
-        return chitoseCsvRegister(csvArray);
+        const { message } = await actions.createChitose(csvArray);
+        return setResultList(message);
       }
       if (regTest("^zaiko_", file.name)) {
-        return servoCsvRegister(csvArray);
+        const { message } = await actions.createServo(csvArray);
+        return setResultList(message);
       }
       if (regTest("^☆大丸白衣様用在庫データ", file.name)) {
-        return karseeCsvRegister(csvArray);
+        const { message } = await actions.createKarsee(csvArray);
+        return setResultList(message);
       }
       if (regTest("BURTLE", file.name)) {
-        return burtleCsvRegister(csvArray);
+        const { message } = await actions.createBurtle(csvArray);
+        return setResultList(message);
       }
       if (regTest("^在庫表", file.name)) {
-        return joieCsvRegister(csvArray);
+        const { message } = await actions.createJoie(csvArray);
+        return setResultList(message);
       }
       if (regTest("^seven", file.name)) {
-        return sevenCsvRegister(csvArray);
+        const { message } = await actions.createSeven(csvArray);
+        return setResultList(message);
       }
       if (regTest("^ZAIKO_DAIMARU_HAKUI", file.name)) {
-        return yagiCsvRegister(csvArray);
+        const { message } = await actions.createYagi(csvArray);
+        return setResultList(message);
       }
       if (regTest("^大丸白衣様アイトス", file.name)) {
-        const { message } = await createAitoz(csvArray);
+        const { message } = await actions.createAitoz(csvArray);
         return setResultList(message);
       }
       if (regTest("コーコス", file.name)) {
-        const { message } = await createCocos(csvArray);
+        const { message } = await actions.createCocos(csvArray);
         return setResultList(message);
       }
       if (regTest("^BM_DMHK-ZAIKO", file.name)) {
-        const { message } = await createBonmax(csvArray);
+        const { message } = await actions.createBonmax(csvArray);
         return setResultList(message);
       }
     });
@@ -107,6 +106,7 @@ const CsvBulkForm = () => {
   useEffect(() => {
     if (fileUploads?.length === resultList.length) {
       setIsLoading(false);
+      setFileUploads(null);
     }
   }, [fileUploads?.length, resultList.length, setIsLoading]);
 
@@ -135,40 +135,28 @@ const CsvBulkForm = () => {
         <div className="flex gap-3 mt-6">
           <button
             className="w-full bg-gray-400 px-3 py-1 rounded-md text-white"
-            onClick={(e) => {
-              e.preventDefault()
-              resetResultList()
-              setFileUploads(null)
-            }}
+            onClick={handleReset}
           >
             リセット
           </button>
           <button
             className="w-full bg-blue-800 px-3 py-1 rounded-md text-white"
-            onClick={(e) => handleClickRegister(e, fileUploads)}
+            onClick={(e) => handleRegister(e, fileUploads)}
           >
             登録
           </button>
         </div>
 
         {resultList.length > 0 && (
-          <>
-            <div className="mt-3">
-              全{fileUploads?.length}件中 {resultList.length}
-              件登録に成功しました。
-            </div>
-            <div className="mt-3">
-              {resultList.map((result, idx) => (
-                <div key={idx}>
-                  {idx + 1}. {result}
-                </div>
-              ))}
-            </div>
-          </>
+          <div className="mt-3">
+            {resultList.map((result, idx) => (
+              <div key={idx}>
+                {idx + 1}. {result}
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </form>
   );
-};
-
-export default CsvBulkForm;
+}

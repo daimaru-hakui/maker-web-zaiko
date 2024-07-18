@@ -2,7 +2,7 @@
 import prisma from "@/libs/prisma";
 import { revalidatePath } from "next/cache";
 
-export async function createAitoz(
+export async function createServo(
   csvFile: string[][] | null
 ): Promise<{ message: string }> {
   if (!csvFile)
@@ -11,35 +11,39 @@ export async function createAitoz(
     };
   csvFile.shift();
   const body = csvFile.map((csv) => ({
-    productNumber: csv[0]?.trim() + "-" + csv[2],
+    jan: Number(csv[10]),
+    productNumber: csv[0],
     productName: csv[1],
-    color: csv[3],
-    size: csv[4],
-    stock: Number(csv[6]),
-    jan: csv[5],
+    color: csv[2],
+    size: csv[3],
+    stock: Number(csv[4]),
+    nextTimeDate: csv[5],
+    nextTimeStock: Number(csv[6]),
+    nextTimeDate2: csv[7],
+    nextTimeStock2: Number(csv[8]),
   }));
 
   const newBody = body.map((value, idx: number) => ({
     ...value,
-    jan: value.jan?.toString(),
+    jan: String(value.jan),
     row: idx,
   }));
 
-  console.log("アイトス upload");
+  console.log("サーヴォ upload");
 
-  await prisma.aitoz.deleteMany();
+  await prisma.servo.deleteMany();
 
   try {
-    await prisma.aitoz.createMany({
+    await prisma.servo.createMany({
       data: newBody,
     });
-    console.log("アイトス 成功");
+    console.log("サーヴォ 成功");
     await prisma.$disconnect();
-    revalidatePath("/aitoz");
-    return { message: "アイトス 成功" };
+    revalidatePath("/servo");
+    return { message: "サーヴォ 成功" };
   } catch (e) {
     console.error(e);
     await prisma.$disconnect();
-    return { message: "アイトス 失敗" };
+    return { message: "サーヴォ 失敗" };
   }
 }

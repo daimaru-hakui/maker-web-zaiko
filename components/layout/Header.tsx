@@ -57,7 +57,7 @@ export const Header: FC = () => {
     >
       <div className="w-full text-white lg:hidden">大丸白衣 WEB在庫</div>
       <div className="w-full hidden lg:flex gap-3 justify-end mx-3">
-        <div className="flex gap-3">
+        <div className="flex gap-3 text-sm">
           {isAuthority && (
             <>
               <Link href="/csv-bulk-register">
@@ -72,7 +72,7 @@ export const Header: FC = () => {
         <div>
           {session.data?.user.uid && (
             <button
-              className="flex items-center text-white text-smr"
+              className="flex items-center text-white text-sm"
               onClick={signOutHandler}
             >
               ログアウト

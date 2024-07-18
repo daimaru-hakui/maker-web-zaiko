@@ -1,10 +1,22 @@
+"use server";
 import prisma from "@/libs/prisma";
-import { TombowData } from "@/utils/types";
 import { revalidatePath } from "next/cache";
-import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest) {
-  const { body }: { body: TombowData[]; } = await req.json();
+export async function createTombow(
+  csvFile: string[][] | null
+): Promise<{ message: string }> {
+  if (!csvFile)
+    return {
+      message: "ファイルがありません",
+    };
+  csvFile.shift();
+  const body = csvFile.map((csv) => ({
+    jan: Number(csv[4]),
+    productNumber: csv[0].trim() + "-" + csv[1],
+    color: csv[1],
+    size: csv[2],
+    stock: Number(csv[3]),
+  }));
 
   const newBody = body.map((value, idx: number) => ({
     ...value,
@@ -23,11 +35,11 @@ export async function POST(req: NextRequest) {
     });
     console.log("トンボ 成功");
     await prisma.$disconnect();
-    revalidatePath('/tombow');
-    return NextResponse.json("トンボ 成功", { status: 201 });
+    revalidatePath("/tombow");
+    return { message: "トンボ 成功" };
   } catch (e) {
     console.error(e);
     await prisma.$disconnect();
-    return NextResponse.json("トンボ 失敗", { status: 500 });
+    return { message: "トンボ 失敗" };
   }
 }

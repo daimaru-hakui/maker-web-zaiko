@@ -2,7 +2,7 @@
 import prisma from "@/libs/prisma";
 import { revalidatePath } from "next/cache";
 
-export async function createAitoz(
+export async function createJoie(
   csvFile: string[][] | null
 ): Promise<{ message: string }> {
   if (!csvFile)
@@ -11,35 +11,37 @@ export async function createAitoz(
     };
   csvFile.shift();
   const body = csvFile.map((csv) => ({
-    productNumber: csv[0]?.trim() + "-" + csv[2],
-    productName: csv[1],
-    color: csv[3],
-    size: csv[4],
+    productNumber: csv[1] + "-" + csv[2],
+    size: csv[5],
     stock: Number(csv[6]),
-    jan: csv[5],
+    nextTimeDate: csv[8],
+    nextTimeStock: Number(csv[7]),
+    nextTimeDate2: csv[10],
+    nextTimeStock2: Number(csv[9]),
+    nextTimeDate3: csv[12],
+    nextTimeStock3: Number(csv[11]),
   }));
 
   const newBody = body.map((value, idx: number) => ({
     ...value,
-    jan: value.jan?.toString(),
     row: idx,
   }));
 
-  console.log("アイトス upload");
+  console.log("ジョア upload");
 
-  await prisma.aitoz.deleteMany();
+  await prisma.joie.deleteMany();
 
   try {
-    await prisma.aitoz.createMany({
+    await prisma.joie.createMany({
       data: newBody,
     });
-    console.log("アイトス 成功");
+    console.log("ジョア 成功");
     await prisma.$disconnect();
-    revalidatePath("/aitoz");
-    return { message: "アイトス 成功" };
+    revalidatePath("/joie");
+    return { message: "ジョア 成功" };
   } catch (e) {
     console.error(e);
     await prisma.$disconnect();
-    return { message: "アイトス 失敗" };
+    return { message: "ジョア 失敗" };
   }
 }
