@@ -9,6 +9,11 @@ const nextConfig = {
     ],
     minimumCacheTTL: 60,
   },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '5mb',
+    },
+  },
 };
 
 export default nextConfig;
