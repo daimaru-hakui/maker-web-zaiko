@@ -79,6 +79,7 @@ export const FilterInput: FC<Props> = ({
               <SearchIcon color="gray.300" />
             </InputLeftElement>
             <Input
+              className="border-gray-300"
               list="itemlist"
               placeholder={
                 placeholderArray.length > 0
