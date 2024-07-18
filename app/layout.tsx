@@ -7,17 +7,17 @@ import SideNav from "@/components/layout/SideNav";
 import { ChakuraProvider } from "@/libs/providers/ChakuraProvider";
 import { Kosugi, Oswald } from "next/font/google";
 
-export const metadata = {
-  title: "大丸白衣　メーカー在庫",
-  description: "大丸白衣　メーカー在庫",
-};
+// export const metadata = {
+//   title: "大丸白衣　メーカー在庫",
+//   description: "大丸白衣　メーカー在庫",
+// };
 
 export const KosugiFont = Kosugi({
   weight: "400",
   subsets: ["latin"],
 });
 export const OswaldFont = Oswald({
-  weight: "500",
+  weight: ["200", "300", "400", "500"],
   subsets: ["latin"],
 });
 
@@ -29,7 +29,6 @@ export default async function RootLayout({
   return (
     <SessionProvider>
       <html lang="ja">
-        {/* <metadata /> */}
         <title>大丸白衣　メーカー在庫</title>
         <body style={{ backgroundColor: "#ededed" }} className={`relative w-full min-h-screen flex ${OswaldFont.className}`}>
           <ChakuraProvider>

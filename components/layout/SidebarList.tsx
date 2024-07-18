@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import React, { FC, useEffect, useState } from "react";
 import { SidebarItem } from "./SidebarItem";
 import { makerLinks } from "@/utils/makerLinks";
+import { KosugiFont } from "@/app/layout";
 
 type Props = {
   onClose?: () => void;
@@ -27,7 +28,7 @@ export const SidebarList: FC<Props> = ({ onClose }) => {
   }, [uid]);
 
   return (
-    <div className="mt-3">
+    <div className={`mt-3 ${KosugiFont.className}`}>
       {makerLinks.map((maker) => {
         const obj = authMakers.find((link: any) => link[0] === maker.title);
         if (!obj || !obj[1]) return null;
