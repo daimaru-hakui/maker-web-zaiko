@@ -13,7 +13,7 @@ export default function SideNav() {
     >
       <div className="sticky top-0 ">
         <div className="px-5 py-3 text-lg text-white">大丸白衣 WEB在庫</div>
-        <div className="flex flex-col gap-1 px-3 mt-3 text-white">
+        <div className="flex flex-col gap-1 px-3 text-white">
           <SidebarTitle />
           <SidebarList />
         </div>

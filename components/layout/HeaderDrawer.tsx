@@ -12,6 +12,7 @@ import {
   Button,
   Flex,
   Box,
+  Stack,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { IoMenu } from "react-icons/io5";
@@ -41,30 +42,30 @@ export const HeaderDrawer = () => {
           <DrawerContent>
             <DrawerCloseButton />
             <DrawerHeader>Menu</DrawerHeader>
-
             <DrawerBody className="text-black">
               <SidebarList onClose={onClose} />
-              <Link
-                className="text-sm cursor-pointer"
-                href="https://myuni.vercel.app/catalog"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Box my={2} _hover={{ textColor: "blue" }}>
-                  マイユニポータル
-                </Box>
-              </Link>
-
-              {session.data?.user.uid && (
-                <div
-                  className="flex items-centertext-sm cursor-pointer"
-                  onClick={signOutHandler}
+              <Stack spacing={2} className="mt-3">
+                <Link
+                  className="text-sm cursor-pointer"
+                  href="https://myuni.vercel.app/catalog"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Box my={2} _hover={{ textColor: "blue" }}>
-                    ログアウト
+                  <Box _hover={{ textColor: "blue" }}>
+                    マイユニポータル
                   </Box>
-                </div>
-              )}
+                </Link>
+                {session.data?.user.uid && (
+                  <div
+                    className="flex items-centertext-sm cursor-pointer"
+                    onClick={signOutHandler}
+                  >
+                    <Box _hover={{ textColor: "blue" }} width="100%">
+                      ログアウト
+                    </Box>
+                  </div>
+                )}
+              </Stack>
             </DrawerBody>
 
             <DrawerFooter>

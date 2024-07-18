@@ -59,14 +59,14 @@ export const FilterInput: FC<Props> = ({
   return (
     <form style={{ width: "100%" }} onSubmit={handleSubmit(onSubmit)}>
       <Flex
-        mt={6}
+        mt={{ base: 6, lg: 2 }}
         px={6}
         w="full"
         justifyContent="center"
         alignItems="center"
         direction="column"
       >
-        <Box fontSize="2xl">{title}</Box>
+        <Box fontSize="3xl">{title}</Box>
         <Flex
           w="full"
           maxW="650px"
