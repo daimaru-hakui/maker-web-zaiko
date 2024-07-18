@@ -1,11 +1,12 @@
 import React from "react";
 import { SidebarList } from "./SidebarList";
 import SidebarTitle from "./SidebarTitle";
+import { KosugiFont } from "@/app/layout";
 
 export default function SideNav() {
   return (
     <div
-      className="min-w-[calc(250px)] bg-blue-900 hidden lg:block"
+      className={`min-w-[calc(250px)] bg-blue-900 hidden lg:block ${KosugiFont.className}`}
       style={{
         minHeight: "calc(100vh)",
         boxShadow: "1px 0 5px 2px rgba(0,0,0,0.2)",
