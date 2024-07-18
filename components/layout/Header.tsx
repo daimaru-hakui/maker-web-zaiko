@@ -54,7 +54,9 @@ export const Header: FC = () => {
     <div
       className="px-3 sticky top-0 h-12 flex items-center z-50 border-1 border-gray-200 bg-blue-900 lg:bg-transparent"
     >
-      <div className="w-full text-gray-100 lg:hidden">大丸白衣 WEB在庫</div>
+      <div className="w-full text-gray-100 lg:hidden tracking-widest">
+        大丸白衣 WEB在庫
+      </div>
       <div className="w-full hidden lg:flex gap-3 justify-end mx-3">
         <div className="flex gap-3 text-xs text-gray-800">
           {isAuthority && (

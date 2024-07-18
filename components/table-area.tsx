@@ -1,3 +1,4 @@
+import { KosugiFont } from "@/app/layout";
 import { Box, TableContainer } from "@chakra-ui/react";
 import React, { FC, ReactNode } from "react";
 
@@ -10,6 +11,7 @@ const TableArea: FC<Props> = ({ children, maxW = "900px" }) => {
   return (
     <TableContainer mt={6} overflowX="unset" overflowY="unset">
       <Box
+        className={`tracking-wide ${KosugiFont.className}`}
         overflowX="auto"
         position="relative"
         maxW={{ base: "850px", "2xl": maxW }}

@@ -66,17 +66,20 @@ export const FilterInput: FC<Props> = ({
         alignItems="center"
         direction="column"
       >
-        <Box fontSize="3xl">{title}</Box>
+        <Box fontSize="3xl" fontWeight="500">
+          {title}
+        </Box>
         <Flex
           w="full"
           maxW="650px"
           gap={3}
           mt={6}
+          className="tracking-wider"
           direction={{ base: "column", md: "row" }}
         >
           <InputGroup w="full">
             <InputLeftElement pointerEvents="none">
-              <SearchIcon color="gray.300" />
+              <SearchIcon color="gray.400" />
             </InputLeftElement>
             <Input
               className="border-gray-300"
