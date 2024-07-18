@@ -1,4 +1,7 @@
 "use client";
+import { createAitoz } from "@/actions/create-aitoz";
+import { createBonmax } from "@/actions/create-bonmax";
+import { createCocos } from "@/actions/create-cocos";
 import { useCsvUpload } from "@/hooks/useCsvUpload";
 import { useStore } from "@/utils/store";
 import React, { useEffect, useState } from "react";
@@ -7,6 +10,7 @@ const CsvBulkForm = () => {
   const [fileUploads, setFileUploads] = useState<File[] | null>(null);
   const setIsLoading = useStore((state) => state.setIsLoading);
   const resultList = useStore((state) => state.resultList);
+  const setResultList = useStore((state) => state.setResultList);
   const resetResultList = useStore((state) => state.resetResultList);
   const {
     tombowCsvRegister,
@@ -15,12 +19,12 @@ const CsvBulkForm = () => {
     chitoseCsvRegister,
     servoCsvRegister,
     karseeCsvRegister,
-    bonmaxCsvRegister,
     burtleCsvRegister,
     joieCsvRegister,
     sevenCsvRegister,
-    cocosCsvRegister,
-    aitozCsvRegister,
+    // bonmaxCsvRegister,
+    // cocosCsvRegister,
+    // aitozCsvRegister,
     yagiCsvRegister,
   } = useCsvUpload();
 
@@ -56,7 +60,7 @@ const CsvBulkForm = () => {
   const csvFileRegister = async (file: File): Promise<void> => {
     const reader = new FileReader();
     reader.readAsText(file, "Shift_JIS");
-    return reader.addEventListener("load", function () {
+    return reader.addEventListener("load", async function () {
       if (!reader.result) return;
       const csvFile = reader.result.toString();
       let csvString = csvFile?.toString().split(/\r?\n/);
@@ -67,9 +71,6 @@ const CsvBulkForm = () => {
       }
       if (regTest("^前日在庫データ", file.name)) {
         return chikumaCsvRegister(csvArray);
-      }
-      if (regTest("^BM_DMHK-ZAIKO", file.name)) {
-        return bonmaxCsvRegister(csvArray);
       }
       if (regTest("^SNDZAIKO9", file.name)) {
         return seleryCsvRegister(csvArray);
@@ -92,14 +93,20 @@ const CsvBulkForm = () => {
       if (regTest("^seven", file.name)) {
         return sevenCsvRegister(csvArray);
       }
-      if (regTest("コーコス", file.name)) {
-        return cocosCsvRegister(csvArray);
-      }
-      if (regTest("^大丸白衣様アイトス", file.name)) {
-        return aitozCsvRegister(csvArray);
-      }
       if (regTest("^ZAIKO_DAIMARU_HAKUI", file.name)) {
         return yagiCsvRegister(csvArray);
+      }
+      if (regTest("^大丸白衣様アイトス", file.name)) {
+        const { message } = await createAitoz(csvArray);
+        return setResultList(message);
+      }
+      if (regTest("コーコス", file.name)) {
+        const { message } = await createCocos(csvArray);
+        return setResultList(message);
+      }
+      if (regTest("^BM_DMHK-ZAIKO", file.name)) {
+        const { message } = await createBonmax(csvArray);
+        return setResultList(message);
       }
     });
   };
@@ -109,6 +116,8 @@ const CsvBulkForm = () => {
       setIsLoading(false);
     }
   }, [fileUploads?.length, resultList.length, setIsLoading]);
+
+  console.log(resultList);
 
   return (
     <form>
