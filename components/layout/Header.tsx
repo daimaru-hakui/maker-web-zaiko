@@ -39,24 +39,11 @@ export const Header: FC = () => {
           email: session.data?.user.email,
           role: "user",
         });
-        const docRef = doc(db, "users", `${uid}`, "permissions", "maker");
+        const docRef = doc(db, "users", `${uid}`, "permissions", "makers");
         const snapShot = await getDoc(docRef);
         if (snapShot.exists()) return;
         await setDoc(docRef, {
           daimaru: false,
-          bonmax: false,
-          burtle: false,
-          chikuma: false,
-          karsee: false,
-          tombow: false,
-          chitose: false,
-          selery: false,
-          servo: false,
-          seven: false,
-          joie: false,
-          cocos: false,
-          aitoz: false,
-          yagi: false,
         });
       }
     };

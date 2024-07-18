@@ -12,15 +12,15 @@ export const AdminTableTd: FC<Props> = ({ uid, isMaker, title }) => {
   const checked = isMaker ? true : false;
 
   const updateMaker = async () => {
-    const makerDoc = doc(db, "users", `${uid}`, "permissions", "maker");
+    const makerDoc = doc(db, "users", `${uid}`, "permissions", "makers");
     updateDoc(makerDoc, {
       [title]: !isMaker,
     });
   };
 
   return (
-    <Td>
-      <Switch id="email-alerts" isChecked={checked} onChange={updateMaker} />
+    <Td className="p-1 text-center">
+      <Switch className="p-0" id="email-alerts" isChecked={checked} onChange={updateMaker} />
     </Td>
   );
 };

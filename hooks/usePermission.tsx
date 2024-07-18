@@ -13,7 +13,7 @@ export function usePermission(maker: string) {
     const uid = session.data?.user.uid;
     const getUid = async () => {
       if (!uid) return;
-      const makerRef = doc(db, "users", uid, "permissions", "maker");
+      const makerRef = doc(db, "users", uid, "permissions", "makers");
       const snapshot = await getDoc(makerRef);
       const obj = { ...snapshot.data() };
       setIsAuth(obj[maker]);
