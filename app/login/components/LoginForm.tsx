@@ -3,7 +3,7 @@ import React, { FC, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { signIn } from "next-auth/react";
-import { auth } from "@/firebase";
+import { auth } from "@/libs/firebase";
 
 type Inputs = {
   email: string;

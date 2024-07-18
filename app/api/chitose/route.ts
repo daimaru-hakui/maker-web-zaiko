@@ -1,5 +1,5 @@
 import prisma from "@/libs/prisma";
-import { ChitoseData } from "@/types";
+import { ChitoseData } from "@/utils/types";
 import { NextRequest, NextResponse } from "next/server";
 import { format } from "date-fns";
 import { revalidatePath } from "next/cache";

@@ -1,7 +1,7 @@
 "use client";
 import { Box, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { DaimaruData } from "@/types";
+import { DaimaruData } from "@/utils/types";
 import TableArea from "@/components/table-area";
 
 

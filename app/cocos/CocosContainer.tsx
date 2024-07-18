@@ -1,5 +1,5 @@
 "use client";
-import { CocosData } from "@/types";
+import { CocosData } from "@/utils/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";

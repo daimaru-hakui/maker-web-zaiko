@@ -1,4 +1,4 @@
-import { db } from "../firebase/index";
+import { db } from "../libs/firebase/index";
 import { doc, getDoc } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";

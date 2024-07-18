@@ -1,4 +1,4 @@
-import { db } from "@/firebase";
+import { db } from "@/libs/firebase";
 import { Switch, Td } from "@chakra-ui/react";
 import { doc, updateDoc } from "firebase/firestore";
 import React, { FC } from "react";

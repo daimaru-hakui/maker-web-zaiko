@@ -13,11 +13,11 @@ import {
   Flex,
   Box,
 } from "@chakra-ui/react";
-import { Providers } from "@/app/providers";
 import Link from "next/link";
 import { IoMenu } from "react-icons/io5";
 import { signOut, useSession } from "next-auth/react";
 import { SidebarList } from "./SidebarList";
+import { ChakuraProvider } from "@/libs/providers/ChakuraProvider";
 
 export const HeaderDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -28,7 +28,7 @@ export const HeaderDrawer = () => {
 
   return (
     <>
-      <Providers>
+      <ChakuraProvider>
         <Flex
           w="100%"
           justify="flex-end"
@@ -74,7 +74,7 @@ export const HeaderDrawer = () => {
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
-      </Providers>
+      </ChakuraProvider>
     </>
   );
 };

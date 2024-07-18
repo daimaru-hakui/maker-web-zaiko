@@ -1,6 +1,6 @@
 "use client";
 import TableArea from "@/components/table-area";
-import { db } from "@/firebase";
+import { db } from "@/libs/firebase";
 import { Table, Tbody, Th, Thead, Tr } from "@chakra-ui/react";
 import { collection, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";

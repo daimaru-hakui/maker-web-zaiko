@@ -1,6 +1,6 @@
 "use client";
 import React, { FC } from "react";
-import { useStore } from "@/store";
+import { useStore } from "@/utils/store";
 import LoadingSpinner from "@/components/spinner";
 import CsvBulkForm from "./csv-bulk-form";
 

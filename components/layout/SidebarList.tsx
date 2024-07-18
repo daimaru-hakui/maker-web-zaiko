@@ -1,6 +1,6 @@
 "use client"
-import { db } from "@/firebase";
-import { Maker } from "@/types";
+import { db } from "@/libs/firebase";
+import { Maker } from "@/utils/types";
 import { doc, onSnapshot } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import React, { FC, useEffect, useState } from "react";

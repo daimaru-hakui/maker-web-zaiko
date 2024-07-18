@@ -248,7 +248,6 @@ export const useCsvUpload = () => {
 
   const yagiCsvRegister = async (csvFile: string[][] | null): Promise<void> => {
     if (!csvFile) return;
-    console.log(csvFile)
     csvFile.shift();
     const body = csvFile.map((csv) => ({
       brand: csv[0],

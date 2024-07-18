@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState } from "react";
 import { HeaderDrawer } from "./HeaderDrawer";
 import { signOut, useSession } from "next-auth/react";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { auth, db } from "@/firebase";
+import { auth, db } from "@/libs/firebase";
 import Link from "next/link";
 
 export const Header: FC = () => {

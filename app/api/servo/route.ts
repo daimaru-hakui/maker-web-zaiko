@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { ServoData } from "@/types";
+import { ServoData } from "@/utils/types";
 import prisma from "@/libs/prisma";
 import { format } from "date-fns";
 import { revalidatePath } from "next/cache";

@@ -2,13 +2,13 @@
 import { DaimaruTable } from "@/app/daimaru/Daimaru-table";
 import React, { useEffect } from "react";
 import { useFetch } from "@/hooks/useFetch";
-import { DaimaruData } from "@/types";
+import { DaimaruData } from "@/utils/types";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
 import LoadingSpinner from "@/components/spinner";
 import { useSession } from "next-auth/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "@/firebase";
+import { db } from "@/libs/firebase";
 import { useFilterInput } from "@/hooks/useFilterInput";
 
 const DaimaruArea = () => {

@@ -1,4 +1,4 @@
-import { useStore } from "@/store";
+import { useStore } from "@/utils/store";
 import axios from "axios";
 
 export const useFetchPost = () => {

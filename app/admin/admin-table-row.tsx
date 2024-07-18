@@ -1,9 +1,9 @@
-import { db } from "@/firebase";
+import { db } from "@/libs/firebase";
 import { Td, Tr } from "@chakra-ui/react";
 import { doc, onSnapshot } from "firebase/firestore";
 import React, { FC, useEffect, useState } from "react";
 import { AdminTableTd } from "./admin-table-td";
-import { Maker } from "@/types";
+import { Maker } from "@/utils/types";
 import { makerLinks } from "@/utils/makerLinks";
 
 type Props = {

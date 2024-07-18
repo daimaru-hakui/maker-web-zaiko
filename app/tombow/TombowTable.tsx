@@ -1,7 +1,7 @@
 "use client";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { TombowData } from "@/types";
+import { TombowData } from "@/utils/types";
 import TableArea from "@/components/table-area";
 
 type Props = {

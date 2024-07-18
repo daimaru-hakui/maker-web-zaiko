@@ -1,10 +1,10 @@
 import React from "react";
 import { Spinner } from "@chakra-ui/react";
-import { Providers } from "@/app/providers";
+import { ChakuraProvider } from "@/libs/providers/ChakuraProvider";
 
 const LoadingSpinner = () => {
   return (
-    <Providers>
+    <ChakuraProvider>
       <div className="fixed t-0 l-0 h-screen w-full flex justify-center items-center z-50">
         <Spinner
           thickness="4px"
@@ -14,7 +14,7 @@ const LoadingSpinner = () => {
           size="xl"
         />
       </div>
-    </Providers>
+    </ChakuraProvider>
   );
 };
 

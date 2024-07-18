@@ -1,4 +1,4 @@
-import { CocosData } from "@/types";
+import { CocosData } from "@/utils/types";
 import { NextRequest, NextResponse } from "next/server";
 import { format } from "date-fns";
 import prisma from "@/libs/prisma";

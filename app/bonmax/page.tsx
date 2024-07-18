@@ -1,6 +1,6 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/functions/get-catalog";
+import { getCatalog } from "@/utils/get-catalog";
 import { authGuard, fetchBonmaxData } from "@/actions";
 import BonmaxContainer from "./BonmaxContainer";
 

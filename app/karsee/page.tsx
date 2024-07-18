@@ -1,6 +1,6 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/functions/get-catalog";
+import { getCatalog } from "@/utils/get-catalog";
 import { authGuard, fetchKarseeData } from "@/actions";
 import KarseeContainer from "./KarseeContainer";
 

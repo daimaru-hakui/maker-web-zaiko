@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/libs/prisma";
-import { BonmaxData } from "@/types";
+import { BonmaxData } from "@/utils/types";
 import { format } from "date-fns";
 import { revalidatePath } from "next/cache";
 

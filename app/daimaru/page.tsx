@@ -1,7 +1,7 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import DaimaruArea from "./Daimaru-area";
-import { getCatalog } from "@/functions/get-catalog";
+import { getCatalog } from "@/utils/get-catalog";
 
 export default async function Daimaru() {
   const catalog1 = await getCatalog("liraxh-nnw");

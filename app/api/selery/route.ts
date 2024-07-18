@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/libs/prisma";
-import { SeleryData } from "@/types";
+import { SeleryData } from "@/utils/types";
 import { format } from "date-fns";
 import { revalidatePath } from "next/cache";
 

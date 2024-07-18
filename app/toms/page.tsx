@@ -1,6 +1,6 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/functions/get-catalog";
+import { getCatalog } from "@/utils/get-catalog";
 import Link from "next/link";
 import React from "react";
 

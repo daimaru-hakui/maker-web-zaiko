@@ -1,5 +1,5 @@
 "use client";
-import { AllData } from "@/types";
+import { AllData } from "@/utils/types";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,

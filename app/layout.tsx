@@ -1,10 +1,10 @@
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import SessionProvider from "@/providers/SessionProvider";
-import QueryProvider from "@/providers/queryProvider";
-import { Providers } from "./providers";
+import SessionProvider from "@/libs/providers/SessionProvider";
+import QueryProvider from "@/libs/providers/queryProvider";
 import SideNav from "@/components/layout/SideNav";
+import { ChakuraProvider } from "@/libs/providers/ChakuraProvider";
 
 export const metadata = {
   title: "大丸白衣　メーカー在庫",
@@ -22,7 +22,7 @@ export default async function RootLayout({
         {/* <metadata /> */}
         <title>大丸白衣　メーカー在庫</title>
         <body className="relative w-full min-h-screen flex">
-          <Providers>
+          <ChakuraProvider>
             <SideNav />
             <div className="w-full flex flex-col justify-between">
               <div>
@@ -31,7 +31,7 @@ export default async function RootLayout({
               </div>
               <Footer />
             </div>
-          </Providers>
+          </ChakuraProvider>
         </body>
       </html>
     </SessionProvider>

@@ -1,6 +1,6 @@
 "use client";
 import { useCsvUpload } from "@/hooks/useCsvUpload";
-import { useStore } from "@/store";
+import { useStore } from "@/utils/store";
 import React, { useEffect, useState } from "react";
 
 const CsvBulkForm = () => {

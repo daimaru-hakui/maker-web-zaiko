@@ -1,5 +1,5 @@
 import prisma from "@/libs/prisma";
-import { YagiData } from "@/types";
+import { YagiData } from "@/utils/types";
 import { format } from "date-fns";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";

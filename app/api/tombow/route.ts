@@ -1,5 +1,5 @@
 import prisma from "@/libs/prisma";
-import { TombowData } from "@/types";
+import { TombowData } from "@/utils/types";
 import { format } from "date-fns";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";

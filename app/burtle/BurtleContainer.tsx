@@ -1,5 +1,5 @@
 "use client";
-import { BurtleData } from "@/types";
+import { BurtleData } from "@/utils/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
