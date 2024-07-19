@@ -1,12 +1,10 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
-import { authGuard, fetchChikumaData } from "@/actions";
+import { fetchChikumaData } from "@/actions";
 import ChikumaContainer from "./ChikumaContainer";
 
-
 export default async function Chikuma() {
-  // await authGuard("chikuma");
   const catalogSS = await getCatalog("easbbej1r");
   const catalogAW = await getCatalog("8twgzvvvs");
   const catalogFL = await getCatalog("1hfh1ntic");

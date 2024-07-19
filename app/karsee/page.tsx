@@ -1,11 +1,10 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
-import { authGuard, fetchKarseeData } from "@/actions";
+import { fetchKarseeData } from "@/actions";
 import KarseeContainer from "./KarseeContainer";
 
 export default async function Karsee() {
-  // await authGuard("karsee");
   const catalogEnjoySS = await getCatalog("cgczlza8z");
   const catalogEnjoyAW = await getCatalog("53qaflfz1");
   const catalogNoir = await getCatalog("avp-i33uhr");

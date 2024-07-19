@@ -1,11 +1,10 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
-import { authGuard, fetchTombowData } from "@/actions";
+import {  fetchTombowData } from "@/actions";
 import TombowContainer from "./TombowContainer";
 
 export default async function Tombow() {
-  // await authGuard("tombow");
   const catalog = await getCatalog("pecptt28f");
 
   const data = await fetchTombowData();

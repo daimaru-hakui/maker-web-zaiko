@@ -1,11 +1,10 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
-import { authGuard, fetchBurtleData } from "@/actions";
+import { fetchBurtleData } from "@/actions";
 import BurtleContainer from "./BurtleContainer";
 
 export default async function Burtle() {
-  // await authGuard("burtle");
   const catalogSS = await getCatalog("jcmvlxis8");
   const catalogAW = await getCatalog("hy4k0eb2b5");
   const data = await fetchBurtleData();

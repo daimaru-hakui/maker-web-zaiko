@@ -25,5 +25,4 @@ export {
   fetchSevenData,
   fetchTombowData,
   fetchYagiData,
-  authGuard
 } from "@/actions/fetch-actions";

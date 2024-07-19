@@ -1,17 +1,15 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
-import { authGuard, fetchAitozData } from "@/actions";
+import { fetchAitozData } from "@/actions";
 import AitozContainer from "./AitozContainer";
 
 export default async function AitozPage() {
-  // await authGuard("aitoz");
   const catalogss = await getCatalog("aswzcpzqy");
   const catalogaw = await getCatalog("whtxkwo3vb");
   const catalogLadiesSs = await getCatalog("m3gh2ir54");
   const catalogOfficeSs = await getCatalog("zizmqccya");
   const catalogOfficeAw = await getCatalog("zizmqccya");
-
 
   const data = await fetchAitozData();
   if (!data) return;

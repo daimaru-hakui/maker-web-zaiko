@@ -1,11 +1,10 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
-import { fetchYagiData, authGuard } from "@/actions";
+import { fetchYagiData } from "@/actions";
 import YagiContainer from "./YagiContainer";
 
 export default async function Yagi() {
-  // await authGuard("yagi");
   const catalog1 = await getCatalog("i-h50ivky");
   const catalog2 = await getCatalog("in-nhu3ys");
   const catalog3 = await getCatalog("n2zdzprl6");

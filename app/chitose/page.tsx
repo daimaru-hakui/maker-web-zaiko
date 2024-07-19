@@ -1,11 +1,10 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
-import { authGuard, fetchChitoseData } from "@/actions";
+import { fetchChitoseData } from "@/actions";
 import ChitoseContainer from "./ChitoseContainer";
 
 export default async function Chitose() {
-  // await authGuard("chitose");
   const catalogUnite = await getCatalog("oxqcchhqb");
   const catalogArbe = await getCatalog("ekpj9zvfm");
 

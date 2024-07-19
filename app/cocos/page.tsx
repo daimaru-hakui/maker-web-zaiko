@@ -1,11 +1,10 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
-import { authGuard, fetchCocosData } from "@/actions";
+import { fetchCocosData } from "@/actions";
 import CocosContainer from "./CocosContainer";
 
 export default async function Daimaru() {
-  // await authGuard("cocos");
   const catalogSs = await getCatalog("p5mstnm-6");
   const catalogAw = await getCatalog("tfakmhtz9");
   const catalogDi = await getCatalog("16pjpoo8eoad");

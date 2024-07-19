@@ -5,7 +5,6 @@ import {  fetchSeleryData } from "@/actions";
 import SeleryContainer from "./SeleryContainer";
 
 export default async function Selery() {
-  // await authGuard("selery");
   const catalogSelerySS = await getCatalog("yrwob4gte");
   const catalogSeleryAW = await getCatalog("gxs3ov-pq");
   const catalogIfory = await getCatalog("8-8jzhxmy");

@@ -1,11 +1,10 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
-import { authGuard, fetchJoieData } from "@/actions";
+import { fetchJoieData } from "@/actions";
 import JoieContainer from "./JoieContainer";
 
 export default async function Joie() {
-  // await authGuard("joie");
   const catalogEnJoieSS = await getCatalog("aqz0c2_5p");
   const catalogEnJoieAW = await getCatalog("drgjd_who");
 

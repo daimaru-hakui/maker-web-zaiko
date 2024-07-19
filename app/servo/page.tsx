@@ -1,11 +1,10 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
-import { authGuard, fetchServoData } from "@/actions";
+import { fetchServoData } from "@/actions";
 import ServoContainer from "./SevenContainer";
 
 export default async function Servo() {
-  // await authGuard("servo");
   const catalogServo = await getCatalog("slnkyzgbe");
   const catalogFood = await getCatalog("ou46diqi9");
   const catalogMedical = await getCatalog("7k0eahxnu");
