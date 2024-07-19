@@ -30,7 +30,7 @@ export default async function RootLayout({
     <SessionProvider>
       <html lang="ja">
         <title>大丸白衣　メーカー在庫</title>
-        <body style={{ backgroundColor: "#ededed" }} className={`relative w-full min-h-screen flex ${OswaldFont.className}`}>
+        <body style={{ backgroundColor: "#f7f7f7" }} className={`relative w-full min-h-screen flex ${OswaldFont.className}`}>
           <ChakuraProvider>
             <SideNav />
             <div className="w-full flex flex-col justify-between">
