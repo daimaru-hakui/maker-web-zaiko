@@ -1,11 +1,13 @@
 "use server";
 import prisma from "@/libs/prisma";
 import { revalidatePath } from "next/cache";
+import { authGuard } from "./auth-guard";
 
 export async function createCocos(
   csvFile: string[][] | null,
   fileNumber: number
 ): Promise<{ message: string }> {
+  await authGuard();
   if (!csvFile)
     return {
       message: "ファイルがありません",

@@ -1,10 +1,12 @@
 "use server";
 import prisma from "@/libs/prisma";
 import { revalidatePath } from "next/cache";
+import { authGuard } from "./auth-guard";
 
 export async function createJoie(
   csvFile: string[][] | null
 ): Promise<{ message: string }> {
+  await authGuard();
   if (!csvFile)
     return {
       message: "ファイルがありません",
