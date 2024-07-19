@@ -22,7 +22,7 @@ export default function CsvBulkForm() {
   ) => {
     e.preventDefault();
     if (!fileUploads) return;
-    setIsLoading(true)
+    setIsLoading(true);
     for (const file of fileUploads) {
       await csvFileRegister(file);
     }
@@ -94,7 +94,10 @@ export default function CsvBulkForm() {
         return setResultList(message);
       }
       if (regTest("コーコス", file.name)) {
-        const { message } = await actions.createCocos(csvArray);
+        const csvArray1 = csvArray.slice(0, 10000);
+        const csvArray2 = csvArray.slice(10001);
+        await actions.createCocos(csvArray1, 1);
+        const { message } = await actions.createCocos(csvArray2, 2);
         return setResultList(message);
       }
       if (regTest("^BM_DMHK-ZAIKO", file.name)) {

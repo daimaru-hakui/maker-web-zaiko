@@ -9,7 +9,7 @@ type Props = {
 
 const TableArea: FC<Props> = ({ children, maxW = "900px" }) => {
   return (
-    <TableContainer mt={6} overflowX="unset" overflowY="unset">
+    <TableContainer mt={6} px={6} overflowX="unset" overflowY="unset">
       <Box
         className={`tracking-wide ${KosugiFont.className}`}
         overflowX="auto"

@@ -3,29 +3,30 @@ import prisma from "@/libs/prisma";
 import { revalidatePath } from "next/cache";
 
 export async function createCocos(
-  csvFile: string[][] | null
+  csvFile: string[][] | null,
+  fileNumber: number
 ): Promise<{ message: string }> {
   if (!csvFile)
     return {
       message: "ファイルがありません",
     };
-    csvFile.shift();
-    const body = csvFile.map((csv) => ({
-      productNumber: csv[6]?.trim() + "-" + csv[4],
-      productName: csv[7],
-      color: csv[8],
-      size: csv[9],
-      stock: Number(csv[13]),
-      nextTimeDate: csv[14],
-      nextTimeStock: Number(csv[15]),
-      jan: csv[10],
-    }));
+  csvFile.shift();
+  const body = csvFile.map((csv) => ({
+    productNumber: csv[6]?.trim() + "-" + csv[4],
+    productName: csv[7],
+    color: csv[8],
+    size: csv[9],
+    stock: Number(csv[13]),
+    nextTimeDate: csv[14],
+    nextTimeStock: Number(csv[15]),
+    jan: csv[10],
+  }));
 
   const patternColor = /(\s|\d)/g;
   const newBody = body.map((value, idx: number) => ({
     ...value,
     jan: String(value.jan),
-    row: idx,
+    row: idx + (fileNumber === 1 ? 0 : 10000),
     productNumber: value.productNumber,
     productName: value.productName?.trim(),
     color: value.color?.replace(patternColor, ""),
@@ -33,9 +34,10 @@ export async function createCocos(
     nextTimeDate: value.nextTimeDate?.trim(),
   }));
 
-  console.log("コーコス upload");
-
-  await prisma.cocos.deleteMany();
+  if (fileNumber === 1) {
+    console.log("コーコス upload");
+    await prisma.cocos.deleteMany();
+  }
 
   try {
     await prisma.cocos.createMany({
@@ -43,7 +45,7 @@ export async function createCocos(
     });
     console.log("コーコス 成功");
     await prisma.$disconnect();
-    revalidatePath('/cocos');
+    revalidatePath("/cocos");
     return { message: "コーコス 成功" };
   } catch (e) {
     console.error(e);

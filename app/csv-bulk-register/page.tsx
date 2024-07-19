@@ -5,7 +5,7 @@ const CsvBulkPage = async () => {
 
   return (
     <div
-      className="w-full flex justify-center items-center"
+      className="w-full flex justify-center items-center p-3"
       style={{ height: "calc(100vh - 150px)" }}
     >
         <CsvBulkArea />
