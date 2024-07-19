@@ -13,7 +13,7 @@ export function YagiTable({ filterData }: Props) {
       {filterData.length > 0 && (
         <TableArea>
           <Thead position="sticky" top={0} zIndex="docked" bg="white">
-            <Tr>
+            <Tr className="h-12">
               <Th>品番</Th>
               <Th>品名</Th>
               <Th>サイズ</Th>

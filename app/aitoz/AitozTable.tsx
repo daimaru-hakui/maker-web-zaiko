@@ -14,7 +14,7 @@ export const AitozTable: FC<Props> = ({ filterData }) => {
       {filterData.length > 0 && (
         <TableArea maxW="1200px">
           <Thead position="sticky" top={0} zIndex="docked" bg="white">
-            <Tr>
+            <Tr className="h-12">
               <Th>品番</Th>
               <Th>品名</Th>
               <Th>色名</Th>

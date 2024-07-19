@@ -14,7 +14,7 @@ export const JoieTable: FC<Props> = ({ filterData }) => {
       {filterData.length > 0 && (
         <TableArea maxW="1300px">
           <Thead position="sticky" top={0} zIndex="docked" bg="white">
-            <Tr>
+            <Tr className="h-12">
               <Th>品番</Th>
               <Th>サイズ</Th>
               <Th>在庫数</Th>
