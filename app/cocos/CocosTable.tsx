@@ -1,11 +1,11 @@
 "use client";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { CocosData } from "@/utils/types";
 import TableArea from "@/components/table-area";
+import { Cocos } from "@prisma/client";
 
 type Props = {
-  filterData: CocosData[];
+  filterData: Cocos[];
 };
 
 export const CocosTable: FC<Props> = ({ filterData }) => {

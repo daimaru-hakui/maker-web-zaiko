@@ -1,17 +1,17 @@
 "use client";
-import { JoieData } from "@/utils/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
 import { JoieTable } from "./JoieTable";
 import { useFilterInput } from "@/hooks/useFilterInput";
+import { Joie } from "@prisma/client";
 
 type Props = {
-  data: JoieData[];
+  data: Joie[];
 };
 
 export default function JoieContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<JoieData>();
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<Joie>();
   const datalist = getDataList(data);
 
   return (

@@ -1,17 +1,17 @@
 "use client";
-import { TombowData } from "@/utils/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
 import { TombowTable } from "./TombowTable";
 import { useFilterInput } from "@/hooks/useFilterInput";
+import { Tombow } from "@prisma/client";
 
 type Props = {
-  data: TombowData[];
+  data: Tombow[];
 };
 
 export default function TombowContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<TombowData>();
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<Tombow>();
   const datalist = getDataList(data);
 
   return (

@@ -1,11 +1,11 @@
 "use client";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { JoieData } from "@/utils/types";
 import TableArea from "@/components/table-area";
+import { Joie } from "@prisma/client";
 
 type Props = {
-  filterData: JoieData[];
+  filterData: Joie[];
 };
 
 export const JoieTable: FC<Props> = ({ filterData }) => {

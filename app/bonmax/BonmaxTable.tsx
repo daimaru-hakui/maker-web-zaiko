@@ -1,11 +1,11 @@
 "use client";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { BonmaxData } from "@/utils/types";
 import TableArea from "@/components/table-area";
+import { Bonmax } from "@prisma/client";
 
 type Props = {
-  filterData: BonmaxData[];
+  filterData: Bonmax[];
 };
 
 export const BonmaxTable: FC<Props> = ({ filterData }) => {

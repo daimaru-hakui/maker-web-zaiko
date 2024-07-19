@@ -1,11 +1,11 @@
 "use client";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { ChitoseData } from "@/utils/types";
 import TableArea from "@/components/table-area";
+import { Chitose } from "@prisma/client";
 
 type Props = {
-  filterData: ChitoseData[];
+  filterData: Chitose[];
 };
 
 export const ChitoseTable: FC<Props> = ({ filterData }) => {
@@ -31,7 +31,7 @@ export const ChitoseTable: FC<Props> = ({ filterData }) => {
               </Tr>
             </Thead>
             <Tbody>
-              {filterData?.map((data: ChitoseData, index: number) => (
+              {filterData?.map((data: Chitose, index: number) => (
                 <Tr key={index}>
                   <Td>{data.productNumber}</Td>
                   <Td> {data.productName}</Td>

@@ -1,17 +1,17 @@
 "use client";
-import { ChitoseData } from "@/utils/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
 import { ChitoseTable } from "./ChitoseTable";
 import { useFilterInput } from "@/hooks/useFilterInput";
+import { Chitose } from "@prisma/client";
 
 type Props = {
-  data: ChitoseData[];
+  data: Chitose[];
 };
 
 export default function ChitoseContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<ChitoseData>();
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<Chitose>();
   const datalist = getDataList(data);
 
   return (

@@ -1,11 +1,11 @@
 "use client";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { SevenData } from "@/utils/types";
 import TableArea from "@/components/table-area";
+import { Seven } from "@prisma/client";
 
 type Props = {
-  filterData: SevenData[];
+  filterData: Seven[];
 };
 
 export const SevenTable: FC<Props> = ({ filterData }) => {

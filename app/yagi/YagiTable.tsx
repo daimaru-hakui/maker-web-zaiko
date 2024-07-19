@@ -1,10 +1,10 @@
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React from "react";
-import { YagiData } from "@/utils/types";
 import TableArea from "@/components/table-area";
+import { Yagi } from "@prisma/client";
 
 type Props = {
-  filterData: YagiData[];
+  filterData: Yagi[];
 };
 
 export function YagiTable({ filterData }: Props) {

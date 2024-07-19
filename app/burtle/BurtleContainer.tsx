@@ -1,17 +1,17 @@
 "use client";
-import { BurtleData } from "@/utils/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
 import { BurtleTable } from "./BurtleTable";
 import { useFilterInput } from "@/hooks/useFilterInput";
+import { Burtle } from "@prisma/client";
 
 type Props = {
-  data: BurtleData[];
+  data: Burtle[];
 };
 
 export default function BurtleContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<BurtleData>();
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<Burtle>();
   const datalist = getDataList(data);
 
   return (

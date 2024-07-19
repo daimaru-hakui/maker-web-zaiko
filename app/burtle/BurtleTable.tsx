@@ -1,11 +1,11 @@
 "use client";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { BurtleData } from "@/utils/types";
 import TableArea from "@/components/table-area";
+import { Burtle } from "@prisma/client";
 
 type Props = {
-  filterData: BurtleData[];
+  filterData: Burtle[];
 };
 
 export const BurtleTable: FC<Props> = ({ filterData }) => {

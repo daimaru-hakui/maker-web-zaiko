@@ -1,11 +1,11 @@
 "use client";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { ServoData } from "@/utils/types";
 import TableArea from "@/components/table-area";
+import { Servo } from "@prisma/client";
 
 type Props = {
-  filterData: ServoData[];
+  filterData: Servo[];
 };
 
 export const ServoTable: FC<Props> = ({ filterData }) => {

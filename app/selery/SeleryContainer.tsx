@@ -1,17 +1,17 @@
 "use client";
-import { SeleryData } from "@/utils/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
 import { SeleryTable } from "./SeleryTable";
 import { useFilterInput } from "@/hooks/useFilterInput";
+import { Selery } from "@prisma/client";
 
 type Props = {
-  data: SeleryData[];
+  data: Selery[];
 };
 
 export default function SeleryContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<SeleryData>();
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<Selery>();
   const datalist = getDataList(data);
 
   return (

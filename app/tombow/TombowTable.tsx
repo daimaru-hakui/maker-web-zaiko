@@ -1,11 +1,11 @@
 "use client";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { TombowData } from "@/utils/types";
 import TableArea from "@/components/table-area";
+import { Tombow } from "@prisma/client";
 
 type Props = {
-  filterData: TombowData[];
+  filterData: Tombow[];
 };
 
 export const TombowTable: FC<Props> = ({ filterData }) => {
@@ -23,7 +23,7 @@ export const TombowTable: FC<Props> = ({ filterData }) => {
               </Tr>
             </Thead>
             <Tbody>
-              {filterData?.map((data: TombowData, index: number) => (
+              {filterData?.map((data: Tombow, index: number) => (
                 <Tr key={index}>
                   <Td>{data.productNumber}</Td>
                   <Td textAlign="center">{data.size}</Td>

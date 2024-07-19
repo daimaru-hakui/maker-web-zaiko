@@ -1,5 +1,4 @@
 "use client";
-import { BonmaxData } from "@/utils/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
@@ -7,13 +6,14 @@ import { BonmaxTable } from "./BonmaxTable";
 import { useFilterInput } from "@/hooks/useFilterInput";
 import { useRouter } from "next/navigation";
 import { usePermission } from "@/hooks/usePermission";
+import { Bonmax } from "@prisma/client";
 
 type Props = {
-  data: BonmaxData[];
+  data: Bonmax[];
 };
 
 export default function BonmaxContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<BonmaxData>();
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<Bonmax>();
   const datalist = getDataList(data);
 
   const router = useRouter();

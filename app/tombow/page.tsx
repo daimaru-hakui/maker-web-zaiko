@@ -1,7 +1,7 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
-import {  fetchTombowData } from "@/actions";
+import { fetchTombowData } from "@/actions";
 import TombowContainer from "./TombowContainer";
 
 export default async function Tombow() {

@@ -1,17 +1,17 @@
 "use client";
-import { CocosData } from "@/utils/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
 import { useFilterInput } from "@/hooks/useFilterInput";
 import { CocosTable } from "./CocosTable";
+import { Cocos } from "@prisma/client";
 
 type Props = {
-  data: CocosData[];
+  data: Cocos[];
 };
 
 export default function CocosContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<CocosData>();
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<Cocos>();
   const datalist = getDataList(data);
 
   return (

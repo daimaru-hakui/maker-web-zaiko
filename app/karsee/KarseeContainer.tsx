@@ -1,17 +1,17 @@
 "use client";
-import { KarseeData } from "@/utils/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
 import { KarseeTable } from "./KarseeTable";
 import { useFilterInput } from "@/hooks/useFilterInput";
+import { Karsee } from "@prisma/client";
 
 type Props = {
-  data: KarseeData[];
+  data: Karsee[];
 };
 
 export default function KarseeContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<KarseeData>();
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<Karsee>();
   const datalist = getDataList(data);
 
   return (

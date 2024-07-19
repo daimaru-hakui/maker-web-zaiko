@@ -1,17 +1,17 @@
 "use client";
-import { SevenData } from "@/utils/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
 import { SevenTable } from "./SevenTable";
 import { useFilterInput } from "@/hooks/useFilterInput";
+import { Seven } from "@prisma/client";
 
 type Props = {
-  data: SevenData[];
+  data: Seven[];
 };
 
 export default function SevenContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<SevenData>();
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<Seven>();
   const datalist = getDataList(data);
 
   return (

@@ -1,11 +1,11 @@
 "use client";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import { KarseeData } from "@/utils/types";
 import TableArea from "@/components/table-area";
+import { Karsee } from "@prisma/client";
 
 type Props = {
-  filterData: KarseeData[];
+  filterData: Karsee[];
 };
 
 export const KarseeTable: FC<Props> = ({ filterData }) => {

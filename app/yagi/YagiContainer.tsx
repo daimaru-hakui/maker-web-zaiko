@@ -1,17 +1,17 @@
 "use client";
-import { YagiData } from "@/utils/types";
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { FilterInput } from "@/components/FilterInput";
 import { YagiTable } from "./YagiTable";
 import { useFilterInput } from "@/hooks/useFilterInput";
+import { Yagi } from "@prisma/client";
 
 type Props = {
-  data: YagiData[];
+  data: Yagi[];
 };
 
 export default function YagiContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<YagiData>();
+  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<Yagi>();
   const datalist = getDataList(data);
 
   return (

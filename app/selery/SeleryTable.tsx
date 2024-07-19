@@ -1,11 +1,11 @@
 "use client";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
-import {  SeleryData } from "@/utils/types";
 import TableArea from "@/components/table-area";
+import { Selery } from "@prisma/client";
 
 type Props = {
-  filterData: SeleryData[];
+  filterData: Selery[];
 };
 
 export const SeleryTable: FC<Props> = ({ filterData }) => {
@@ -27,7 +27,7 @@ export const SeleryTable: FC<Props> = ({ filterData }) => {
               </Tr>
             </Thead>
             <Tbody>
-              {filterData?.map((data: SeleryData, index: number) => (
+              {filterData?.map((data: Selery, index: number) => (
                 <Tr key={index}>
                   <Td>{data.productNumber}</Td>
                   <Td>{data.productName}</Td>
