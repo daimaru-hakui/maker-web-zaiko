@@ -1,3 +1,4 @@
+"use client";
 import { db } from "@/libs/firebase";
 import { Td, Tr } from "@chakra-ui/react";
 import { doc, onSnapshot } from "firebase/firestore";

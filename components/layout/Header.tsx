@@ -17,7 +17,7 @@ export const Header: FC = () => {
       const docRef = doc(db, "users", `${uid}`);
       const snapShot = await getDoc(docRef);
       if (!snapShot.exists()) return;
-      if (snapShot.data().role === "admin") {
+      if (snapShot.data().role === "admin" || snapShot.data().role === "member") {
         setIsAuthority(true);
       }
     };
