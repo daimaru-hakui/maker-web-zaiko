@@ -1,6 +1,7 @@
 "use client";
 import * as actions from "@/actions";
 import { useStore } from "@/utils/store";
+import { Button } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 export default function CsvBulkForm() {
@@ -104,6 +105,7 @@ export default function CsvBulkForm() {
         const { message } = await actions.createBonmax(csvArray);
         return setResultList(message);
       }
+      return setResultList("該当するメーカーがありません");
     });
   };
 
@@ -137,18 +139,25 @@ export default function CsvBulkForm() {
         </div>
 
         <div className="flex gap-3 mt-6">
-          <button
-            className="w-full bg-gray-400 px-3 py-1 rounded-md text-white"
+          <Button
+            w="full"
+            size='sm'
+            color="white"
             onClick={handleReset}
+            className="bg-gray-500 hover:bg-gray-400"
           >
             リセット
-          </button>
-          <button
-            className="w-full bg-blue-800 px-3 py-1 rounded-md text-white"
+          </Button>
+          <Button
+            w="full"
+            size='sm'
+            bg="blue.700"
+            color="white"
             onClick={(e) => handleRegister(e, fileUploads)}
+            className="bg-blue-900 hover:bg-blue-800"
           >
             登録
-          </button>
+          </Button>
         </div>
 
         {resultList.length > 0 && (

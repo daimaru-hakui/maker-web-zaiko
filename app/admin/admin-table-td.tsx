@@ -1,3 +1,4 @@
+"use client";
 import { db } from "@/libs/firebase";
 import { Switch, Td } from "@chakra-ui/react";
 import { doc, updateDoc } from "firebase/firestore";
@@ -20,7 +21,12 @@ export const AdminTableTd: FC<Props> = ({ uid, isMaker, title }) => {
 
   return (
     <Td className="p-1 text-center">
-      <Switch className="p-0" id="email-alerts" isChecked={checked} onChange={updateMaker} />
+      <Switch
+        className="p-0"
+        id="email-alerts"
+        isChecked={checked}
+        onChange={updateMaker}
+      />
     </Td>
   );
 };
