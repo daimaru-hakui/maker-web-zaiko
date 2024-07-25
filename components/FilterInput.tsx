@@ -3,6 +3,7 @@ import { AllData } from "@/utils/types";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
+  Button,
   Flex,
   Input,
   InputGroup,
@@ -37,7 +38,6 @@ export const FilterInput: FC<Props> = ({
     register,
     handleSubmit,
     reset,
-    formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
       text: "",
@@ -72,7 +72,7 @@ export const FilterInput: FC<Props> = ({
         <Flex
           w="full"
           maxW="650px"
-          gap={3}
+          gap={2}
           mt={6}
           className="tracking-wider"
           direction={{ base: "column", md: "row" }}
@@ -97,19 +97,20 @@ export const FilterInput: FC<Props> = ({
               <option key={data}>{data}</option>
             ))}
           </datalist>
-          <Flex gap={3} w={{ base: "full", md: "auto" }}>
-            <input
+          <Flex gap={2} w={{ base: "full", md: "auto" }}>
+            <Button
               type="submit"
-              value="検索"
-              className="p-2 text-sm bg-blue-800 text-white rounded cursor-pointer w-full md:w-24"
-            />
-            <button
-              value="検索"
-              className="p-2 bg-gray-500 text-sm text-white rounded cursor-pointer w-full md:w-24"
+              color="white"
+              className="bg-blue-900 hover:bg-blue-800 w-full">
+              検索
+            </Button>
+            <Button
+              type="button"
+              color="white"
               onClick={onReset}
-            >
+              className="bg-gray-500 hover:bg-gray-400 w-full">
               リセット
-            </button>
+            </Button>
           </Flex>
         </Flex>
       </Flex>

@@ -8,7 +8,7 @@ export function usePermission(maker: string) {
   const router = useRouter();
   const session = useSession();
   const [isAuth, setIsAuth] = useState(true);
-
+  console.log("session", session);
   useEffect(() => {
     const uid = session.data?.user.uid;
     const getUid = async () => {
