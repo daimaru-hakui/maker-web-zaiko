@@ -19,7 +19,7 @@ export async function authGuard(): Promise<void> {
 
   const makerSnap = await makerRef.get();
   const data = { ...(makerSnap.data() as User) };
-  if (data.role !== "admin") {
+  if (data.role !== "admin" && data.role !== "member") {
     redirect("/login");
   }
 }
