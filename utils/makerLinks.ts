@@ -15,4 +15,5 @@ export const makerLinks = [
   { label: "チトセ", title: "chitose", link: "/chitose", blank: false },
   { label: "サーヴォ", title: "servo", link: "/servo", blank: false },
   { label: "トムス", title: "toms", link: "/toms", blank: true },
+  { label: "キャブ", title: "cab", link: "/cab", blank: true },
 ];
