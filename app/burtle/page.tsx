@@ -1,12 +1,12 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/utils/get-catalog";
 import { fetchBurtleData } from "@/actions";
 import BurtleContainer from "./BurtleContainer";
+import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function Burtle() {
-  const catalogSS = await getCatalog("jcmvlxis8");
-  const catalogAW = await getCatalog("hy4k0eb2b5");
+  const catalogSS = await fetchCatalog("clNRdfRwPcvYuBOdn0Ez");
+  const catalogAW = await fetchCatalog("9B6TCiCF2CpCEiOVi7Km");
   const data = await fetchBurtleData();
 
   if (!data) return;

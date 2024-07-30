@@ -1,12 +1,12 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/utils/get-catalog";
+import { fetchCatalog } from "@/utils/fetch-catalog";
 import Link from "next/link";
 import React from "react";
 
 export default async function Toms() {
 
-  const catalog = await getCatalog("u3mn6bmy_ss");
+  const catalog = await fetchCatalog("yAYKz6WaC0RuCGKiLvrk");
 
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden">
