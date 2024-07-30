@@ -20,7 +20,7 @@ export const SowaTable: FC<Props> = ({ filterData }) => {
               <Th>色</Th>
               <Th>サイズ</Th>
               <Th>在庫数</Th>
-              <Th>外部在数</Th>
+              <Th>外部在庫数</Th>
               <Th>仕掛数量1</Th>
               <Th>仕掛納期1</Th>
               <Th>仕掛数量2</Th>
