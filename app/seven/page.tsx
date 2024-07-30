@@ -1,12 +1,12 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/utils/get-catalog";
-import {  fetchSevenData } from "@/actions";
+import { fetchSevenData } from "@/actions";
 import SevenContainer from "./SevenContainer";
+import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function Seven() {
-  const catalogSeven = await getCatalog("2ez2taehb");
-  const catalogHakui = await getCatalog("9pmnpg6ha");
+  const catalogSeven = await fetchCatalog("sCpQN30egZa7HBtnESCa");
+  const catalogHakui = await fetchCatalog("gpiS5mf8gHkDNWGtwINs");
 
   const data = await fetchSevenData();
   if (!data) return null;

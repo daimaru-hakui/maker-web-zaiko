@@ -11,6 +11,7 @@ export { createSeven } from "@/actions/create-seven";
 export { createTombow } from "@/actions/create-tombow";
 export { createYagi } from "@/actions/create-yagi";
 export { createBurtle } from "@/actions/create-burtle";
+export { createSowa } from "@/actions/create-sowa";
 export {
   fetchAitozData,
   fetchBonmaxData,

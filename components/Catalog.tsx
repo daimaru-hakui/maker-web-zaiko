@@ -5,12 +5,22 @@ import Link from "next/link";
 import React, { FC } from "react";
 
 type Props = {
-  catalogData: any;
+  catalogData: {
+    link: string;
+    maker: string;
+    image: {
+      url: string;
+    };
+  } | null;
 };
 
 export const Catalog: FC<Props> = ({ catalogData }) => {
+  if(!catalogData) {
+    return null
+  }
+  
   return (
-    <div className="w-11/12 lg:w-[calc(80px)]"> 
+    <div className="w-11/12 lg:w-[calc(80px)]">
       <Link href={catalogData?.link} target="_blank" rel="noopener noreferrer">
         <Image
           src={catalogData?.image?.url}

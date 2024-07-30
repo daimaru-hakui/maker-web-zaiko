@@ -1,12 +1,12 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/utils/get-catalog";
 import { fetchJoieData } from "@/actions";
 import JoieContainer from "./JoieContainer";
+import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function Joie() {
-  const catalogEnJoieSS = await getCatalog("aqz0c2_5p");
-  const catalogEnJoieAW = await getCatalog("drgjd_who");
+  const catalogEnJoieSS = await fetchCatalog("tHct8wrii7FBF8ssRIbW");
+  const catalogEnJoieAW = await fetchCatalog("EGLLipaquXFGYXPt8fIz");
 
   const data = await fetchJoieData();
   if (!data) return;

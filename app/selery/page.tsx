@@ -1,14 +1,14 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/utils/get-catalog";
-import {  fetchSeleryData } from "@/actions";
+import { fetchSeleryData } from "@/actions";
 import SeleryContainer from "./SeleryContainer";
+import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function Selery() {
-  const catalogSelerySS = await getCatalog("yrwob4gte");
-  const catalogSeleryAW = await getCatalog("gxs3ov-pq");
-  const catalogIfory = await getCatalog("8-8jzhxmy");
-  const catalogSkitto = await getCatalog("o74ob5ld5");
+  const catalogSelerySS = await fetchCatalog("WewRqYjWSLqO3tBFA5ED");
+  const catalogSeleryAW = await fetchCatalog("5KOWq1BVWSgfFKr7rd14");
+  const catalogIfory = await fetchCatalog("spwgfseVNbJJyhPbMuLz");
+  const catalogSkitto = await fetchCatalog("sEYUXN1ERqvMPswsQQUt");
 
   const data = await fetchSeleryData();
   if (!data) return;

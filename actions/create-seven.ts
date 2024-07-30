@@ -37,7 +37,7 @@ export async function createSeven(
     });
     console.log("セブンユニフォーム 成功");
     await prisma.$disconnect();
-    revalidatePath("/seveb");
+    revalidatePath("/seven");
     return { message: "セブンユニフォーム 成功" };
   } catch (e) {
     console.error(e);

@@ -105,6 +105,10 @@ export default function CsvBulkForm() {
         const { message } = await actions.createBonmax(csvArray);
         return setResultList(message);
       }
+      if (regTest("^在庫データ", file.name)) {
+        const { message } = await actions.createSowa(csvArray);
+        return setResultList(message);
+      }
       return setResultList("該当するメーカーがありません");
     });
   };

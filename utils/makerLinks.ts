@@ -9,6 +9,7 @@ export const makerLinks = [
   { label: "ヤギコーポレーション", title: "yagi", link: "/yagi", blank: false },
   { label: "アイトス", title: "aitoz", link: "/aitoz", blank: false },
   { label: "コーコス", title: "cocos", link: "/cocos", blank: false },
+  { label: "桑和", title: "sowa", link: "/sowa", blank: false },
   { label: "バートル", title: "burtle", link: "/burtle", blank: false },
   { label: "セブンユニフォーム", title: "seven", link: "/seven", blank: false },
   { label: "チトセ", title: "chitose", link: "/chitose", blank: false },

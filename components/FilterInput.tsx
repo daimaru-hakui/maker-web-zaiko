@@ -100,15 +100,13 @@ export const FilterInput: FC<Props> = ({
           <Flex gap={2} w={{ base: "full", md: "auto" }}>
             <Button
               type="submit"
-              color="white"
-              className="bg-blue-900 hover:bg-blue-800 w-full">
+              className="bg-blue-900 hover:bg-blue-800 text-white w-full">
               検索
             </Button>
             <Button
               type="button"
-              color="white"
               onClick={onReset}
-              className="bg-gray-500 hover:bg-gray-400 w-full">
+              className="bg-gray-500 hover:bg-gray-400 text-white w-full">
               リセット
             </Button>
           </Flex>

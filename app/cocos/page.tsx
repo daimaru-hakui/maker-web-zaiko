@@ -1,15 +1,16 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/utils/get-catalog";
 import { fetchCocosData } from "@/actions";
 import CocosContainer from "./CocosContainer";
+import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function Daimaru() {
-  const catalogSs = await getCatalog("p5mstnm-6");
-  const catalogAw = await getCatalog("tfakmhtz9");
-  const catalogDi = await getCatalog("16pjpoo8eoad");
-  const catalogGu = await getCatalog("nez60e1bcl");
-  const catalogVo = await getCatalog("mmd1wtjfc");
+  const catalogSs = await fetchCatalog("TmMD6uV45chHk4Wbv9tu");
+  const catalogAw = await fetchCatalog("7Fqh15qIj4MgfefTDthH");
+  const catalogDiSS = await fetchCatalog("a8WkXgDPhg78FTIYrwfD");
+  const catalogDiAW = await fetchCatalog("YIhkXPA5GB9rnf4ewGzx");
+  const catalogGu = await fetchCatalog("QVcAdPI9cTwOmr53caYG");
+  const catalogVo = await fetchCatalog("fCYu57Bqw9kyltgdeHeZ");
 
   const data = await fetchCocosData();
   if (!data) return null;
@@ -20,7 +21,8 @@ export default async function Daimaru() {
       <CatalogArea>
         <Catalog catalogData={catalogSs} />
         <Catalog catalogData={catalogAw} />
-        <Catalog catalogData={catalogDi} />
+        <Catalog catalogData={catalogDiSS} />
+        <Catalog catalogData={catalogDiAW} />
         <Catalog catalogData={catalogGu} />
         <Catalog catalogData={catalogVo} />
       </CatalogArea>

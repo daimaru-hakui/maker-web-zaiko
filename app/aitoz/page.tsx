@@ -1,15 +1,15 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/utils/get-catalog";
 import { fetchAitozData } from "@/actions";
 import AitozContainer from "./AitozContainer";
+import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function AitozPage() {
-  const catalogss = await getCatalog("aswzcpzqy");
-  const catalogaw = await getCatalog("whtxkwo3vb");
-  const catalogLadiesSs = await getCatalog("m3gh2ir54");
-  const catalogOfficeSs = await getCatalog("zizmqccya");
-  const catalogOfficeAw = await getCatalog("zizmqccya");
+  const catalogss = await fetchCatalog("Z2uVd0KN2cYzUXGmJutO");
+  const catalogaw = await fetchCatalog("CXyrNHzyDARuicPKEC3P");
+  const catalogOfficeSs = await fetchCatalog("ixQ2b1bVQjbchn7ZsTzD");
+  const catalogOfficeAw = await fetchCatalog("WC02y2lIBIfIft94mraK");
+  const catalogTshirt = await fetchCatalog("QbLpw0PYZFZPBXlrXgRK");
 
   const data = await fetchAitozData();
   if (!data) return;
@@ -20,8 +20,9 @@ export default async function AitozPage() {
       <CatalogArea>
         <Catalog catalogData={catalogss} />
         <Catalog catalogData={catalogaw} />
-        <Catalog catalogData={catalogLadiesSs} />
+        <Catalog catalogData={catalogOfficeSs} />
         <Catalog catalogData={catalogOfficeAw} />
+        <Catalog catalogData={catalogTshirt} />
       </CatalogArea>
     </main>
   );

@@ -1,12 +1,13 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/utils/get-catalog";
 import { fetchChitoseData } from "@/actions";
 import ChitoseContainer from "./ChitoseContainer";
+import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function Chitose() {
-  const catalogUnite = await getCatalog("oxqcchhqb");
-  const catalogArbe = await getCatalog("ekpj9zvfm");
+  const catalogUnite = await fetchCatalog("ZOEYHdjkHBxGd2RJev0X");
+  const catalogCalala = await fetchCatalog("ABDLfFC7MTatFAiL4D4T");
+  const catalogArbe = await fetchCatalog("SL9t3boTeHtv21rbCDoQ");
 
   const data = await fetchChitoseData();
   if (!data) return;
@@ -16,6 +17,7 @@ export default async function Chitose() {
       <ChitoseContainer data={data} />
       <CatalogArea>
         <Catalog catalogData={catalogUnite} />
+        <Catalog catalogData={catalogCalala} />
         <Catalog catalogData={catalogArbe} />
       </CatalogArea>
     </main>

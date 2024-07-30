@@ -1,16 +1,16 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/utils/get-catalog";
 import { fetchServoData } from "@/actions";
 import ServoContainer from "./SevenContainer";
+import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function Servo() {
-  const catalogServo = await getCatalog("slnkyzgbe");
-  const catalogFood = await getCatalog("ou46diqi9");
-  const catalogMedical = await getCatalog("7k0eahxnu");
-  const catalogGrowSS = await getCatalog("sgpxjslir");
-  const catalogGrowAW = await getCatalog("zp_lkbf3a");
-  const catalogLand = await getCatalog("abqpa4-l0");
+  const catalogServo = await fetchCatalog("gGDy1baqhfHq56Sjz3up");
+  const catalogFood = await fetchCatalog("HdeSEUh9pa9ACZzO4BEi");
+  const catalogMedical = await fetchCatalog("5O0l7oJ0HHDd58bWa3gO");
+  const catalogGrowSS = await fetchCatalog("nTHFMlkdQZ1vjHBNcnfQ");
+  const catalogGrowAW = await fetchCatalog("kyiYg6k43OrLZ1Ok3Quc");
+  const catalogLand = await fetchCatalog("x3oUUc4lBk4Jerr7mvEK");
 
   const data = await fetchServoData();
   if (!data) return;

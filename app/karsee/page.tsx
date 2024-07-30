@@ -3,14 +3,15 @@ import { CatalogArea } from "@/components/CatalogArea";
 import { getCatalog } from "@/utils/get-catalog";
 import { fetchKarseeData } from "@/actions";
 import KarseeContainer from "./KarseeContainer";
+import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function Karsee() {
-  const catalogEnjoySS = await getCatalog("cgczlza8z");
-  const catalogEnjoyAW = await getCatalog("53qaflfz1");
-  const catalogNoir = await getCatalog("avp-i33uhr");
-  const catalogCarean = await getCatalog("f653gvyki");
-  const catalogHeartGreen = await getCatalog("ppud4o2fi");
-
+  const catalogEnjoySS = await fetchCatalog("YMY0LQM2nRWDj5gqlryN");
+  const catalogEnjoyAW = await fetchCatalog("UfT9LR5z0C9qQE5vmhjE");
+  const catalogNoir = await fetchCatalog("pMKHzEz4h0YPX0CGxdOW");
+  const catalogCarean = await fetchCatalog("YZKfbZG9URgiEWupYZo8");
+  const catalogHeartGreen = await fetchCatalog("gQpNxvRO7YNTfCIyhlv9");
+  
   const data = await fetchKarseeData();
   if (!data) return;
 

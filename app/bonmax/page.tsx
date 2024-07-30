@@ -1,15 +1,16 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/utils/get-catalog";
 import { fetchBonmaxData } from "@/actions";
 import BonmaxContainer from "./BonmaxContainer";
+import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function Bonmax() {
-  const catalogFaceMix = await getCatalog("lh4sypndh");
-  const catalogOfficeSS = await getCatalog("vcxclo8y7");
-  const catalogOfficeAW = await getCatalog("kt05evuki");
-  const catalogLifemax = await getCatalog("qx2zikli7");
-  const catalogRocky = await getCatalog("vlatytlxs");
+  const catalogFaceMix = await fetchCatalog("9SLwq2qZoyKbd5I2P8e7");
+  const catalogOfficeSS = await fetchCatalog("8ArV4YXQAqjt2kzR51ba");
+  const catalogOfficeAW = await fetchCatalog("qX6glfiqR1ERN9KdTUPr");
+  const catalogLifemax = await fetchCatalog("OXoNg7NJijWKhOBwEJDc");
+  const catalogRocky = await fetchCatalog("eMPmB5qaUr1LEDhMcEmz");
+  const catalogCare = await fetchCatalog("RwVPppq1pnArvJamqQIK");
   const data = await fetchBonmaxData();
 
   if (!data) return;
@@ -23,6 +24,7 @@ export default async function Bonmax() {
         <Catalog catalogData={catalogOfficeAW} />
         <Catalog catalogData={catalogLifemax} />
         <Catalog catalogData={catalogRocky} />
+        <Catalog catalogData={catalogCare} />
       </CatalogArea>
     </main>
   );

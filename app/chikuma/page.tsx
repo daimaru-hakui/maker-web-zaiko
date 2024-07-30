@@ -1,13 +1,13 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/utils/get-catalog";
 import { fetchChikumaData } from "@/actions";
 import ChikumaContainer from "./ChikumaContainer";
+import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function Chikuma() {
-  const catalogSS = await getCatalog("easbbej1r");
-  const catalogAW = await getCatalog("8twgzvvvs");
-  const catalogFL = await getCatalog("1hfh1ntic");
+  const catalogSS = await fetchCatalog("b7440yI1Wly8MiGXlaxO");
+  const catalogAW = await fetchCatalog("mXFnlH6zLsSqmcTLVtDN");
+  const catalogFL = await fetchCatalog("6g8Gzr9UThIKFllkthx5");
 
   const data = await fetchChikumaData();
   if (!data) return;

@@ -182,3 +182,17 @@ export async function fetchYagiData() {
   });
   return data;
 }
+
+export async function fetchSowaData() {
+  const data = await prisma.sowa.findMany({
+    orderBy: {
+      row: "asc",
+    },
+    where: {
+      productNumber: {
+        notIn: [""],
+      },
+    },
+  });
+  return data;
+}
