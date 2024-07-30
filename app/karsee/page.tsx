@@ -1,6 +1,5 @@
 import { Catalog } from "@/components/Catalog";
 import { CatalogArea } from "@/components/CatalogArea";
-import { getCatalog } from "@/utils/get-catalog";
 import { fetchKarseeData } from "@/actions";
 import KarseeContainer from "./KarseeContainer";
 import { fetchCatalog } from "@/utils/fetch-catalog";
