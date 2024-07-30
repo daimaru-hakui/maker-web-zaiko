@@ -19,7 +19,14 @@ export async function createSowa(
     size: csv[5],
     stock: Number(csv[6]),
     externalStock: Number(csv[7]),
-    isDiscontinued: csv[8] ? true : false,
+    
+    nextTimeStock: Number(csv[9]),
+    nextTimeDate: csv[10],
+    nextTimeStock2: Number(csv[11]),
+    nextTimeDate2: csv[12],
+    nextTimeStock3: Number(csv[13]),
+    nextTimeDate3: csv[14],
+    isDiscontinued: csv[15] ? true : false,
     jan: csv[0],
   }));
 

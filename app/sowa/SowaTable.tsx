@@ -12,7 +12,7 @@ export const SowaTable: FC<Props> = ({ filterData }) => {
   return (
     <>
       {filterData.length > 0 && (
-        <TableArea maxW="1200">
+        <TableArea maxW="1600">
           <Thead position="sticky" top={0} zIndex="docked" bg="white">
             <Tr className="h-12">
               <Th>品番</Th>
@@ -21,6 +21,12 @@ export const SowaTable: FC<Props> = ({ filterData }) => {
               <Th>サイズ</Th>
               <Th>在庫数</Th>
               <Th>外部在数</Th>
+              <Th>仕掛数量1</Th>
+              <Th>仕掛納期1</Th>
+              <Th>仕掛数量2</Th>
+              <Th>仕掛納期2</Th>
+              <Th>仕掛数量3</Th>
+              <Th>仕掛納期3</Th>
               <Th>JANコード</Th>
             </Tr>
           </Thead>
@@ -33,6 +39,12 @@ export const SowaTable: FC<Props> = ({ filterData }) => {
                 <Td textAlign="center">{data.size}</Td>
                 <Td isNumeric>{data.stock}</Td>
                 <Td isNumeric>{data.externalStock}</Td>
+                <Td isNumeric>{data.nextTimeStock}</Td>
+                <Td isNumeric>{data.nextTimeDate}</Td>
+                <Td isNumeric>{data.nextTimeStock2}</Td>
+                <Td isNumeric>{data.nextTimeDate2}</Td>
+                <Td isNumeric>{data.nextTimeStock3}</Td>
+                <Td isNumeric>{data.nextTimeDate3}</Td>
                 <Td>{data.jan}</Td>
               </Tr>
             ))}

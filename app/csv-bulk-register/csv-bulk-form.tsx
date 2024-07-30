@@ -78,7 +78,7 @@ export default function CsvBulkForm() {
         const { message } = await actions.createBurtle(csvArray);
         return setResultList(message);
       }
-      if (regTest("^在庫表", file.name)) {
+      if (regTest("^在庫表.csv", file.name)) {
         const { message } = await actions.createJoie(csvArray);
         return setResultList(message);
       }
@@ -105,7 +105,7 @@ export default function CsvBulkForm() {
         const { message } = await actions.createBonmax(csvArray);
         return setResultList(message);
       }
-      if (regTest("^在庫データ", file.name)) {
+      if (regTest("^在庫表SOWA", file.name)) {
         const { message } = await actions.createSowa(csvArray);
         return setResultList(message);
       }

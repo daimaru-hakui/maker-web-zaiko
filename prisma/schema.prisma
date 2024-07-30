@@ -213,6 +213,12 @@ model Sowa {
   size           String?
   stock          Int
   externalStock  Int?
+  nextTimeStock  Int?
+  nextTimeDate   String?
+  nextTimeStock2 Int?
+  nextTimeDate2  String?
+  nextTimeStock3 Int?
+  nextTimeDate3  String?
   jan            String?
   isDiscontinued Boolean
   createdAt      DateTime @default(now()) @db.Timestamptz()
