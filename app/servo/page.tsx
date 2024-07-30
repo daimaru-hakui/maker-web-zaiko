@@ -5,7 +5,7 @@ import ServoContainer from "./SevenContainer";
 import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function Servo() {
-  const catalogServo = await fetchCatalog("gGDy1baqhfHq56Sjz3up");
+  const catalogServo = await fetchCatalog("3PSm4sRFWrc83Z588Mmi");
   const catalogFood = await fetchCatalog("HdeSEUh9pa9ACZzO4BEi");
   const catalogMedical = await fetchCatalog("5O0l7oJ0HHDd58bWa3gO");
   const catalogGrowSS = await fetchCatalog("nTHFMlkdQZ1vjHBNcnfQ");
