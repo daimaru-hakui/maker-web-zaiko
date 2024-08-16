@@ -6,7 +6,7 @@ export default function SidebarTitle() {
   return (
     <Link
       className="text-white text-sm cursor-pointer"
-      href="https://myuni.vercel.app/catalog"
+      href="https://catalog.myuni.jp/"
       target="_blank"
       rel="noopener noreferrer"
     >
