@@ -49,7 +49,7 @@ export const HeaderDrawer = () => {
                 <Button variant="outline" _hover={{ textColor: "blue" }}>
                   <Link
                     className="text-sm cursor-pointer w-full"
-                    href="https://myuni.vercel.app/catalog"
+                    href="https://catalog.myuni.jp/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
