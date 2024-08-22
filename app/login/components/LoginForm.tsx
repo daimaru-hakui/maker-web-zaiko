@@ -49,6 +49,7 @@ const LoginForm: FC = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="w-full">
         <div className="text-center">Login</div>
         <div className="mt-6 w-full">
+          <label>Email</label>
           <input
             type="text"
             autoComplete="off"
@@ -60,6 +61,7 @@ const LoginForm: FC = () => {
           )}
         </div>
         <div className="mt-6">
+          <label>Password</label>
           <input
             type="password"
             className="w-full p-2 border"
