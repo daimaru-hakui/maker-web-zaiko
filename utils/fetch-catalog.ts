@@ -1,5 +1,5 @@
 export const fetchCatalog = async (id: string) => {
-  const url = "https://myuni-digital-catalog.vercel.app/api/catalogs";
+  const url = "https://catalog.myuni.jp/api/catalogs";
   const res = await fetch(`${url}/${id}`, {
     cache: "force-cache",
     headers: {
