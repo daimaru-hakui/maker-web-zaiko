@@ -1,5 +1,6 @@
 export { createAitoz } from "@/actions/create-aitoz";
 export { createBonmax } from "@/actions/create-bonmax";
+export { createBoston } from "@/actions/create-boston";
 export { createCocos } from "@/actions/create-cocos";
 export { createChikuma } from "@/actions/create-chikuma";
 export { createChitose } from "@/actions/create-chitose";
@@ -15,6 +16,7 @@ export { createSowa } from "@/actions/create-sowa";
 export {
   fetchAitozData,
   fetchBonmaxData,
+  fetchBostonData,
   fetchBurtleData,
   fetchChikumaData,
   fetchChitoseData,
@@ -26,4 +28,5 @@ export {
   fetchSevenData,
   fetchTombowData,
   fetchYagiData,
+  fetchSowaData,
 } from "@/actions/fetch-actions";

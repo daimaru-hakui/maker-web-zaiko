@@ -105,10 +105,15 @@ export default function CsvBulkForm() {
         const { message } = await actions.createBonmax(csvArray);
         return setResultList(message);
       }
+      if (regTest("^", file.name)) {
+        const { message } = await actions.createBoston(csvArray);
+        return setResultList(message);
+      }
       if (regTest("^在庫表SOWA", file.name)) {
         const { message } = await actions.createSowa(csvArray);
         return setResultList(message);
       }
+
       return setResultList("該当するメーカーがありません");
     });
   };
@@ -145,7 +150,7 @@ export default function CsvBulkForm() {
         <div className="flex gap-3 mt-6">
           <Button
             w="full"
-            size='sm'
+            size="sm"
             color="white"
             onClick={handleReset}
             className="bg-gray-500 hover:bg-gray-400"
@@ -154,7 +159,7 @@ export default function CsvBulkForm() {
           </Button>
           <Button
             w="full"
-            size='sm'
+            size="sm"
             bg="blue.700"
             color="white"
             onClick={(e) => handleRegister(e, fileUploads)}

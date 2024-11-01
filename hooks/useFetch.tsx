@@ -17,6 +17,6 @@ export const useFetch = (params: Params) => {
   return useQuery({
     queryKey: [params.queryKey],
     queryFn: () => fetcher(params),
-    staleTime: Infinity
+    staleTime: 0,
   });
 };

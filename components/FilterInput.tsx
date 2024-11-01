@@ -34,11 +34,7 @@ export const FilterInput: FC<Props> = ({
       return newArray;
     });
   };
-  const {
-    register,
-    handleSubmit,
-    reset,
-  } = useForm<FieldValues>({
+  const { register, handleSubmit, reset } = useForm<FieldValues>({
     defaultValues: {
       text: "",
     },
@@ -90,6 +86,7 @@ export const FilterInput: FC<Props> = ({
                   : "品番を入力してください"
               }
               {...register("text")}
+              autoComplete="off"
             />
           </InputGroup>
           <datalist id="itemlist">
@@ -100,13 +97,15 @@ export const FilterInput: FC<Props> = ({
           <Flex gap={2} w={{ base: "full", md: "auto" }}>
             <Button
               type="submit"
-              className="bg-blue-900 hover:bg-blue-800 text-white w-full">
+              className="bg-blue-900 hover:bg-blue-800 text-white w-full"
+            >
               検索
             </Button>
             <Button
               type="button"
               onClick={onReset}
-              className="bg-gray-500 hover:bg-gray-400 text-white w-full">
+              className="bg-gray-500 hover:bg-gray-400 text-white w-full"
+            >
               リセット
             </Button>
           </Flex>

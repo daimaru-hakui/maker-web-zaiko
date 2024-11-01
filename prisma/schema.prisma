@@ -40,6 +40,20 @@ model Bonmax {
   createdAt     DateTime @default(now()) @db.Timestamptz()
 }
 
+model Boston {
+  id            String   @id @default(uuid())
+  row           Int
+  productNumber String?
+  productName   String?
+  size          String?
+  stock         Int
+  externalStock Int?
+  nextTimeStock Int?
+  nextTimeDate  String?
+  jan           String?
+  createdAt     DateTime @default(now()) @db.Timestamptz()
+}
+
 model Servo {
   id             String   @id @default(uuid())
   row            Int

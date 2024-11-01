@@ -6,7 +6,6 @@ import { collection, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { AdminTableRow } from "./admin-table-row";
 import { makerLinks } from "@/utils/makerLinks";
-import { Oswald } from "next/font/google";
 import { OswaldFont } from "../layout";
 
 type User = {
@@ -32,17 +31,20 @@ export const AdminTable = () => {
   }, []);
 
   return (
-    <TableArea maxW="1500px" >
+    <TableArea maxW="1500px">
       <Thead
         position="sticky"
         top={0}
-        zIndex="docked" bg="white"
+        zIndex="docked"
+        bg="white"
         className={`${OswaldFont.className} h-12`}
       >
         <Tr>
           <Th className="p-0 px-2">email</Th>
           {makerLinks.map((maker) => (
-            <Th className="text-center p-0 px-2 min-w-[80px]" key={maker.label}>{maker.title}</Th>
+            <Th className="text-center p-0 px-2 min-w-[80px]" key={maker.label}>
+              {maker.title}
+            </Th>
           ))}
         </Tr>
       </Thead>

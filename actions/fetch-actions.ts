@@ -29,6 +29,20 @@ export const fetchBonmaxData = async () => {
   return data;
 };
 
+export const fetchBostonData = async () => {
+  const data = await prisma.boston.findMany({
+    orderBy: {
+      row: "asc",
+    },
+    where: {
+      productNumber: {
+        notIn: [""],
+      },
+    },
+  });
+  return data;
+};
+
 export const fetchBurtleData = async () => {
   const data = await prisma.burtle.findMany({
     orderBy: {

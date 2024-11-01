@@ -11,6 +11,7 @@ export const makerLinks = [
   { label: "コーコス", title: "cocos", link: "/cocos", blank: false },
   { label: "桑和", title: "sowa", link: "/sowa", blank: false },
   { label: "バートル", title: "burtle", link: "/burtle", blank: false },
+  { label: "ボストン商会", title: "boston", link: "/boston", blank: false },
   { label: "セブンユニフォーム", title: "seven", link: "/seven", blank: false },
   { label: "チトセ", title: "chitose", link: "/chitose", blank: false },
   { label: "サーヴォ", title: "servo", link: "/servo", blank: false },
