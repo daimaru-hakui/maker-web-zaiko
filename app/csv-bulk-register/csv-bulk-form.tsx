@@ -105,7 +105,7 @@ export default function CsvBulkForm() {
         const { message } = await actions.createBonmax(csvArray);
         return setResultList(message);
       }
-      if (regTest("^", file.name)) {
+      if (regTest("^daimaru_hakui_boston", file.name)) {
         const { message } = await actions.createBoston(csvArray);
         return setResultList(message);
       }

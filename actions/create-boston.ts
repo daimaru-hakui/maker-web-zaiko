@@ -12,14 +12,14 @@ export async function createBoston(
       message: "ファイルがありません",
     };
   const body = csvFile.map((csv) => ({
-    jan: Number(csv[0]),
-    productNumber: csv[1] + "-" + csv[3],
-    productName: csv[2],
-    size: csv[5],
-    stock: Number(csv[7]),
-    externalStock: Number(csv[9]),
-    nextTimeStock: Number(csv[8]),
-    nextTimeDate: csv[10],
+    productNumber: csv[0],
+    productName: csv[1],
+    size: csv[3],
+    stock: Number(csv[4]) || 0,
+    externalStock: Number(csv[5]) || 0,
+    nextTimeDate: csv[6],
+    nextTimeStock: Number(csv[7]) || 0,
+    jan: Number(csv[8]),
   }));
 
   const newBody = body.map((value, idx: number) => ({
