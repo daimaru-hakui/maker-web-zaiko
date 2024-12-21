@@ -20,6 +20,7 @@ export async function createDaimaruHakui(
     stock: Number(csv[4]),
     externalStock: Number(csv[5]),
     nextTimeStock: Number(csv[9]),
+    totalStock: Number(csv[7]),
   }));
   const patternProductNumber = /[^\d]/g;
   const patternColor = /(C|-|\/|\d)/g;
@@ -34,7 +35,7 @@ export async function createDaimaruHakui(
         value.color?.replace(patternProductNumber, ""),
       color: value.color?.replace(patternColor, ""),
     };
-  });
+  })
 
   console.log("大丸白衣 upload");
 

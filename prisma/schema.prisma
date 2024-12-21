@@ -21,6 +21,7 @@ model DaimaruHakui {
   stock         Int?
   externalStock Int?
   nextTimeStock Int?
+  totalStock    Int?
   createdAt     DateTime @default(now()) @db.Timestamptz()
 }
 

@@ -12,7 +12,7 @@ type Props = {
 
 export default function DaimaruContainer({ data }: Props) {
   const { addArray, filterData, setFilterData, getDataList } = useFilterInput<DaimaruHakui>();
-  const datalist = getDataList(data);
+  const datalist = getDataList(data).filter((d) => d !== "undefined");
 
   return (
     <Flex direction="column" alignItems="center" w="full">
