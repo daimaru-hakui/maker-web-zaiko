@@ -1,6 +1,20 @@
 "use server";
 import prisma from "@/libs/prisma";
 
+export const fetchDaimaruHakuiData = async () => {
+  const data = await prisma.daimaruHakui.findMany({
+    orderBy: {
+      row: "asc",
+    },
+    where: {
+      productNumber: {
+        notIn: [""],
+      },
+    },
+  });
+  return data;
+};
+
 export const fetchAitozData = async () => {
   const data = await prisma.aitoz.findMany({
     orderBy: {

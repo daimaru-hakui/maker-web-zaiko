@@ -1,3 +1,4 @@
+export {createDaimaruHakui} from "@/actions/create-daimaru-hakui";
 export { createAitoz } from "@/actions/create-aitoz";
 export { createBonmax } from "@/actions/create-bonmax";
 export { createBoston } from "@/actions/create-boston";

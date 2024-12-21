@@ -50,6 +50,10 @@ export default function CsvBulkForm() {
       let csvArray = csvString.map((a) => a.replace(/(\")/g, "").split(","));
       console.log(file.name);
 
+      if (regTest("^daimaru-zaiko", file.name)) {
+        const { message } = await actions.createDaimaruHakui(csvArray);
+        return setResultList(message);
+      }
       if (regTest("^zaikoDownload", file.name)) {
         const { message } = await actions.createTombow(csvArray);
         return setResultList(message);
