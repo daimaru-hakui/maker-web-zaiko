@@ -17,7 +17,7 @@ export default function DaimaruContainer({ data }: Props) {
   return (
     <Flex direction="column" alignItems="center" w="full">
       <FilterInput
-        title="enjoie"
+        title="大丸白衣"
         setFilterData={setFilterData}
         datalist={datalist}
         addArray={addArray}
