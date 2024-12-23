@@ -1,4 +1,5 @@
 export const makerLinks = [
+  { label: "大丸白衣 新品番", title: "daimaru-hakui", link: "/daimaru-hakui", blank: false },
   { label: "大丸白衣", title: "daimaru", link: "/daimaru", blank: false },
   { label: "トンボ", title: "tombow", link: "/tombow", blank: false },
   { label: "チクマ", title: "chikuma", link: "/chikuma", blank: false },
@@ -17,5 +18,4 @@ export const makerLinks = [
   { label: "サーヴォ", title: "servo", link: "/servo", blank: false },
   { label: "トムス", title: "toms", link: "/toms", blank: true },
   { label: "キャブ", title: "cab", link: "/cab", blank: true },
-  { label: "大丸白衣", title: "daimaru-hakui", link: "/daimaru-hakui", blank: false },
 ];
