@@ -33,7 +33,7 @@ const LoginForm: FC = () => {
       const idToken = await userCredential.user.getIdToken();
       await signIn("credentials", {
         idToken,
-        callbackUrl: "/daimaru",
+        callbackUrl: "/",
       });
     } catch (error) {
       console.log("error");
