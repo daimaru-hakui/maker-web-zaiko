@@ -1,5 +1,5 @@
 "use client";
-import { Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
+import { Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 import React, { FC } from "react";
 import TableArea from "@/components/table-area";
 import { Bonmax } from "@prisma/client";

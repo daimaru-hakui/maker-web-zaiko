@@ -21,7 +21,6 @@ export default function BonmaxContainer({ data }: Props) {
   if (!isAuth) {
     router.push('/login');
   }
-  console.log(isAuth);
 
   return (
     <Flex direction="column" alignItems="center" w="full">
