@@ -5,7 +5,7 @@ import SevenContainer from "./SevenContainer";
 import { fetchCatalog } from "@/utils/fetch-catalog";
 
 export default async function Seven() {
-  const catalogSeven = await fetchCatalog("sCpQN30egZa7HBtnESCa");
+  const catalogSeven = await fetchCatalog("WvFRIqLAAkaolED0ZLYW");
   const catalogHakui = await fetchCatalog("gpiS5mf8gHkDNWGtwINs");
 
   const data = await fetchSevenData();
