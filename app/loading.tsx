@@ -3,9 +3,8 @@ import React from "react"
 
 export default function loading() {
   return (
-    <div></div>
-    // <div className="w-full flex justify-center items-center min-h-[calc(100vh-200px)]">
-    //   <Spinner />
-    // </div>
+    <div className="w-full flex justify-center items-center min-h-[calc(100vh-200px)]">
+      <Spinner />
+    </div>
   )
 }
