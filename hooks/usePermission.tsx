@@ -1,29 +1,35 @@
-import { db } from "../libs/firebase/index";
-import { doc, getDoc } from "firebase/firestore";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useAuth } from "@/context/auth"
+import { db } from "../lib/firebase/client"
+import { doc, getDoc } from "firebase/firestore"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 
 export function usePermission(maker: string) {
-  const router = useRouter();
-  const session = useSession();
-  const [isAuth, setIsAuth] = useState(true);
-  console.log("session", session);
+  const router = useRouter()
+  const auth = useAuth()
+  const [isAuth, setIsAuth] = useState(true)
+
   useEffect(() => {
-    const uid = session.data?.user.uid;
+    const uid = auth?.currentUser?.uid
     const getUid = async () => {
-      if (!uid) return;
-      const makerRef = doc(db, "users", uid, "permissions", "makers");
-      const snapshot = await getDoc(makerRef);
-      const obj = { ...snapshot.data() };
-      setIsAuth(obj[maker]);
-      if (!obj[maker]) {
-        router.push("/login");
+      if (!uid) return
+      try {
+        const makerRef = doc(db, "users", uid, "permissions", "makers")
+        const snapshot = await getDoc(makerRef)
+        const obj = { ...snapshot.data() }
+        setIsAuth(obj[maker])
+        if (!obj[maker]) {
+          router.push("/login")
+        }
+      } catch (error) {
+        console.error("Permission check failed:", error)
+        setIsAuth(false)
       }
-    };
-    getUid();
-  }, [session, maker, router]);
+    }
+    getUid()
+  }, [maker, router])
   return {
-    isAuth
-  };
+    isAuth,
+  }
 }
+

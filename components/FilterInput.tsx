@@ -1,6 +1,5 @@
-"use client";
-import { AllData } from "@/utils/types";
-import { SearchIcon } from "@chakra-ui/icons";
+import { AllData } from "@/utils/types"
+import { SearchIcon } from "@chakra-ui/icons"
 import {
   Box,
   Button,
@@ -8,17 +7,23 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-} from "@chakra-ui/react";
-import { FC, useState } from "react";
-import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+} from "@chakra-ui/react"
+import { Kosugi, Oswald } from "next/font/google"
+import { FC, useState } from "react"
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form"
 
 type Props = {
-  title: string;
-  setFilterData: React.Dispatch<React.SetStateAction<any[]>>;
-  datalist: (string | null)[];
-  addArray: Function;
-  allData: AllData[];
-};
+  title: string
+  setFilterData: React.Dispatch<React.SetStateAction<any[]>>
+  datalist: (string | null)[]
+  addArray: Function
+  allData: AllData[]
+}
+
+const oswaldFont = Oswald({
+  weight: ["200", "300", "400", "500"],
+  subsets: ["latin"],
+})
 
 export const FilterInput: FC<Props> = ({
   title,
@@ -27,30 +32,30 @@ export const FilterInput: FC<Props> = ({
   addArray,
   allData,
 }) => {
-  const [placeholderArray, setPlaceholderArray] = useState<string[]>([]);
+  const [placeholderArray, setPlaceholderArray] = useState<string[]>([])
   const addPlaceholder = (productNumber: string) => {
     setPlaceholderArray((prev: string[]) => {
-      const newArray = [...prev, productNumber].filter((_) => _ !== "");
-      return newArray;
-    });
-  };
+      const newArray = [...prev, productNumber].filter((_) => _ !== "")
+      return newArray
+    })
+  }
   const { register, handleSubmit, reset } = useForm<FieldValues>({
     defaultValues: {
       text: "",
     },
-  });
+  })
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    addPlaceholder(data.text);
-    addArray(data.text, allData);
-    reset();
-  };
+    addPlaceholder(data.text)
+    addArray(data.text, allData)
+    reset()
+  }
 
   const onReset = () => {
-    reset();
-    setPlaceholderArray([]);
-    setFilterData([]);
-  };
+    reset()
+    setPlaceholderArray([])
+    setFilterData([])
+  }
 
   return (
     <form style={{ width: "100%" }} onSubmit={handleSubmit(onSubmit)}>
@@ -61,8 +66,9 @@ export const FilterInput: FC<Props> = ({
         justifyContent="center"
         alignItems="center"
         direction="column"
+        className={oswaldFont.className}
       >
-        <Box fontSize="3xl" fontWeight="500">
+        <Box fontSize="3xl" fontWeight="900" className={oswaldFont.className}>
           {title}
         </Box>
         <Flex
@@ -78,7 +84,8 @@ export const FilterInput: FC<Props> = ({
               <SearchIcon color="gray.400" />
             </InputLeftElement>
             <Input
-              className="border-gray-300 bg-white"
+              className="border-gray-300"
+              bg="white"
               list="itemlist"
               placeholder={
                 placeholderArray.length > 0
@@ -97,14 +104,20 @@ export const FilterInput: FC<Props> = ({
           <Flex gap={2} w={{ base: "full", md: "auto" }}>
             <Button
               type="submit"
-              className="bg-blue-900 hover:bg-blue-800 text-white w-full"
+              bg="blue.600"
+              color="white"
+              _hover={{ opacity: "0.9" }}
+              w="full"
             >
               検索
             </Button>
             <Button
               type="button"
               onClick={onReset}
-              className="bg-gray-500 hover:bg-gray-400 text-white w-full"
+              bg="gray.400"
+              color="white"
+              _hover={{ opacity: "0.9" }}
+              w="full"
             >
               リセット
             </Button>
@@ -112,5 +125,5 @@ export const FilterInput: FC<Props> = ({
         </Flex>
       </Flex>
     </form>
-  );
-};
+  )
+}

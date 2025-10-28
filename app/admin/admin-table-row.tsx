@@ -1,5 +1,5 @@
 "use client";
-import { db } from "@/libs/firebase";
+import { db } from "@/lib/firebase/client";
 import { Td, Tr } from "@chakra-ui/react";
 import { doc, onSnapshot } from "firebase/firestore";
 import React, { FC, useEffect, useState } from "react";
@@ -18,13 +18,20 @@ export const AdminTableRow: FC<Props> = ({ user: { uid, email } }) => {
   const [makers, setMakers] = useState<any[]>();
 
   useEffect(() => {
-    const getMaker = async () => {
-      const makerDoc = doc(db, "users", `${uid}`, "permissions", "makers");
-      onSnapshot(makerDoc, (snapshot) => {
-        setMakers(Object.entries({ ...snapshot.data() } as Maker));
-      });
-    };
-    getMaker();
+    if (!uid) return;
+    const makerDoc = doc(db, "users", uid, "permissions", "makers");
+    const unsubscribe = onSnapshot(
+      makerDoc,
+      (snapshot) => {
+        if (snapshot.exists()) {
+          setMakers(Object.entries({ ...snapshot.data() } as Maker));
+        }
+      },
+      (error) => {
+        console.error("Error fetching makers:", error);
+      }
+    );
+    return () => unsubscribe();
   }, [uid]);
 
   return (

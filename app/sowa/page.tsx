@@ -1,26 +1,19 @@
-import { Catalog } from "@/components/Catalog";
-import { CatalogArea } from "@/components/CatalogArea";
-import { fetchCatalog } from "@/utils/fetch-catalog";
-import SowaContainer from "./SowaContainer";
-import { fetchSowaData } from "@/actions/fetch-actions";
+import { Suspense } from "react";
+import { SowaData } from "./SowaData";
+import { SowaCatalogs } from "./SowaCatalogs";
+import { Spinner } from "@chakra-ui/react";
 
 export default async function Sowa() {
-  const catalogSS = await fetchCatalog("zJfBVi74zH0NrwAetdWk");
-  const catalogAW = await fetchCatalog("sUJP9HASAZ4u0vJuOAES");
-  const catalogEF = await fetchCatalog("msBGA95EgBvNqO0RTif7");
-
-  const data = await fetchSowaData();
-  if (!data) return null;
-
   return (
-    <main className="flex flex-col items-center justify-between overflow-hidden">
-      <SowaContainer data={data} />
-      <CatalogArea>
-        <Catalog catalogData={catalogSS} />
-        <Catalog catalogData={catalogAW} />
-        <Catalog catalogData={catalogEF} />
-      </CatalogArea>
+    <main className="w-full flex flex-col items-center justify-between overflow-hidden">
+      <Suspense fallback={<Spinner />}>
+        <SowaData />
+      </Suspense>
+      <Suspense fallback={<div>Loading catalogs...</div>}>
+        <SowaCatalogs />
+      </Suspense>
     </main>
   );
 }
+
 export const dynamic = "force-static";

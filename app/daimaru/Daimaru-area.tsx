@@ -1,36 +1,37 @@
-"use client";
-import { DaimaruTable } from "@/app/daimaru/Daimaru-table";
-import React, { useEffect } from "react";
-import { useFetch } from "@/hooks/useFetch";
-import { DaimaruData } from "@/utils/types";
-import { Flex } from "@chakra-ui/react";
-import { FilterInput } from "@/components/FilterInput";
-import LoadingSpinner from "@/components/spinner";
-import { useSession } from "next-auth/react";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "@/libs/firebase";
-import { useFilterInput } from "@/hooks/useFilterInput";
+"use client"
+import { DaimaruTable } from "@/app/daimaru/Daimaru-table"
+import React, { useEffect } from "react"
+import { useFetch } from "@/hooks/useFetch"
+import { DaimaruData } from "@/utils/types"
+import { Flex } from "@chakra-ui/react"
+import { FilterInput } from "@/components/FilterInput"
+import LoadingSpinner from "@/components/spinner"
+import { addDoc, collection, serverTimestamp } from "firebase/firestore"
+import { db } from "@/lib/firebase/client"
+import { useFilterInput } from "@/hooks/useFilterInput"
+import { useAuth } from "@/context/auth"
 
 const DaimaruArea = () => {
-  const { addArray, filterData, setFilterData } = useFilterInput<DaimaruData>();
-  const { data }: { data: DaimaruData[] | undefined; } = useFetch({
+  const auth = useAuth()
+  const uid = auth?.currentUser?.uid
+  const { addArray, filterData, setFilterData } = useFilterInput<DaimaruData>()
+  const { data }: { data: DaimaruData[] | undefined } = useFetch({
     url: "/api/daimaru",
     queryKey: "daimaru",
-  });
+  })
 
-  const user = useSession();
   useEffect(() => {
-    if (!user.data?.user.uid) return;
-    const logsRef = collection(db, "users", user.data?.user.uid, "AccessLogs");
+    if (!uid) return
+    const logsRef = collection(db, "users", uid, "AccessLogs")
     addDoc(logsRef, {
-      uid: user.data.user.uid,
+      uid: uid,
       createdAt: serverTimestamp(),
-    });
-  }, [user.data?.user.uid]);
+    })
+  }, [uid])
 
-  if (!data) return <LoadingSpinner />;
-  const newData = data.map((d) => d.品番);
-  const datalist = Array.from(new Set(newData));
+  if (!data) return <LoadingSpinner />
+  const newData = data.map((d) => d.品番)
+  const datalist = Array.from(new Set(newData))
 
   return (
     <Flex direction="column" alignItems="center" w="full">
@@ -43,7 +44,7 @@ const DaimaruArea = () => {
       />
       <DaimaruTable filterData={filterData} />
     </Flex>
-  );
-};
+  )
+}
 
-export default DaimaruArea;
+export default DaimaruArea

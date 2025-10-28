@@ -1,5 +1,5 @@
 "use client";
-import { db } from "@/libs/firebase";
+import { db } from "@/lib/firebase/client";
 import { Switch, Td } from "@chakra-ui/react";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import React, { FC } from "react";
@@ -13,17 +13,21 @@ export const AdminTableTd: FC<Props> = ({ uid, isMaker, title }) => {
   const checked = isMaker ? true : false;
 
   const updateMaker = async () => {
-    const makerDoc = doc(db, "users", `${uid}`, "permissions", "makers");
-    const docSnapshot = await getDoc(makerDoc);
-    if (!docSnapshot.exists()) {
-      await setDoc(makerDoc, {
+    try {
+      const makerDoc = doc(db, "users", uid, "permissions", "makers");
+      const docSnapshot = await getDoc(makerDoc);
+      if (!docSnapshot.exists()) {
+        await setDoc(makerDoc, {
+          [title]: !isMaker,
+        })
+        return
+      }
+      await updateDoc(makerDoc, {
         [title]: !isMaker,
-      })
-      return
+      });
+    } catch (error) {
+      console.error("Error updating maker:", error)
     }
-    updateDoc(makerDoc, {
-      [title]: !isMaker,
-    });
   };
 
   return (

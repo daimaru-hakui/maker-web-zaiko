@@ -1,24 +1,19 @@
-import { Catalog } from "@/components/Catalog";
-import { CatalogArea } from "@/components/CatalogArea";
-import { fetchSevenData } from "@/actions";
-import SevenContainer from "./SevenContainer";
-import { fetchCatalog } from "@/utils/fetch-catalog";
+import { Suspense } from "react";
+import { SevenData } from "./SevenData";
+import { SevenCatalogs } from "./SevenCatalogs";
+import { Spinner } from "@chakra-ui/react";
 
 export default async function Seven() {
-  const catalogSeven = await fetchCatalog("WvFRIqLAAkaolED0ZLYW");
-  const catalogHakui = await fetchCatalog("gpiS5mf8gHkDNWGtwINs");
-
-  const data = await fetchSevenData();
-  if (!data) return null;
-
   return (
-    <main className="flex flex-col items-center justify-between overflow-hidden">
-      <SevenContainer data={data} />
-      <CatalogArea>
-        <Catalog catalogData={catalogSeven} />
-        <Catalog catalogData={catalogHakui} />
-      </CatalogArea>
+    <main className="w-full flex flex-col items-center justify-between overflow-hidden">
+      <Suspense fallback={<Spinner />}>
+        <SevenData />
+      </Suspense>
+      <Suspense fallback={<div>Loading catalogs...</div>}>
+        <SevenCatalogs />
+      </Suspense>
     </main>
   );
 }
+
 export const dynamic = "force-static";
