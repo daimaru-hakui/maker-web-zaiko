@@ -1,34 +1,35 @@
-"use client";
-import TableArea from "@/components/table-area";
-import { db } from "@/libs/firebase";
-import { Table, Tbody, Th, Thead, Tr } from "@chakra-ui/react";
-import { collection, onSnapshot } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
-import { AdminTableRow } from "./admin-table-row";
-import { makerLinks } from "@/utils/makerLinks";
-import { OswaldFont } from "../layout";
+"use client"
+import TableArea from "@/components/table-area"
+import { db } from "@/lib/firebase/client"
+import { Table, Tbody, Th, Thead, Tr } from "@chakra-ui/react"
+import { collection, onSnapshot } from "firebase/firestore"
+import React, { useEffect, useState } from "react"
+import { AdminTableRow } from "./admin-table-row"
+import { makerLinks } from "@/utils/makerLinks"
 
 type User = {
-  uid: string;
-  email: string;
-};
+  uid: string
+  email: string
+}
 
 export const AdminTable = () => {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<User[]>([])
 
   useEffect(() => {
-    let unsub: any;
-    const getUsers = () => {
-      const usersRef = collection(db, "users");
-      unsub = onSnapshot(usersRef, (snapshot) => {
+    const usersRef = collection(db, "users")
+    const unsubscribe = onSnapshot(
+      usersRef,
+      (snapshot) => {
         setUsers(
-          snapshot.docs.map((doc) => ({ ...doc.data(), uid: doc.id } as User))
-        );
-      });
-    };
-    getUsers();
-    return () => unsub();
-  }, []);
+          snapshot.docs.map((doc) => ({ ...doc.data(), uid: doc.id }) as User),
+        )
+      },
+      (error) => {
+        console.error("Error fetching users:", error)
+      }
+    )
+    return () => unsubscribe()
+  }, [])
 
   return (
     <TableArea maxW="1500px">
@@ -37,7 +38,7 @@ export const AdminTable = () => {
         top={0}
         zIndex="docked"
         bg="white"
-        className={`${OswaldFont.className} h-12`}
+        className={` h-12`}
       >
         <Tr>
           <Th className="p-0 px-2">email</Th>
@@ -48,11 +49,11 @@ export const AdminTable = () => {
           ))}
         </Tr>
       </Thead>
-      <Tbody className={`${OswaldFont.className}`}>
+      <Tbody>
         {users.map((user) => (
           <AdminTableRow key={user.uid} user={user} />
         ))}
       </Tbody>
     </TableArea>
-  );
-};
+  )
+}

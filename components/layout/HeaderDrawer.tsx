@@ -1,5 +1,5 @@
-"use client";
-import React from "react";
+"use client"
+import React from "react"
 import {
   Drawer,
   DrawerBody,
@@ -13,20 +13,23 @@ import {
   Flex,
   Box,
   Stack,
-} from "@chakra-ui/react";
-import Link from "next/link";
-import { IoMenu } from "react-icons/io5";
-import { signOut, useSession } from "next-auth/react";
-import { SidebarList } from "./SidebarList";
-import { ChakuraProvider } from "@/libs/providers/ChakuraProvider";
-import { KosugiFont } from "@/app/layout";
+} from "@chakra-ui/react"
+import Link from "next/link"
+import { IoMenu } from "react-icons/io5"
+import { SidebarList } from "./SidebarList"
+import { ChakuraProvider } from "@/lib/providers/ChakuraProvider"
+import { useAuth } from "@/context/auth"
+import { useRouter } from "next/navigation"
 
 export const HeaderDrawer = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const session = useSession();
-  const signOutHandler = () => {
-    signOut();
-  };
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const router = useRouter()
+  const auth = useAuth()
+
+  const signOutHandler = async () => {
+    await auth?.logout()
+    router.refresh()
+  }
 
   return (
     <>
@@ -45,7 +48,7 @@ export const HeaderDrawer = () => {
             <DrawerHeader>Menu</DrawerHeader>
             <DrawerBody className="text-black">
               <SidebarList onClose={onClose} />
-              <Stack spacing={2} className={`mt-3 ${KosugiFont.className}`}>
+              <Stack spacing={2} className={`mt-3`}>
                 <Button variant="outline" _hover={{ textColor: "blue" }}>
                   <Link
                     className="text-sm cursor-pointer w-full"
@@ -56,7 +59,7 @@ export const HeaderDrawer = () => {
                     マイユニポータル
                   </Link>
                 </Button>
-                {session.data?.user.uid && (
+                {auth?.currentUser?.uid && (
                   <Button
                     variant="outline"
                     className="flex items-centertext-sm cursor-pointer"
@@ -80,5 +83,5 @@ export const HeaderDrawer = () => {
         </Drawer>
       </ChakuraProvider>
     </>
-  );
-};
+  )
+}

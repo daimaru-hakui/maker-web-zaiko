@@ -1,18 +1,29 @@
-import { KosugiFont } from "@/app/layout";
-import { Box, Table, TableContainer } from "@chakra-ui/react";
-import React, { FC, ReactNode } from "react";
+import { Box, Table, TableContainer } from "@chakra-ui/react"
+import { Oswald } from "next/font/google"
+import React, { FC, ReactNode } from "react"
 
 type Props = {
-  children: ReactNode;
-  maxW?: string;
-  className?: string;
-};
+  children: ReactNode
+  maxW?: string
+  className?: string
+}
+
+const oswaldFont = Oswald({
+  weight: ["200", "300", "400", "500"],
+  subsets: ["latin"],
+})
 
 const TableArea: FC<Props> = ({ children, maxW = "900px", className }) => {
   return (
-    <TableContainer mt={6} px={6} overflowX="unset" overflowY="unset" className={className}>
+    <TableContainer
+      mt={6}
+      px={6}
+      overflowX="unset"
+      overflowY="unset"
+      className={`${className} ${oswaldFont.className}`}
+    >
       <Box
-        className={`tracking-wide ${KosugiFont.className} border border-gray-200 bg-white p-3 pt-0 rounded-md`}
+        className={`tracking-wide border border-gray-200 bg-white p-3 pt-0 rounded-md`}
         overflowX="auto"
         position="relative"
         maxW={{ base: "850px", "2xl": maxW }}
@@ -23,7 +34,7 @@ const TableArea: FC<Props> = ({ children, maxW = "900px", className }) => {
         </Table>
       </Box>
     </TableContainer>
-  );
-};
+  )
+}
 
-export default TableArea;
+export default TableArea

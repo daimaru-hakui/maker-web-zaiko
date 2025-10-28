@@ -1,6 +1,6 @@
 import React from "react";
 import { Spinner } from "@chakra-ui/react";
-import { ChakuraProvider } from "@/libs/providers/ChakuraProvider";
+import { ChakuraProvider } from "@/lib/providers/ChakuraProvider";
 
 const LoadingSpinner = () => {
   return (

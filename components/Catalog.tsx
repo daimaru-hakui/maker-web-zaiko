@@ -1,30 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import React, { FC } from "react";
+"use client"
+import Image from "next/image"
+import Link from "next/link"
+import React, { FC } from "react"
 
 type Props = {
   catalogData: {
-    link: string;
-    maker: string;
+    link: string
+    maker: string
     image: {
-      url: string;
-    };
-  } | null;
-};
+      url: string
+    }
+  } | null
+}
 
 export const Catalog: FC<Props> = ({ catalogData }) => {
-  if(!catalogData) {
+  if (!catalogData) {
     return null
   }
-  
+
   return (
     <div className="w-11/12 lg:w-[calc(80px)]">
       <Link href={catalogData?.link} target="_blank" rel="noopener noreferrer">
         <Image
           src={catalogData?.image?.url}
-          className="w-full lg:max-w-[calc(80px)]"
+          className="w-full lg:max-w-[calc(80px)] shadow-md"
           max-height={200}
           width={200}
           height={200}
@@ -32,5 +32,5 @@ export const Catalog: FC<Props> = ({ catalogData }) => {
         />
       </Link>
     </div>
-  );
-};
+  )
+}

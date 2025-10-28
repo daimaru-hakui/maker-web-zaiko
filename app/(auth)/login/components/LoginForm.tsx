@@ -1,53 +1,60 @@
-"use client";
-import React, { FC, useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { signIn } from "next-auth/react";
-import { auth } from "@/libs/firebase";
+"use client"
+import React, { FC, useEffect, useState } from "react"
+import { useForm, SubmitHandler } from "react-hook-form"
+import { useAuth } from "@/context/auth"
+import { useRouter } from "next/navigation"
+import { auth as firebaseAuth } from "@/lib/firebase/client"
+import { Oswald } from "next/font/google"
 
 type Inputs = {
-  email: string;
-  password: string;
-};
+  email: string
+  password: string
+}
+
+const oswaldFont = Oswald({
+  weight: ["200", "300", "400", "500"],
+  subsets: ["latin"],
+})
 
 const LoginForm: FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>();
-  const [loading, setLoading] = useState(false);
+  } = useForm<Inputs>()
+  const auth = useAuth()
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    await signInHandler(data);
-  };
+    await signInHandler(data)
+  }
 
   const signInHandler = async (data: Inputs) => {
-    setLoading(true);
-    const { email, password } = data;
+    setLoading(true)
+    const { email, password } = data
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const idToken = await userCredential.user.getIdToken();
-      await signIn("credentials", {
-        idToken,
-        callbackUrl: "/",
-      });
+      await auth?.loginWithEmail(email, password)
+      router.refresh()
     } catch (error) {
-      console.log("error");
-      alert("ログインに失敗しまいした");
-      console.error(error);
+      console.log("error")
+      alert("ログインに失敗しまいした")
+      console.error(error)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
+
+  useEffect(() => {
+    firebaseAuth.signOut()
+  }, [])
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-        <div className="text-center">Login</div>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={`w-full ${oswaldFont.className}`}
+      >
+        <div className="text-center text-2xl font-bold">Login</div>
         <div className="mt-6 w-full">
           <label>Email</label>
           <input
@@ -83,7 +90,7 @@ const LoginForm: FC = () => {
         </button>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

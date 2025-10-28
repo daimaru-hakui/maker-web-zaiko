@@ -1,5 +1,5 @@
 "use server";
-import prisma from "@/libs/prisma";
+import prisma from "@/lib/prisma";
 
 export const fetchDaimaruHakuiData = async () => {
   const data = await prisma.daimaruHakui.findMany({
