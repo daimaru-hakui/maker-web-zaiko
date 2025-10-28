@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { BostonData } from "./BostonData";
-import { BostonCatalogs } from "./BostonCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { BostonData } from "./BostonData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Boston() {
   return (
@@ -10,10 +10,13 @@ export default async function Boston() {
         <BostonData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <BostonCatalogs />
+        <Catalogs ids={[
+          "TwK33iXeZJQa3thFGHtE",
+          "jwaznJWerd3N6JWUeZss",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"

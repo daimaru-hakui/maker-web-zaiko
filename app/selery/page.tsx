@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { SeleryData } from "./SeleryData";
-import { SeleryCatalogs } from "./SeleryCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { SeleryData } from "./SeleryData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Selery() {
   return (
@@ -10,10 +10,15 @@ export default async function Selery() {
         <SeleryData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <SeleryCatalogs />
+        <Catalogs ids={[
+          "WewRqYjWSLqO3tBFA5ED",
+          "5KOWq1BVWSgfFKr7rd14",
+          "spwgfseVNbJJyhPbMuLz",
+          "sEYUXN1ERqvMPswsQQUt",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"

@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { SowaData } from "./SowaData";
-import { SowaCatalogs } from "./SowaCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { SowaData } from "./SowaData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Sowa() {
   return (
@@ -10,10 +10,14 @@ export default async function Sowa() {
         <SowaData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <SowaCatalogs />
+        <Catalogs ids={[
+          "zJfBVi74zH0NrwAetdWk",
+          "sUJP9HASAZ4u0vJuOAES",
+          "msBGA95EgBvNqO0RTif7",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"

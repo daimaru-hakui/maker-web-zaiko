@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { BurtleData } from "./BurtleData";
-import { BurtleCatalogs } from "./BurtleCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { BurtleData } from "./BurtleData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Burtle() {
   return (
@@ -10,10 +10,13 @@ export default async function Burtle() {
         <BurtleData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <BurtleCatalogs />
+        <Catalogs ids={[
+          "clNRdfRwPcvYuBOdn0Ez",
+          "9B6TCiCF2CpCEiOVi7Km",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"

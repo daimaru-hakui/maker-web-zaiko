@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { JoieData } from "./JoieData";
-import { JoieCatalogs } from "./JoieCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { JoieData } from "./JoieData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Joie() {
   return (
@@ -10,10 +10,13 @@ export default async function Joie() {
         <JoieData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <JoieCatalogs />
+        <Catalogs ids={[
+          "tHct8wrii7FBF8ssRIbW",
+          "EGLLipaquXFGYXPt8fIz",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"

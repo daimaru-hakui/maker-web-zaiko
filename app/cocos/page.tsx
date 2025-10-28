@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { CocosData } from "./CocosData";
-import { CocosCatalogs } from "./CocosCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { CocosData } from "./CocosData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Cocos() {
   return (
@@ -10,10 +10,17 @@ export default async function Cocos() {
         <CocosData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <CocosCatalogs />
+        <Catalogs ids={[
+          "TmMD6uV45chHk4Wbv9tu",
+          "7Fqh15qIj4MgfefTDthH",
+          "a8WkXgDPhg78FTIYrwfD",
+          "YIhkXPA5GB9rnf4ewGzx",
+          "QVcAdPI9cTwOmr53caYG",
+          "fCYu57Bqw9kyltgdeHeZ",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"

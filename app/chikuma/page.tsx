@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { ChikumaData } from "./ChikumaData";
-import { ChikumaCatalogs } from "./ChikumaCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { ChikumaData } from "./ChikumaData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Chikuma() {
   return (
@@ -10,10 +10,14 @@ export default async function Chikuma() {
         <ChikumaData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <ChikumaCatalogs />
+        <Catalogs ids={[
+          "b7440yI1Wly8MiGXlaxO",
+          "mXFnlH6zLsSqmcTLVtDN",
+          "6g8Gzr9UThIKFllkthx5",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"

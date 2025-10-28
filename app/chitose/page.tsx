@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { ChitoseData } from "./ChitoseData";
-import { ChitoseCatalogs } from "./ChitoseCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { ChitoseData } from "./ChitoseData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Chitose() {
   return (
@@ -10,10 +10,14 @@ export default async function Chitose() {
         <ChitoseData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <ChitoseCatalogs />
+        <Catalogs ids={[
+          "ZOEYHdjkHBxGd2RJev0X",
+          "ABDLfFC7MTatFAiL4D4T",
+          "SL9t3boTeHtv21rbCDoQ",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"

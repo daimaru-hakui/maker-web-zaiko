@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { SevenData } from "./SevenData";
-import { SevenCatalogs } from "./SevenCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { SevenData } from "./SevenData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Seven() {
   return (
@@ -10,10 +10,13 @@ export default async function Seven() {
         <SevenData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <SevenCatalogs />
+        <Catalogs ids={[
+          "WvFRIqLAAkaolED0ZLYW",
+          "gpiS5mf8gHkDNWGtwINs",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"

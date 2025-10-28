@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { TombowData } from "./TombowData";
-import { TombowCatalogs } from "./TombowCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { TombowData } from "./TombowData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Tombow() {
   return (
@@ -10,10 +10,12 @@ export default async function Tombow() {
         <TombowData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <TombowCatalogs />
+        <Catalogs ids={[
+          "kXfJfnnmLX9G8HKooxfh",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"

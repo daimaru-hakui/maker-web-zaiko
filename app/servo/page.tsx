@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { ServoData } from "./ServoData";
-import { ServoCatalogs } from "./ServoCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { ServoData } from "./ServoData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Servo() {
   return (
@@ -10,10 +10,17 @@ export default async function Servo() {
         <ServoData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <ServoCatalogs />
+        <Catalogs ids={[
+          "3PSm4sRFWrc83Z588Mmi",
+          "HdeSEUh9pa9ACZzO4BEi",
+          "5O0l7oJ0HHDd58bWa3gO",
+          "nTHFMlkdQZ1vjHBNcnfQ",
+          "kyiYg6k43OrLZ1Ok3Quc",
+          "x3oUUc4lBk4Jerr7mvEK",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"

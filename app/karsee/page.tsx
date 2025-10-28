@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { KarseeData } from "./KarseeData";
-import { KarseeCatalogs } from "./KarseeCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { KarseeData } from "./KarseeData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Karsee() {
   return (
@@ -10,10 +10,16 @@ export default async function Karsee() {
         <KarseeData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <KarseeCatalogs />
+        <Catalogs ids={[
+          "YMY0LQM2nRWDj5gqlryN",
+          "UfT9LR5z0C9qQE5vmhjE",
+          "pMKHzEz4h0YPX0CGxdOW",
+          "YZKfbZG9URgiEWupYZo8",
+          "gQpNxvRO7YNTfCIyhlv9",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"

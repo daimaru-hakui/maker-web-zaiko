@@ -1,7 +1,7 @@
-import { Suspense } from "react";
-import { YagiData } from "./YagiData";
-import { YagiCatalogs } from "./YagiCatalogs";
-import { Spinner } from "@chakra-ui/react";
+import { Catalogs } from "@/components/Catalogs"
+import { Suspense } from "react"
+import { YagiData } from "./YagiData"
+import { Spinner } from "@chakra-ui/react"
 
 export default async function Yagi() {
   return (
@@ -10,10 +10,14 @@ export default async function Yagi() {
         <YagiData />
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
-        <YagiCatalogs />
+        <Catalogs ids={[
+          "57vRlgjEa8gMZN8ZxZPk",
+          "3vuLDSblesVu3sEUwnWY",
+          "R2z8zxSTfijJ9y3TZt9A",
+        ]} />
       </Suspense>
     </main>
-  );
+  )
 }
 
-export const dynamic = "force-static";
+export const dynamic = "force-static"
