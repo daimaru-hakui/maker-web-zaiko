@@ -1,13 +1,17 @@
 import { Catalogs } from "@/components/Catalogs"
 import { Suspense } from "react"
-import { YagiData } from "./YagiData"
-import { Spinner } from "@chakra-ui/react"
+import LoadingSpinner from "@/components/Spinner"
+import { DataFetcher } from "@/components/DataFetcher"
+import { YagiContainer } from "./YagiContainer"
+import { fetchYagiData } from "@/actions"
 
 export default async function Yagi() {
   return (
     <main className="w-full flex flex-col items-center justify-between overflow-hidden">
-      <Suspense fallback={<Spinner />}>
-        <YagiData />
+      <Suspense fallback={<LoadingSpinner />}>
+        <DataFetcher fetcher={fetchYagiData}>
+          {({ data }) => <YagiContainer data={data} />}
+        </DataFetcher>
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
         <Catalogs ids={[

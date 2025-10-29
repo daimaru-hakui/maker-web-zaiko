@@ -1,8 +1,6 @@
 "use client"
-import React from "react"
 import { SidebarList } from "./SidebarList"
 import SidebarTitle from "./SidebarTitle"
-import { usePathname } from "next/navigation"
 import { Oswald } from "next/font/google"
 import Link from "next/link"
 
@@ -11,12 +9,7 @@ const oswaldFont = Oswald({
   subsets: ["latin"],
 })
 
-export default function SideNav() {
-  const pathname = usePathname()
-  if (pathname === "/login") {
-    return null
-  }
-
+export function SideNav() {
   return (
     <div
       className={`min-w-[calc(250px)] bg-blue-900 hidden lg:block`}
@@ -39,4 +32,3 @@ export default function SideNav() {
     </div>
   )
 }
-

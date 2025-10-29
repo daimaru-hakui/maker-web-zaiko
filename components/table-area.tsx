@@ -1,4 +1,3 @@
-import { Box, Table, TableContainer } from "@chakra-ui/react"
 import { Oswald } from "next/font/google"
 import React, { FC, ReactNode } from "react"
 
@@ -15,25 +14,21 @@ const oswaldFont = Oswald({
 
 const TableArea: FC<Props> = ({ children, maxW = "900px", className }) => {
   return (
-    <TableContainer
-      mt={6}
-      px={6}
-      overflowX="unset"
-      overflowY="unset"
-      className={`${className} ${oswaldFont.className}`}
+    <div
+      className={`mt-6 px-6 overflow-visible ${className} ${oswaldFont.className}`}
     >
-      <Box
-        className={`tracking-wide border border-gray-200 bg-white p-3 pt-0 rounded-md`}
-        overflowX="auto"
-        position="relative"
-        maxW={{ base: "850px", "2xl": maxW }}
-        maxH="calc(100vh - 230px)"
+      <div
+        className="tracking-wide border border-gray-200 bg-white p-3 pt-0 rounded-md overflow-auto relative"
+        style={{
+          maxWidth: `max(850px, ${maxW})`,
+          maxHeight: "calc(100vh - 230px)",
+        }}
       >
-        <Table size="sm" variant="simple" bg="white">
+        <table className="w-full text-sm bg-white border-collapse">
           {children}
-        </Table>
-      </Box>
-    </TableContainer>
+        </table>
+      </div>
+    </div>
   )
 }
 

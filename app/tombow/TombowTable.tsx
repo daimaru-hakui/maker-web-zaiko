@@ -1,6 +1,5 @@
 "use client";
-import { Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
-import React, { FC } from "react";
+import { FC } from "react";
 import TableArea from "@/components/table-area";
 import { Tombow } from "@prisma/client";
 
@@ -13,24 +12,24 @@ export const TombowTable: FC<Props> = ({ filterData }) => {
     <>
       {filterData.length > 0 && (
         <TableArea>
-          <Thead position="sticky" top={0} zIndex="docked" bg="white">
-            <Tr className="h-12">
-              <Th>品番</Th>
-              <Th>サイズ</Th>
-              <Th>在庫数</Th>
-              <Th>JANコード</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
+          <thead className="sticky top-0 z-10 bg-white">
+            <tr className="border-b hover:bg-gray-50">
+              <th className="px-4 py-2 text-left font-semibold text-gray-700">品番</th>
+              <th className="px-4 py-2 text-center font-semibold text-gray-700">サイズ</th>
+              <th className="px-4 py-2 text-right font-semibold text-gray-700">在庫数</th>
+              <th className="px-4 py-2 text-left font-semibold text-gray-700">JANコード</th>
+            </tr>
+          </thead>
+          <tbody>
             {filterData?.map((data: Tombow, index: number) => (
-              <Tr key={index}>
-                <Td>{data.productNumber}</Td>
-                <Td textAlign="center">{data.size}</Td>
-                <Td isNumeric>{data.stock}</Td>
-                <Td isNumeric>{data.jan}</Td>
-              </Tr>
+              <tr key={index} className="border-b hover:bg-gray-50">
+                <td className="px-4 py-2 text-left">{data.productNumber}</td>
+                <td className="px-4 py-2 text-center">{data.size}</td>
+                <td className="px-4 py-2 text-right">{data.stock}</td>
+                <td className="px-4 py-2 text-left">{data.jan}</td>
+              </tr>
             ))}
-          </Tbody>
+          </tbody>
         </TableArea>
       )}
     </>

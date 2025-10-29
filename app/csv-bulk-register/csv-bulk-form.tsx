@@ -1,7 +1,6 @@
 "use client"
 import * as actions from "@/actions"
 import { useStore } from "@/utils/store"
-import { Button } from "@chakra-ui/react"
 import React, { useEffect, useState } from "react"
 
 export default function CsvBulkForm() {
@@ -152,26 +151,18 @@ export default function CsvBulkForm() {
         </div>
 
         <div className="flex gap-3 mt-6">
-          <Button
-            w="full"
-            size="sm"
-            color="white"
+          <button
+            className="w-full px-4 py-2 text-sm text-white bg-gray-400 rounded hover:opacity-90 transition-opacity"
             onClick={handleReset}
-            bg={"gray.400"}
-            _hover={{ opacity: "0.9" }}
           >
             リセット
-          </Button>
-          <Button
-            w="full"
-            size="sm"
-            color="white"
-            bg="blue.900"
-            _hover={{ bg: "blue.800" }}
+          </button>
+          <button
+            className="w-full px-4 py-2 text-sm text-white bg-blue-900 rounded hover:bg-blue-800 transition-colors"
             onClick={(e) => handleRegister(e, fileUploads)}
           >
             登録
-          </Button>
+          </button>
         </div>
 
         {resultList.length > 0 && (

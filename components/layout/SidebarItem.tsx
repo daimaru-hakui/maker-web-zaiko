@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 type Props = {
   label: string;
@@ -17,6 +17,12 @@ export const SidebarItem: FC<Props> = ({
   onClose,
 }) => {
   const pathname = usePathname();
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
   return (
     <Link
       href={link}
@@ -25,8 +31,9 @@ export const SidebarItem: FC<Props> = ({
       target={blank ? "_blank" : "_self"}
     >
       <div
-        className={`py-1 px-3 my-1 text-xs hover:text-white rounded hover:bg-blue-700 ${pathname === link ? "bg-blue-700 text-white" : ""
-          }`}
+        className={`py-1 px-3 my-1 text-xs hover:text-white rounded hover:bg-blue-700 ${
+          isHydrated && pathname === link ? "bg-blue-700 text-white" : ""
+        }`}
       >
         {label}
       </div>

@@ -1,11 +1,11 @@
-"use client";
-import React, { FC } from "react";
-import { useStore } from "@/utils/store";
-import LoadingSpinner from "@/components/spinner";
-import CsvBulkForm from "./csv-bulk-form";
+"use client"
+import React, { FC } from "react"
+import { useStore } from "@/utils/store"
+import LoadingSpinner from "@/components/Spinner"
+import CsvBulkForm from "./csv-bulk-form"
 
 const CsvBulkArea: FC = () => {
-  const isLoading = useStore((state) => state.isLoading);
+  const isLoading = useStore((state) => state.isLoading)
 
   return (
     <div className="w-full max-w-[600px] relative">
@@ -14,7 +14,8 @@ const CsvBulkArea: FC = () => {
       </div>
       <CsvBulkForm />
     </div>
-  );
-};
+  )
+}
 
-export default CsvBulkArea;
+export default CsvBulkArea
+
