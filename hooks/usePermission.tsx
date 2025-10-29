@@ -1,3 +1,4 @@
+"use client"
 import { useAuth } from "@/context/auth"
 import { db } from "../lib/firebase/client"
 import { doc, getDoc } from "firebase/firestore"
@@ -32,4 +33,3 @@ export function usePermission(maker: string) {
     isAuth,
   }
 }
-

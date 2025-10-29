@@ -1,29 +1,19 @@
-"use client";
-import React from "react";
-import { Flex } from "@chakra-ui/react";
-import { FilterInput } from "@/components/FilterInput";
-import { ServoTable } from "./ServoTable";
-import { useFilterInput } from "@/hooks/useFilterInput";
-import { Servo } from "@prisma/client";
+"use client"
+import { GenericContainer } from "@/components/GenericContainer"
+import { ServoTable } from "./ServoTable"
+import { Servo } from "@prisma/client"
 
 type Props = {
-  data: Servo[];
-};
+  data: Servo[]
+}
 
-export default function ServoContainer({ data }: Props) {
-  const { addArray, filterData, setFilterData, getDataList } = useFilterInput<Servo>();
-  const datalist = getDataList(data);
-
+export function ServoContainer({ data }: Props) {
   return (
-    <Flex direction="column" alignItems="center" w="full">
-      <FilterInput
-        title="Servo"
-        setFilterData={setFilterData}
-        datalist={datalist}
-        addArray={addArray}
-        allData={data}
-      />
-      <ServoTable filterData={filterData} />
-    </Flex>
-  );
+    <GenericContainer
+      data={data}
+      title="Servo"
+      permission="servo"
+      TableComponent={ServoTable}
+    />
+  )
 }

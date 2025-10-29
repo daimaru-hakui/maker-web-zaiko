@@ -1,44 +1,57 @@
-"use client";
-import { Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
-import React, { FC } from "react";
-import TableArea from "@/components/table-area";
-import { DaimaruHakui } from "@prisma/client";
+"use client"
+import { FC } from "react"
+import TableArea from "@/components/table-area"
+import { DaimaruHakui } from "@prisma/client"
 
 type Props = {
-  filterData: DaimaruHakui[];
-};
+  filterData: DaimaruHakui[]
+}
 
 export const DaimaruTable: FC<Props> = ({ filterData }) => {
   return (
     <>
       {filterData.length > 0 && (
         <TableArea maxW="1300px">
-          <Thead position="sticky" top={0} zIndex="docked" bg="white">
-            <Tr className="h-12">
-              <Th>品番</Th>
-              <Th>品名</Th>
-              <Th>サイズ</Th>
-              <Th>在庫数</Th>
-              <Th>外部在庫</Th>
-              <Th>TOTAL</Th>
-              <Th>仕掛</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
+          <thead className="sticky top-0 z-10 bg-white">
+            <tr className="border-b hover:bg-gray-50">
+              <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                品番
+              </th>
+              <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                品名
+              </th>
+              <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                サイズ
+              </th>
+              <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                在庫数
+              </th>
+              <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                外部在庫
+              </th>
+              <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                TOTAL
+              </th>
+              <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                仕掛
+              </th>
+            </tr>
+          </thead>
+          <tbody>
             {filterData?.map((data, index: number) => (
-              <Tr key={index}>
-                <Td>{data.productNumber}</Td>
-                <Td>{data.productName}</Td>
-                <Td textAlign="center">{data.size}</Td>
-                <Td isNumeric>{data.stock}</Td>
-                <Td isNumeric>{data.externalStock}</Td>
-                <Td isNumeric>{data.totalStock}</Td>
-                <Td isNumeric>{data.nextTimeStock}</Td>
-              </Tr>
+              <tr key={index} className="border-b hover:bg-gray-50">
+                <td className="px-4 py-2">{data.productNumber}</td>
+                <td className="px-4 py-2">{data.productName}</td>
+                <td className="px-4 py-2 text-center">{data.size}</td>
+                <td className="px-4 py-2 text-right">{data.stock}</td>
+                <td className="px-4 py-2 text-right">{data.externalStock}</td>
+                <td className="px-4 py-2 text-right">{data.totalStock}</td>
+                <td className="px-4 py-2 text-right">{data.nextTimeStock}</td>
+              </tr>
             ))}
-          </Tbody>
+          </tbody>
         </TableArea>
       )}
     </>
-  );
-};
+  )
+}

@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server"
 import { updateSession } from "./lib/firebase/middleware"
 
-export async function middleware(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
   return await updateSession(request)
 }
 

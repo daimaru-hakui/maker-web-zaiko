@@ -1,10 +1,8 @@
 import "./globals.css"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
-import QueryProvider from "@/lib/providers/queryProvider"
-import SideNav from "@/components/layout/SideNav"
-import { ChakuraProvider } from "@/lib/providers/ChakuraProvider"
-import { Kosugi, Oswald } from "next/font/google"
+import { SideNav } from "@/components/layout/SideNav"
+import { Oswald } from "next/font/google"
 import { AuthProvider } from "@/context/auth"
 
 const metadata = {
@@ -30,16 +28,14 @@ export default async function RootLayout({
         className="relative w-full min-h-screen flex"
       >
         <AuthProvider>
-          <ChakuraProvider>
-            <SideNav />
-            <div className="w-full flex flex-col justify-between">
-              <div>
-                <Header />
-                <QueryProvider>{children}</QueryProvider>
-              </div>
-              <Footer />
+          <SideNav />
+          <div className="w-full flex flex-col justify-between">
+            <div>
+              <Header />
+              {children}
             </div>
-          </ChakuraProvider>
+            <Footer />
+          </div>
         </AuthProvider>
       </body>
     </html>

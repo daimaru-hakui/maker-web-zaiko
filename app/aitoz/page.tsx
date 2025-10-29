@@ -1,17 +1,17 @@
 import { Catalogs } from "@/components/Catalogs"
 import { Suspense } from "react"
-import { Spinner } from "@chakra-ui/react"
-import { FetchDataComp } from "@/components/FetchDataComp"
-import AitozContainer from "./AitozContainer"
+import { DataFetcher } from "@/components/DataFetcher"
 import { fetchAitozData } from "@/actions"
+import { AitozContainer } from "./AitozContainer"
+import Spinner from "@/components/Spinner"
 
 export default async function AitozPage() {
   return (
     <main className="flex flex-col items-center justify-between overflow-hidden">
       <Suspense fallback={<Spinner />}>
-        <FetchDataComp fetcher={fetchAitozData}>
+        <DataFetcher fetcher={fetchAitozData}>
           {({ data }) => <AitozContainer data={data} />}
-        </FetchDataComp>
+        </DataFetcher>
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
         <Catalogs

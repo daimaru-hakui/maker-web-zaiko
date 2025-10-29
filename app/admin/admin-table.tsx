@@ -1,9 +1,8 @@
 "use client"
 import TableArea from "@/components/table-area"
 import { db } from "@/lib/firebase/client"
-import { Table, Tbody, Th, Thead, Tr } from "@chakra-ui/react"
 import { collection, onSnapshot } from "firebase/firestore"
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { AdminTableRow } from "./admin-table-row"
 import { makerLinks } from "@/utils/makerLinks"
 
@@ -26,34 +25,33 @@ export const AdminTable = () => {
       },
       (error) => {
         console.error("Error fetching users:", error)
-      }
+      },
     )
     return () => unsubscribe()
   }, [])
 
   return (
-    <TableArea maxW="1500px">
-      <Thead
-        position="sticky"
-        top={0}
-        zIndex="docked"
-        bg="white"
-        className={` h-12`}
-      >
-        <Tr>
-          <Th className="p-0 px-2">email</Th>
+    <TableArea maxW="1000px" className="w-full">
+      <thead className="sticky top-0 z-10 bg-white h-12">
+        <tr>
+          <th className="p-0 px-2 text-left font-semibold text-gray-700">
+            email
+          </th>
           {makerLinks.map((maker) => (
-            <Th className="text-center p-0 px-2 min-w-[80px]" key={maker.label}>
+            <th
+              className="text-center p-0 px-2 min-w-[80px] font-semibold text-gray-700"
+              key={maker.label}
+            >
               {maker.title}
-            </Th>
+            </th>
           ))}
-        </Tr>
-      </Thead>
-      <Tbody>
-        {users.map((user) => (
-          <AdminTableRow key={user.uid} user={user} />
+        </tr>
+      </thead>
+      <tbody>
+        {users.map((user, index) => (
+          <AdminTableRow key={user.uid} index={index} user={user} />
         ))}
-      </Tbody>
+      </tbody>
     </TableArea>
   )
 }

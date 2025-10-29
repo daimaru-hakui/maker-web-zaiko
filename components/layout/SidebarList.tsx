@@ -1,11 +1,10 @@
-"use client"
 import { db } from "@/lib/firebase/client"
-import { Maker } from "@/utils/types"
 import { doc, onSnapshot } from "firebase/firestore"
-import React, { FC, useEffect, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { SidebarItem } from "./SidebarItem"
 import { makerLinks } from "@/utils/makerLinks"
 import { useAuth } from "@/context/auth"
+import { Maker } from "@/app/admin/admin-table-row"
 
 type Props = {
   onClose?: () => void
@@ -15,9 +14,14 @@ export const SidebarList: FC<Props> = ({ onClose }) => {
   const auth = useAuth()
   const uid = auth?.currentUser?.uid
   const [authMakers, setAuthMakers] = useState<any>([])
+  const [isHydrated, setIsHydrated] = useState(false)
 
   useEffect(() => {
-    if (!uid) return;
+    setIsHydrated(true)
+  }, [])
+
+  useEffect(() => {
+    if (!uid) return
     const makersRef = doc(db, "users", uid, "permissions", "makers")
     const unsubscribe = onSnapshot(
       makersRef,
@@ -28,10 +32,14 @@ export const SidebarList: FC<Props> = ({ onClose }) => {
       },
       (error) => {
         console.error("Error fetching makers:", error)
-      }
+      },
     )
     return () => unsubscribe()
   }, [uid])
+
+  if (!isHydrated) {
+    return <div className={`mt-3`} />
+  }
 
   return (
     <div className={`mt-3`}>

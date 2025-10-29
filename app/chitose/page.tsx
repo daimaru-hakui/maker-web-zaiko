@@ -1,13 +1,17 @@
 import { Catalogs } from "@/components/Catalogs"
 import { Suspense } from "react"
-import { ChitoseData } from "./ChitoseData"
-import { Spinner } from "@chakra-ui/react"
+import LoadingSpinner from "@/components/Spinner"
+import { DataFetcher } from "@/components/DataFetcher"
+import { ChitoseContainer } from "./ChitoseContainer"
+import { fetchChitoseData } from "@/actions"
 
 export default async function Chitose() {
   return (
     <main className="w-full flex flex-col items-center justify-between overflow-hidden">
-      <Suspense fallback={<Spinner />}>
-        <ChitoseData />
+      <Suspense fallback={<LoadingSpinner />}>
+        <DataFetcher fetcher={fetchChitoseData}>
+          {({ data }) => <ChitoseContainer data={data} />}
+        </DataFetcher>
       </Suspense>
       <Suspense fallback={<div>Loading catalogs...</div>}>
         <Catalogs ids={[

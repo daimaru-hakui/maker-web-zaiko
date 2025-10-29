@@ -1,6 +1,6 @@
 import { cookies } from "next/headers"
 import { NextRequest, NextResponse } from "next/server"
-import { decodeJwt } from "jose"
+import { auth } from "./server"
 
 const PUBLIC_PATHS = [
   "/login",
@@ -30,7 +30,12 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(new URL("/login", request.url))
   }
 
-  const decodedToken = decodeJwt(token)
+  let decodedToken
+  try {
+    decodedToken = await auth.verifyIdToken(token)
+  } catch (err) {
+    return NextResponse.redirect(new URL("/login", request.url))
+  }
 
   // トークンの有効期限チェック
   const tokenExp = decodedToken.exp ? decodedToken.exp * 1000 : 0

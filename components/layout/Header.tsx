@@ -12,6 +12,11 @@ export const Header: FC = () => {
   const auth = useAuth()
   const uid = auth?.currentUser?.uid
   const [isAuthority, setIsAuthority] = useState(false)
+  const [isHydrated, setIsHydrated] = useState(false)
+
+  useEffect(() => {
+    setIsHydrated(true)
+  }, [])
 
   useEffect(() => {
     if (!uid) return
@@ -60,6 +65,12 @@ export const Header: FC = () => {
     }
     getPermission()
   }, [uid, auth])
+
+  if (!isHydrated) {
+    return (
+      <div className="px-3 sticky top-0 h-12 flex items-center z-50 border-1 border-gray-200 bg-blue-900 lg:bg-transparent" />
+    )
+  }
 
   return (
     <div className="px-3 sticky top-0 h-12 flex items-center z-50 border-1 border-gray-200 bg-blue-900 lg:bg-transparent">
