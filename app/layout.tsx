@@ -25,7 +25,7 @@ export default async function RootLayout({
       <title>大丸白衣　メーカー在庫</title>
       <body
         style={{ backgroundColor: "#f7f7f7" }}
-        className="relative w-full min-h-screen flex"
+        className="min-w-full min-h-screen flex"
       >
         <AuthProvider>
           <SideNav />

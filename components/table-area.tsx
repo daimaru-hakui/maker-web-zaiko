@@ -18,15 +18,13 @@ const TableArea: FC<Props> = ({ children, maxW = "900px", className }) => {
       className={`mt-6 px-6 overflow-visible ${className} ${oswaldFont.className}`}
     >
       <div
-        className="tracking-wide border border-gray-200 bg-white p-3 pt-0 rounded-md overflow-auto relative"
+        className="overflow-x-auto overflow-y-auto tracking-wide border border-gray-200 bg-white p-3 pt-0 rounded-md relative"
         style={{
           maxWidth: `max(850px, ${maxW})`,
           maxHeight: "calc(100vh - 230px)",
         }}
       >
-        <table className="w-full text-sm bg-white border-collapse">
-          {children}
-        </table>
+        {children}
       </div>
     </div>
   )

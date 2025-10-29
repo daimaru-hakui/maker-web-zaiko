@@ -12,6 +12,7 @@ export const DaimaruTable: FC<Props> = ({ filterData }) => {
     <>
       {filterData.length > 0 && (
         <TableArea maxW="1300px">
+          <table className="text-sm bg-white border-collapse whitespace-nowrap">
           <thead className="sticky top-0 z-10 bg-white">
             <tr className="border-b hover:bg-gray-50">
               <th className="px-4 py-2 text-left font-semibold text-gray-700">
@@ -50,6 +51,7 @@ export const DaimaruTable: FC<Props> = ({ filterData }) => {
               </tr>
             ))}
           </tbody>
+                  </table>
         </TableArea>
       )}
     </>
